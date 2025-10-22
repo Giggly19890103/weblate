@@ -1,58 +1,3 @@
-Weblate 5.14
-------------
-
-*Not yet released.*
-
-.. rubric:: New features
-
-* :ref:`addon-weblate.flags.target_repo_update` is now available as an add-on.
-* :http:delete:`/api/projects/(string:project)/labels/(int:label_id)/`.
-* Added multivalue CSV in :ref:`download` for multivalue formats.
-* New ``unit.bulk_edit`` permission for bulk editing operations, replacing the overloaded use of ``translation.auto`` permission, see :ref:`privileges`.
-
-.. rubric:: Improvements
-
-* New global permissions have been added to control viewing teams, users and roles without edit rights, see :ref:`privileges`.
-* :ref:`hooks` improvements.
-  * Now follows :ref:`api-errors`.
-  * Available in the OpenAPI.
-  * Dropped long-deprecated endpoints.
-* :ref:`date-search`.
-* Last changed lookup in :ref:`search-strings`.
-* :doc:`/security/localization-threat` documentation.
-* Improved activity logging for :ref:`addon-weblate.consistency.languages` add-on.
-* :ref:`check-rst-references` and :ref:`check-rst-syntax` now support substitutions.
-* Improved performance for :ref:`check-multiple-failures` and :ref:`check-long-untranslated` checks with batch operations.
-* :ref:`component-hide_glossary_matches` component setting.
-* :ref:`file_format_params` can now be configured via the :ref:`api`.
-* Admins can configure :ref:`expiring-accounts`.
-* Rate limiting of notification e-mails, configurable by :setting:`RATELIMIT_NOTIFICATION_LIMITS`.
-
-.. rubric:: Bug fixes
-
-* Plurals and :ref:`file_format_params` handling on file upload.
-* :ref:`team-admins` can no longer edit teams besides membership.
-* Highlighting syntax of overlapping elements.
-* Searching case sensitivity for short strings.
-* Inconsistent file formatting for new translations.
-
-.. rubric:: Compatibility
-
-* The default attributes for :ref:`saml-auth` in Docker container now matches non-Docker defaults.
-* Dropped long-deprecated :http:get:`/hooks/update/(string:project)/(string:component)/` and :http:get:`/hooks/update/(string:project)/`.
-* Removed Akismet spam protection integration as it was no longer effective and used an unmaintained Python library.
-* New positional argument (`activity_log_id`) passed to the add-on event handlers, see :class:`weblate.addons.base.BaseAddon`. Adjust any custom subclass accordingly.
-
-.. rubric:: Upgrading
-
-Please follow :ref:`generic-upgrade-instructions` in order to perform update.
-
-.. rubric:: Contributors
-
-.. include:: changes/contributors/5.14.rst
-
-`All changes in detail <https://github.com/WeblateOrg/weblate/milestone/149?closed=1>`__.
-
 Weblate 5.13.3
 --------------
 
@@ -195,7 +140,7 @@ Weblate 5.13
 
 Please follow :ref:`generic-upgrade-instructions` in order to perform update.
 
-* The distributed locking now uses a different implementation and that introduced several changes in :file:`settings_example.py`, most notably ``BACKEND`` in ``CACHES`` needs to be changed.
+* The distributed locking now uses a different implementation and that introduced several changes in :file:`settings_example.py`.
 * There are several changes in :file:`settings_example.py`, most notable are changed settings ``CRISPY_ALLOWED_TEMPLATE_PACKS`` and ``INSTALLED_APPS``; please adjust your settings accordingly.
 * The Docker container is now using :program:`granian`. This now requires explicit configuration of proxy trusted headers, including client protocol.
   :envvar:`WEBLATE_SECURE_PROXY_SSL_HEADER` typically needs to be added to avoid redirect loop, for example:

@@ -2,7 +2,7 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:fceeb2d8-2654-5ba0-bc22-3a05508ccf71",
+  "serialNumber": "urn:uuid:ab9caa2f-c13b-549b-8252-7d70cf6f8f81",
   "version": 1,
   "metadata": {
     "lifecycles": [
@@ -18,13 +18,13 @@
       }
     ],
     "component": {
-      "bom-ref": "weblate-client-libs@5.14.0",
+      "bom-ref": "weblate-client-libs@5.13.3",
       "type": "application",
       "name": "client",
-      "version": "5.14.0",
+      "version": "5.13.3",
       "scope": "required",
       "description": "Used to manage 3rd party libraries for the  client side.",
-      "purl": "pkg:npm/weblate-client-libs@5.14.0",
+      "purl": "pkg:npm/weblate-client-libs@5.13.3",
       "properties": [
         {
           "name": "cdx:npm:package:path",
@@ -172,14 +172,14 @@
       ]
     },
     {
-      "bom-ref": "@sentry-internal/browser-utils@10.18.0",
+      "bom-ref": "@sentry-internal/browser-utils@10.10.0",
       "type": "library",
       "name": "@sentry-internal/browser-utils",
-      "version": "10.18.0",
+      "version": "10.10.0",
       "scope": "required",
       "author": "Sentry",
       "description": "Browser Utilities for all Sentry JavaScript SDKs",
-      "purl": "pkg:npm/%40sentry-internal/browser-utils@10.18.0",
+      "purl": "pkg:npm/%40sentry-internal/browser-utils@10.10.0",
       "properties": [
         {
           "name": "cdx:npm:package:path",
@@ -189,7 +189,7 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://registry.npmjs.org/@sentry-internal/browser-utils/-/browser-utils-10.18.0.tgz"
+          "url": "https://registry.npmjs.org/@sentry-internal/browser-utils/-/browser-utils-10.10.0.tgz"
         },
         {
           "type": "vcs",
@@ -207,7 +207,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "e98e5590d723e5e70816c29d2fcffb86b2edee90ae591e0144bb0a38702685d0a75eda1b7fbbfa0de068c361e4e721183b40308cfe66aafa0101ec1b4be87718"
+          "content": "db4f5037dbec401c09712fbd0d4ec1e3297d99be0ea82b7691d2f72d80efaacb8e769202a707e8c1d2b744c9fcdb946e7f828b25ad0a1ccd6c7106d764273897"
         }
       ],
       "licenses": [
@@ -219,14 +219,14 @@
       ]
     },
     {
-      "bom-ref": "@sentry-internal/feedback@10.18.0",
+      "bom-ref": "@sentry-internal/feedback@10.10.0",
       "type": "library",
       "name": "@sentry-internal/feedback",
-      "version": "10.18.0",
+      "version": "10.10.0",
       "scope": "required",
       "author": "Sentry",
       "description": "Sentry SDK integration for user feedback",
-      "purl": "pkg:npm/%40sentry-internal/feedback@10.18.0",
+      "purl": "pkg:npm/%40sentry-internal/feedback@10.10.0",
       "properties": [
         {
           "name": "cdx:npm:package:path",
@@ -236,7 +236,7 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://registry.npmjs.org/@sentry-internal/feedback/-/feedback-10.18.0.tgz"
+          "url": "https://registry.npmjs.org/@sentry-internal/feedback/-/feedback-10.10.0.tgz"
         },
         {
           "type": "vcs",
@@ -254,7 +254,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "baeba9222bc63c2a514ad314d48dec60f803fa997c3ea355d434958154b92c5f7d87cb6a8e64464b5c640ab51a521561566b27c736e7bd76f586c39a0975fb0c"
+          "content": "a1253817f79b3ac240f44a1fd267bd84ba520d349e9699c463a826854f6c1f2206f94ee1251b827de1880b140ecc1b6d79ea5646101a644bf8b3d641877883db"
         }
       ],
       "licenses": [
@@ -266,14 +266,14 @@
       ]
     },
     {
-      "bom-ref": "@sentry-internal/replay@10.18.0",
+      "bom-ref": "@sentry-internal/replay@10.10.0",
       "type": "library",
       "name": "@sentry-internal/replay",
-      "version": "10.18.0",
+      "version": "10.10.0",
       "scope": "required",
       "author": "Sentry",
       "description": "User replays for Sentry",
-      "purl": "pkg:npm/%40sentry-internal/replay@10.18.0",
+      "purl": "pkg:npm/%40sentry-internal/replay@10.10.0",
       "properties": [
         {
           "name": "cdx:npm:package:path",
@@ -283,7 +283,7 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://registry.npmjs.org/@sentry-internal/replay/-/replay-10.18.0.tgz"
+          "url": "https://registry.npmjs.org/@sentry-internal/replay/-/replay-10.10.0.tgz"
         },
         {
           "type": "vcs",
@@ -301,7 +301,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "8b1af72b5f6ae284d180cd3100d8bef1384351bc55e628b150882f26b4fb7352facb289da2f2303b40fcd99637a6151f324804fa65f77315f8ea05d345382529"
+          "content": "b0a15858169fb74113ea0779074a53851ea06138da5040970b35409d2631cbae1adbf3caea557ddc1b670350b6437e1886fff4b1c77221b66d7d39d2b0483052"
         }
       ],
       "licenses": [
@@ -313,14 +313,14 @@
       ]
     },
     {
-      "bom-ref": "@sentry-internal/replay-canvas@10.18.0",
+      "bom-ref": "@sentry-internal/replay-canvas@10.10.0",
       "type": "library",
       "name": "@sentry-internal/replay-canvas",
-      "version": "10.18.0",
+      "version": "10.10.0",
       "scope": "required",
       "author": "Sentry",
       "description": "Replay canvas integration",
-      "purl": "pkg:npm/%40sentry-internal/replay-canvas@10.18.0",
+      "purl": "pkg:npm/%40sentry-internal/replay-canvas@10.10.0",
       "properties": [
         {
           "name": "cdx:npm:package:path",
@@ -330,7 +330,7 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://registry.npmjs.org/@sentry-internal/replay-canvas/-/replay-canvas-10.18.0.tgz"
+          "url": "https://registry.npmjs.org/@sentry-internal/replay-canvas/-/replay-canvas-10.10.0.tgz"
         },
         {
           "type": "vcs",
@@ -348,7 +348,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "6aca756e25c0f85e4700a97b46f3db7f9b34f3b6e0d5ba71301f44ebdc5673510251f14c3eb151352ee6009e40f034ddd4aef813d705b0b97accedbd1e91f8fb"
+          "content": "98904d0741016c4defccbee581df250e8596851691c315dd2382a4c77af7f6edbed6a4dd24fff11db2438a1c9e9826b0ee044bd4547f182e3824b8a9cc47e429"
         }
       ],
       "licenses": [
@@ -360,14 +360,14 @@
       ]
     },
     {
-      "bom-ref": "@sentry/browser@10.18.0",
+      "bom-ref": "@sentry/browser@10.10.0",
       "type": "library",
       "name": "@sentry/browser",
-      "version": "10.18.0",
+      "version": "10.10.0",
       "scope": "required",
       "author": "Sentry",
       "description": "Official Sentry SDK for browsers",
-      "purl": "pkg:npm/%40sentry/browser@10.18.0",
+      "purl": "pkg:npm/%40sentry/browser@10.10.0",
       "properties": [
         {
           "name": "cdx:npm:package:path",
@@ -377,7 +377,7 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://registry.npmjs.org/@sentry/browser/-/browser-10.18.0.tgz"
+          "url": "https://registry.npmjs.org/@sentry/browser/-/browser-10.10.0.tgz"
         },
         {
           "type": "vcs",
@@ -395,7 +395,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "26b3dfc630acb956147b5e94e1fa385b6167d1ff41c117afdc6dbc6b86489302b0268faa4a7224d664fc11a9bc9f034253c3198c1e0a344f70da9d246a8431bd"
+          "content": "49306cdbd99e524d02be5b883975e79d1191b632ac24df5f0074b7754bb718c8e6a30e2bc4a06205b030a0f61fb4055d7ef1b2a53ef340243e2b7d1d6d1c69d2"
         }
       ],
       "licenses": [
@@ -407,14 +407,14 @@
       ]
     },
     {
-      "bom-ref": "@sentry/core@10.18.0",
+      "bom-ref": "@sentry/core@10.10.0",
       "type": "library",
       "name": "@sentry/core",
-      "version": "10.18.0",
+      "version": "10.10.0",
       "scope": "required",
       "author": "Sentry",
       "description": "Base implementation for all Sentry JavaScript SDKs",
-      "purl": "pkg:npm/%40sentry/core@10.18.0",
+      "purl": "pkg:npm/%40sentry/core@10.10.0",
       "properties": [
         {
           "name": "cdx:npm:package:path",
@@ -424,7 +424,7 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://registry.npmjs.org/@sentry/core/-/core-10.18.0.tgz"
+          "url": "https://registry.npmjs.org/@sentry/core/-/core-10.10.0.tgz"
         },
         {
           "type": "vcs",
@@ -442,7 +442,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "ce584097373f429cdaf1ffc23146fbce0ffd14e856a2e2809bdcf257d8d9971f652fa59c7956d4130437aeaf2770680cf8b3309404823a3b33e5aef6f2f0210b"
+          "content": "e0ed4eea6cbfbd813df1981f12e2c4c0e3ae1f3aaacdf053e88751a35ca240ceff0177264a5d07fe4e0726d5c28824e21e6faf784b930c11e9d064199a921bb4"
         }
       ],
       "licenses": [
@@ -501,14 +501,14 @@
       ]
     },
     {
-      "bom-ref": "altcha@2.2.4",
+      "bom-ref": "altcha@2.2.2",
       "type": "library",
       "name": "altcha",
-      "version": "2.2.4",
+      "version": "2.2.2",
       "scope": "required",
       "author": "Daniel Regeci",
       "description": "Privacy-first CAPTCHA widget, compliant with global regulations (GDPR/HIPAA/CCPA/LGDP/DPDPA/PIPL) and WCAG accessible. No tracking, self-verifying.",
-      "purl": "pkg:npm/altcha@2.2.4",
+      "purl": "pkg:npm/altcha@2.2.2",
       "properties": [
         {
           "name": "cdx:npm:package:path",
@@ -518,7 +518,7 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://registry.npmjs.org/altcha/-/altcha-2.2.4.tgz"
+          "url": "https://registry.npmjs.org/altcha/-/altcha-2.2.2.tgz"
         },
         {
           "type": "vcs",
@@ -536,7 +536,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "52b5368b3875a484aacdded3080262241d8dfabeeba2a037e3c431b75809956e64f692696c30e631c0dac5fb9eb7d87f58513a4a7aeb8adbbf5aeb261116abae"
+          "content": "3705006abd98f17c28d602fa3ab15ddc05658722b16056aa3c900901bb751532282b20f1d97ecd20712ea367aac67c4c13b2b5404b05eaed7abaae7084ed33f0"
         }
       ],
       "licenses": [
@@ -1161,12 +1161,12 @@
   ],
   "dependencies": [
     {
-      "ref": "weblate-client-libs@5.14.0",
+      "ref": "weblate-client-libs@5.13.3",
       "dependsOn": [
         "@popperjs/core@2.11.8",
-        "@sentry/browser@10.18.0",
+        "@sentry/browser@10.10.0",
         "@tarekraafat/autocomplete.js@10.2.9",
-        "altcha@2.2.4",
+        "altcha@2.2.2",
         "autosize@6.0.1",
         "bootstrap@5.3.8",
         "daterangepicker@3.1.0",
@@ -1195,43 +1195,43 @@
       "dependsOn": []
     },
     {
-      "ref": "@sentry-internal/browser-utils@10.18.0",
+      "ref": "@sentry-internal/browser-utils@10.10.0",
       "dependsOn": [
-        "@sentry/core@10.18.0"
+        "@sentry/core@10.10.0"
       ]
     },
     {
-      "ref": "@sentry-internal/feedback@10.18.0",
+      "ref": "@sentry-internal/feedback@10.10.0",
       "dependsOn": [
-        "@sentry/core@10.18.0"
+        "@sentry/core@10.10.0"
       ]
     },
     {
-      "ref": "@sentry-internal/replay@10.18.0",
+      "ref": "@sentry-internal/replay@10.10.0",
       "dependsOn": [
-        "@sentry-internal/browser-utils@10.18.0",
-        "@sentry/core@10.18.0"
+        "@sentry-internal/browser-utils@10.10.0",
+        "@sentry/core@10.10.0"
       ]
     },
     {
-      "ref": "@sentry-internal/replay-canvas@10.18.0",
+      "ref": "@sentry-internal/replay-canvas@10.10.0",
       "dependsOn": [
-        "@sentry-internal/replay@10.18.0",
-        "@sentry/core@10.18.0"
+        "@sentry-internal/replay@10.10.0",
+        "@sentry/core@10.10.0"
       ]
     },
     {
-      "ref": "@sentry/browser@10.18.0",
+      "ref": "@sentry/browser@10.10.0",
       "dependsOn": [
-        "@sentry-internal/browser-utils@10.18.0",
-        "@sentry-internal/feedback@10.18.0",
-        "@sentry-internal/replay@10.18.0",
-        "@sentry-internal/replay-canvas@10.18.0",
-        "@sentry/core@10.18.0"
+        "@sentry-internal/browser-utils@10.10.0",
+        "@sentry-internal/feedback@10.10.0",
+        "@sentry-internal/replay@10.10.0",
+        "@sentry-internal/replay-canvas@10.10.0",
+        "@sentry/core@10.10.0"
       ]
     },
     {
-      "ref": "@sentry/core@10.18.0",
+      "ref": "@sentry/core@10.10.0",
       "dependsOn": []
     },
     {
@@ -1239,7 +1239,7 @@
       "dependsOn": []
     },
     {
-      "ref": "altcha@2.2.4",
+      "ref": "altcha@2.2.2",
       "dependsOn": [
         "@altcha/crypto@0.0.1",
         "@rollup/rollup-linux-x64-gnu@4.18.0"

@@ -16,7 +16,7 @@ from django.conf import settings
 from django.core.cache import cache
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import transaction
-from django.db.models import Count, F, Q
+from django.db.models import Count, F, Model, Q
 from django.db.models.functions import Length
 from django.urls import reverse
 from django.utils import timezone
@@ -39,8 +39,6 @@ from weblate.utils.state import (
 
 if TYPE_CHECKING:
     from collections.abc import Generator, Iterable
-
-    from django.db.models import Model
 
     from weblate.trans.models import Category, Component, Project
 
@@ -114,16 +112,6 @@ def zero_stats(keys: Iterable[str]) -> StatDict:
     return stats
 
 
-def yield_stats(queryset) -> Iterable[BaseStats]:
-    """
-    Yield stats attribute from the iterable.
-
-    This is an effective wrapper to use iterator over queryset
-    to generate all stats items.
-    """
-    yield from (item.stats for item in queryset.iterator())
-
-
 def prefetch_stats(queryset):
     """Fetch stats from cache for a queryset."""
     # Force evaluating queryset/iterator, we need all objects
@@ -134,7 +122,7 @@ def prefetch_stats(queryset):
     # is returned.
     # This is needed to allow using such querysets further and to support
     # processing iterator when it is more effective.
-    result = objects if isinstance(queryset, (chain, GeneratorType)) else queryset
+    result = objects if isinstance(queryset, chain | GeneratorType) else queryset
 
     # Bail out in case the query is empty
     if not objects:
@@ -369,22 +357,16 @@ class BaseStats:
         """Save stats to cache."""
         cache.set(self.cache_key, self._data, 30 * 86400)
 
-    def get_update_objects(self, *, full: bool = True) -> Generator[BaseStats]:
+    def get_update_objects(self):
         yield GlobalStats()
 
     def collect_update_objects(self) -> None:
-        """
-        Collect update objects.
-
-        This is used on the pre_delete signal as the objects
-        cannot be collected once the object is deleted.
-        """
         # Use list to force materializing the generator
         self._collected_update_objects = list(self.get_update_objects())
 
     def _iterate_update_objects(
         self, *, extra_objects: Iterable[BaseStats] | None = None
-    ) -> Generator[BaseStats]:
+    ):
         """Get list of stats to update."""
         stat_objects: Iterable[BaseStats]
         if self._collected_update_objects is not None:
@@ -541,7 +523,7 @@ class TranslationStats(BaseStats):
                 pk = self._object.pk
                 update_translation_stats_parents.delay_on_commit(pk)
 
-    def get_update_objects(self, *, full: bool = True) -> Generator[BaseStats]:
+    def get_update_objects(self, *, full: bool = True):
         translation = self._object
         component = translation.component
 
@@ -552,7 +534,7 @@ class TranslationStats(BaseStats):
         yield component.project.stats.get_single_language_stats(translation.language)
 
         # Linked project / language
-        for link in component.cached_links:
+        for link in component.links.all():
             yield link.stats.get_single_language_stats(translation.language)
 
         # Category / language
@@ -1014,12 +996,14 @@ class ComponentStats(AggregatingStats):
                 stats["source_strings"] = obj.all
                 break
 
-    def get_update_objects(self, *, full: bool = True) -> Generator[BaseStats]:
+    def get_update_objects(self) -> Iterable[BaseStats]:
         # Component lists
-        yield from yield_stats(self._object.componentlist_set.only("id"))
+        for clist in self._object.componentlist_set.all():
+            yield clist.stats
 
-        # Projects this component is shared to
-        yield from yield_stats(self._object.cached_links)
+        # Shared components
+        for link in self._object.links.all():
+            yield link.stats
 
         if self._object.category:
             # Category
@@ -1357,7 +1341,7 @@ class CategoryLanguageStats(ChecklistStats):
 
 
 class CategoryStats(ParentAggregatingStats):
-    def get_update_objects(self, *, full: bool = True) -> Generator[BaseStats]:
+    def get_update_objects(self):
         if self._object.category:
             yield self._object.category.stats
             yield from self._object.category.stats.get_update_objects()

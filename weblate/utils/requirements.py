@@ -66,6 +66,7 @@ OPTIONAL = [
     "phply",
     "ruamel.yaml",
     "tesserocr",
+    "akismet",
     "boto3",
     "aeidon",
     "iniparse",
@@ -88,7 +89,7 @@ def get_version_module(name, optional=False):
             return None
         msg = f"Missing dependency {name}, please install using: pip install {name}"
         raise ImproperlyConfigured(msg) from exc
-    url = package.get("Home-page")
+    url = package["Home-page"]
     if url is None and (project_urls := package.get_all("Project-URL")):
         for project_url in project_urls:
             url_name, current_url = project_url.split(",", 1)

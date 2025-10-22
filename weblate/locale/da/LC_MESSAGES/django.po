@@ -11,14 +11,13 @@
 # symegac <97731141+symegac@users.noreply.github.com>, 2024.
 # Emil Schildknecht Nielsen <emil485h@gmail.com>, 2025.
 # Jesper Hertel <jh@users.noreply.hosted.weblate.org>, 2025.
-# Øjvind Fritjof Arnfred <fritjofarnfred@protonmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Weblate 5.13.1\n"
 "Report-Msgid-Bugs-To: https://github.com/WeblateOrg/weblate/issues\n"
 "POT-Creation-Date: 2025-09-03 12:07+0000\n"
-"PO-Revision-Date: 2025-10-03 23:02+0000\n"
-"Last-Translator: cat <catsnote@proton.me>\n"
+"PO-Revision-Date: 2025-08-09 22:09+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/weblate/"
 "application/da/>\n"
 "Language: da\n"
@@ -26,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: weblate/accounts/avatar.py:89
 msgctxt "No known user"
@@ -386,23 +385,22 @@ msgid "Verify the code from the app"
 msgstr "Godkend koden fra appen"
 
 #: weblate/accounts/forms.py:1117
+#, fuzzy
+#| msgid "Name your authentication app"
 msgid "Discard previously configured authentication apps"
-msgstr "Slet tidligere konfigurerede godkendelsesapps"
+msgstr "Navngiv din godkendelsesapp"
 
 #: weblate/accounts/forms.py:1121
 msgid ""
 "All previously configured authentication apps will be discarded upon "
 "verification of the new app."
 msgstr ""
-"Alle tidligere konfigurerede godkendelsesapps slettes ved verifikation af "
-"den nye app."
 
 #: weblate/accounts/forms.py:1124
 msgid ""
 "Other two-factor methods (such as WebAuthn and security keys) won't be "
 "affected."
 msgstr ""
-"Andre tofaktormetoder (såsom WebAuthn og sikkerhedsnøgler) påvirkes ikke."
 
 #: weblate/accounts/forms.py:1130
 msgid "The entered token is not valid."
@@ -613,9 +611,10 @@ msgid "Two-factor authentication sign in using {device}"
 msgstr "Login med to-faktor-godkendelse via {device}"
 
 #: weblate/accounts/models.py:303
-#, python-brace-format
+#, fuzzy, python-brace-format
+#| msgid "Two-factor authentication sign in using {device}"
 msgid "Two-factor authentication failed using {device_type}"
-msgstr "Tofaktorgodkendelse mislykkedes ved brug af {device_type}"
+msgstr "Login med to-faktor-godkendelse via {device}"
 
 #. Translators: Audit log entry
 #: weblate/accounts/models.py:311
@@ -784,23 +783,25 @@ msgid ""
 msgstr "Når du oversætter en streng i et projekt, begynder du at overvåge det."
 
 #: weblate/accounts/models.py:700
+#, fuzzy
+#| msgid "Contribute to shared translation memory"
 msgid "Contribute to personal translation memory"
-msgstr "Bidrag til personlig oversættelseshukommelse"
+msgstr "Bidrag til delt oversættelseshukommelse"
 
 #: weblate/accounts/models.py:703
 msgid ""
 "Allow your translations to be added to your personal translation memory."
 msgstr ""
-"Tillad, at dine oversættelser føjes til din personlige "
-"oversættelseshukommelse."
 
 #: weblate/accounts/models.py:714 weblate/templates/dashboard/user.html:19
 msgid "Watched translations"
 msgstr "Overvågede oversættelser"
 
 #: weblate/accounts/models.py:715 weblate/templates/dashboard/user.html:23
+#, fuzzy
+#| msgid "All components"
 msgid "All component lists"
-msgstr "Alle komponentlister"
+msgstr "Alle komponenter"
 
 #: weblate/accounts/models.py:716 weblate/templates/dashboard/user.html:88
 msgid "Component list"
@@ -1342,8 +1343,10 @@ msgid "The supplied user identity is already in use for another account."
 msgstr "Den angivne brugeridentitet er allerede i brug for en anden konto."
 
 #: weblate/accounts/views.py:1488
+#, fuzzy
+#| msgid "The authentication app was removed."
 msgid "The authentication provider could not be reached."
-msgstr "Godkendelsesudbyderen kunne ikke nås."
+msgstr "Godkendelsesappen blev fjernet."
 
 #: weblate/accounts/views.py:1522 weblate/accounts/views.py:1535
 msgid "Notification settings adjusted."
@@ -1783,8 +1786,10 @@ msgid "Appended variable text"
 msgstr "Efterstillet variabel tekst"
 
 #: weblate/addons/forms.py:512
+#, fuzzy
+#| msgid "Variable part multiplier"
 msgid "Variable text multiplier"
-msgstr "Variabel tekstmultiplikator"
+msgstr "Variabel delmultiplikator"
 
 #: weblate/addons/forms.py:516
 msgid ""
@@ -1819,8 +1824,10 @@ msgid "Secret"
 msgstr "Hemmelighed"
 
 #: weblate/addons/forms.py:601
+#, fuzzy
+#| msgid "Invalid base64 encoded string"
 msgid "A Base64 encoded string"
-msgstr "En Base64-kodet streng"
+msgstr "Ugyldig base64-kodet streng"
 
 #: weblate/addons/generate.py:36
 msgid "Statistics generator"
@@ -1963,9 +1970,10 @@ msgid "Invalid add-on name: ”%s”"
 msgstr "Ugyldigt tilføjelsesnavn: \"%s\""
 
 #: weblate/addons/views.py:130
-#, python-format
+#, fuzzy, python-format
+#| msgid "Add-on uninstalled"
 msgid "Add-on cannot be installed: ”%s”"
-msgstr "Tilføjelse kan ikke installeres: \"%s\""
+msgstr "Tilføjelse afinstalleret"
 
 #: weblate/addons/views.py:151
 msgid "Add-on installed, please review integration instructions."
@@ -1984,12 +1992,16 @@ msgid ""
 msgstr "Sender notifikation til ekstern tjeneste baseret på valgte hændelser."
 
 #: weblate/addons/webhooks.py:177
+#, fuzzy
+#| msgid "Webhook"
 msgid "Slack Webhooks"
-msgstr "Slack-webhooks"
+msgstr "Webhook"
 
 #: weblate/addons/webhooks.py:179
+#, fuzzy
+#| msgid "Sends notification to external service based on selected events."
 msgid "Sends notification to a Slack channel based on selected events."
-msgstr "Sender notifikation til en Slack-kanal baseret på valgte hændelser."
+msgstr "Sender notifikation til ekstern tjeneste baseret på valgte hændelser."
 
 #: weblate/api/authentication.py:27
 msgid "Session-based authentication used when user is signed in."
@@ -2419,8 +2431,10 @@ msgstr "Opdatere det interne repository"
 
 #. Translators: Permission name
 #: weblate/auth/data.py:115
+#, fuzzy
+#| msgid "Post announcement"
 msgid "Post announcements"
-msgstr "Skrive meddelelser"
+msgstr "Indsend meddelse"
 
 #. Translators: Permission name
 #: weblate/auth/data.py:123
@@ -2519,9 +2533,11 @@ msgid "Power user"
 msgstr "Superbruger"
 
 #: weblate/auth/data.py:207
+#, fuzzy
+#| msgid "Translation comment"
 msgctxt "Access-control role"
 msgid "Translation coordinator"
-msgstr "Oversættelseskoordinator"
+msgstr "Kommentar til oversættelse"
 
 #: weblate/auth/data.py:224
 msgctxt "Access-control role"
@@ -3008,8 +3024,10 @@ msgid "This component is currently locked."
 msgstr "Denne komponent er i øjeblikket låst."
 
 #: weblate/auth/permissions.py:477
+#, fuzzy
+#| msgid "The file format does not support this."
 msgid "The file format does not support updating source strings."
-msgstr "Filformatet understøtter ikke opdatering af kildestrengene."
+msgstr "Filformatet understøtter ikke dette."
 
 #: weblate/auth/views.py:121
 msgid "Cannot remove built-in team!"
@@ -4052,8 +4070,10 @@ msgid "The Vue I18n formatting does not match source."
 msgstr "Vue I18n-formateringen matcher ikke kilden."
 
 #: weblate/checks/format.py:827
+#, fuzzy
+#| msgid "Automattic Components"
 msgid "Automattic components formatting"
-msgstr "Formatering af Automattic-komponenter"
+msgstr "Automattic-komponenter"
 
 #: weblate/checks/format.py:829
 msgid "The Automattic components' placeholders do not match the source."
@@ -4237,20 +4257,29 @@ msgid "The translation uses unsafe HTML markup."
 msgstr "Oversættelsen bruger usikker HTML-markup."
 
 #: weblate/checks/markup.py:473
+#, fuzzy
+#| msgid "Inconsistent reStructuredText references"
 msgid "Inconsistent reStructuredText"
-msgstr "Inkonsistent reStructuredText"
+msgstr "Inkonsistente reStructuredText-referencer"
 
 #: weblate/checks/markup.py:475
+#, fuzzy
+#| msgid ""
+#| "Inconsistent reStructuredText term references in the translated message."
 msgid "Inconsistent reStructuredText markup in the translated message."
-msgstr "Inkonsistent reStructuredText-markup i den oversatte besked."
+msgstr "Inkonsistente reStructuredText-termreferencer i den oversatte tekst."
 
 #: weblate/checks/markup.py:480
+#, fuzzy
+#| msgid "The following format strings are missing: {}"
 msgid "The following reStructuredText markup is missing: {}"
-msgstr "Følgende reStructuredText-markup mangler: {}"
+msgstr "Følgende formatstrenge mangler: {}"
 
 #: weblate/checks/markup.py:485
+#, fuzzy
+#| msgid "The following format strings are extra: {}"
 msgid "The following reStructuredText markup is extra: {}"
-msgstr "Følgende reStructuredText-markup er ekstra: {}"
+msgstr "Følgende formatstrenge er ekstra: {}"
 
 #: weblate/checks/markup.py:630
 msgid "reStructuredText syntax error"
@@ -4457,16 +4486,16 @@ msgid ""
 "The uploaded font must match the existing family and style: “%(family)s "
 "%(style)s”"
 msgstr ""
-"Den uploadede skrifttype skal matche den eksisterende familie og stil: "
-"\"%(family)s %(style)s\""
 
 #: weblate/fonts/views.py:149
+#, fuzzy
+#| msgid "The uploaded file will be merged with the current translation."
 msgid "The uploaded font file is identical to the current one."
-msgstr "Den uploadede skrifttypefil er identisk med den nuværende."
+msgstr "Den uploadede fil flettes med den nuværende oversættelse."
 
 #: weblate/fonts/views.py:161
 msgid "Font updated successfully."
-msgstr "Skrifttypen blev opdateret."
+msgstr ""
 
 #: weblate/fonts/views.py:201 weblate/fonts/views.py:217
 msgid "Font group with the same name already exists."

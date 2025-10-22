@@ -289,7 +289,7 @@ def show_project_language(request: AuthenticatedHttpRequest, obj: ProjectLanguag
             "bulk_state_form": optional_form(
                 BulkEditForm,
                 user,
-                "unit.bulk_edit",
+                "translation.auto",
                 obj,
                 user=user,
                 obj=obj,
@@ -356,7 +356,7 @@ def show_category_language(request: AuthenticatedHttpRequest, obj):
             "bulk_state_form": optional_form(
                 BulkEditForm,
                 user,
-                "unit.bulk_edit",
+                "translation.auto",
                 obj,
                 user=user,
                 obj=obj,
@@ -419,7 +419,6 @@ def show_project(request: AuthenticatedHttpRequest, obj):
             "delete_form": optional_form(
                 ProjectDeleteForm, user, "project.edit", obj, obj=obj
             ),
-            "managed_teams": obj.defined_groups.filter(admins=request.user),
             "rename_form": optional_form(
                 ProjectRenameForm,
                 user,
@@ -432,7 +431,7 @@ def show_project(request: AuthenticatedHttpRequest, obj):
             "bulk_state_form": optional_form(
                 BulkEditForm,
                 user,
-                "unit.bulk_edit",
+                "translation.auto",
                 obj,
                 user=user,
                 obj=obj,
@@ -511,7 +510,7 @@ def show_category(request: AuthenticatedHttpRequest, obj):
             "bulk_state_form": optional_form(
                 BulkEditForm,
                 user,
-                "unit.bulk_edit",
+                "translation.auto",
                 obj,
                 user=user,
                 obj=obj,
@@ -564,7 +563,7 @@ def show_component(request: AuthenticatedHttpRequest, obj: Component):
             "bulk_state_form": optional_form(
                 BulkEditForm,
                 user,
-                "unit.bulk_edit",
+                "translation.auto",
                 obj,
                 user=user,
                 obj=obj,
@@ -671,7 +670,7 @@ def show_translation(request: AuthenticatedHttpRequest, obj):
             "bulk_state_form": optional_form(
                 BulkEditForm,
                 user,
-                "unit.bulk_edit",
+                "translation.auto",
                 obj,
                 user=user,
                 obj=obj,

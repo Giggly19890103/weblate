@@ -51,8 +51,3 @@ Terms of service and privacy policy
 .. _General terms and conditions: https://weblate.org/terms/
 .. _Privacy policy: https://weblate.org/privacy/
 .. _Customer area: https://weblate.org/user/
-
-Guidelines
-----------
-
-* :doc:`localization-threat`

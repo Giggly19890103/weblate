@@ -48,7 +48,6 @@ from weblate.trans.defines import (
 )
 from weblate.trans.exceptions import FileParseError, InvalidTemplateError
 from weblate.trans.fields import RegexField
-from weblate.trans.file_format_params import FILE_FORMATS_PARAMS
 from weblate.trans.mixins import (
     CacheKeyMixin,
     ComponentCategoryMixin,
@@ -81,7 +80,6 @@ from weblate.trans.util import (
 from weblate.trans.validators import (
     validate_autoaccept,
     validate_check_flags,
-    validate_file_format_parameters,
     validate_filemask,
     validate_language_code,
 )
@@ -120,7 +118,7 @@ from weblate.utils.validators import (
     validate_re_nonempty,
     validate_slug,
 )
-from weblate.vcs.base import RepositoryError
+from weblate.vcs.base import Repository, RepositoryError
 from weblate.vcs.git import GitMergeRequestBase, LocalRepository
 from weblate.vcs.models import VCS_REGISTRY
 from weblate.vcs.ssh import add_host_key
@@ -133,7 +131,6 @@ if TYPE_CHECKING:
     from weblate.auth.models import AuthenticatedHttpRequest, User
     from weblate.checks.base import BaseCheck
     from weblate.trans.models.unit import UnitAttributesDict
-    from weblate.vcs.base import Repository
 
 NEW_LANG_CHOICES = (
     # Translators: Action when adding new translation
@@ -539,7 +536,6 @@ class Component(
         verbose_name=gettext_lazy("File format parameters"),
         default=dict,
         blank=True,
-        validators=[validate_file_format_parameters],
     )
 
     locked = models.BooleanField(
@@ -548,11 +544,6 @@ class Component(
         help_text=gettext_lazy(
             "Locked component will not get any translation updates."
         ),
-    )
-    hide_glossary_matches = models.BooleanField(
-        verbose_name=gettext_lazy("Do not show glossary matches"),
-        default=False,
-        help_text=gettext_lazy("Hides the glossary panel in the translation editor."),
     )
     allow_translation_propagation = models.BooleanField(
         verbose_name=gettext_lazy("Allow translation propagation"),
@@ -859,10 +850,10 @@ class Component(
         app_label = "trans"
         verbose_name = "Component"
         verbose_name_plural = "Components"
-        indexes = [  # noqa: RUF012
+        indexes = [
             models.Index(fields=["project", "allow_translation_propagation"]),
         ]
-        constraints = [  # noqa: RUF012
+        constraints = [
             models.UniqueConstraint(
                 name="component_slug_unique",
                 fields=["project", "category", "slug"],
@@ -1035,15 +1026,11 @@ class Component(
         # Invalidate source language cache just to be sure, as it is relatively
         # cheap to update
         self.project.invalidate_source_language_cache()
-        for project in self.cached_links:
+        for project in self.links.all():
             project.invalidate_source_language_cache()
 
         if update_tm:
             import_memory.delay_on_commit(self.project.id, self.pk)
-
-    @cached_property
-    def cached_links(self) -> models.QuerySet[Component]:
-        return self.links.all()
 
     def generate_changes(self, old) -> None:
         def getvalue(base, attribute):
@@ -1468,11 +1455,6 @@ class Component(
         return is_repo_link(self.repo)
 
     @property
-    def is_repo_local(self) -> bool:
-        """Check whether a repository is local-only."""
-        return self.vcs == "local"
-
-    @property
     def repository_class(self) -> type[Repository]:
         return VCS_REGISTRY[self.vcs]
 
@@ -1486,7 +1468,7 @@ class Component(
     @perform_on_link
     def get_last_remote_commit(self):
         """Return latest locally known remote commit."""
-        if self.is_repo_local or not self.remote_revision:
+        if self.vcs == "local" or not self.remote_revision:
             return None
         try:
             return self.repository.get_revision_info(self.remote_revision)
@@ -1495,7 +1477,7 @@ class Component(
 
     def get_last_commit(self):
         """Return latest locally known remote commit."""
-        if self.is_repo_local or not self.local_revision:
+        if self.vcs == "local" or not self.local_revision:
             return None
         try:
             return self.repository.get_revision_info(self.local_revision)
@@ -1778,7 +1760,7 @@ class Component(
         if self.is_repo_link:
             return
 
-        if self.is_repo_local:
+        if self.vcs == "local":
             if not os.path.exists(os.path.join(self.full_path, ".git")):
                 if (
                     not self.template
@@ -2002,7 +1984,7 @@ class Component(
     ) -> bool:
         """Push changes to remote repo."""
         # Skip push for local only repo
-        if self.is_repo_local:
+        if self.vcs == "local":
             return True
 
         # Do we have push configured
@@ -2922,7 +2904,7 @@ class Component(
             return
         cache.delete(self.glossary_sources_key)
         self.project.invalidate_glossary_cache()
-        for project in self.cached_links:
+        for project in self.links.all():
             project.invalidate_glossary_cache()
         if "glossary_sources" in self.__dict__:
             del self.__dict__["glossary_sources"]
@@ -3117,11 +3099,7 @@ class Component(
         filename = self.get_new_base_filename()
         template = self.has_template()
         return self.file_format_cls.is_valid_base_for_new(
-            filename,
-            template,
-            errors,
-            fast=fast,
-            file_format_params=self.file_format_params,
+            filename, template, errors, fast=fast
         )
 
     def clean_new_lang(self) -> None:
@@ -3240,12 +3218,12 @@ class Component(
         if self.repo is None:
             return
 
-        if not self.is_repo_local and self.repo == "local:":
+        if self.vcs != "local" and self.repo == "local:":
             raise ValidationError(
                 {"vcs": gettext("Choose No remote repository for local: URL.")}
             )
 
-        if self.is_repo_local and self.push:
+        if self.vcs == "local" and self.push:
             raise ValidationError(
                 {"push": gettext("Push URL is not used without a remote repository.")}
             )
@@ -3279,19 +3257,9 @@ class Component(
             )
             raise ValidationError({"push_branch": msg})
 
-    def clean_file_format_params(self) -> None:
-        for param in [
-            p for p in FILE_FORMATS_PARAMS if p.name in self.file_format_params
-        ]:
-            if self.file_format not in param.file_formats:
-                message = gettext(
-                    "The parameter '%(param)s' is not applicable for the file format '%(format)s'."
-                ) % {"param": param.name, "format": self.file_format}
-                raise ValidationError({"file_format_params": message})
-
     def clean(self) -> None:
         """
-        Validate component parameters.
+        Validate component parameter.
 
         - validation fetches repository
         - it tries to find translation files and checks that they are valid
@@ -3349,9 +3317,6 @@ class Component(
 
         # New language options
         self.clean_new_lang()
-
-        # File format parameters
-        self.clean_file_format_params()
 
         try:
             matches = self.get_mask_matches()
@@ -3411,10 +3376,7 @@ class Component(
         ):
             return
         self.file_format_cls.add_language(
-            fullname,
-            self.source_language,
-            self.get_new_base_filename(),
-            file_format_params=self.file_format_params,
+            fullname, self.source_language, self.get_new_base_filename()
         )
 
         # Skip commit in case Component is not yet saved (called during validation)
@@ -3814,8 +3776,8 @@ class Component(
     @transaction.atomic
     def add_new_language(  # noqa: C901
         self,
-        language: Language,
-        request: AuthenticatedHttpRequest | None,
+        language,
+        request,
         send_signal: bool = True,
         create_translations: bool = True,
         show_messages: bool = True,
@@ -3889,12 +3851,7 @@ class Component(
                 if show_messages:
                     messages.error(request, gettext("Translation file already exists!"))
             else:
-                file_format.add_language(
-                    fullname,
-                    language,
-                    base_filename,
-                    file_format_params=self.file_format_params,
-                )
+                file_format.add_language(fullname, language, base_filename)
                 if send_signal:
                     translation_post_add.send(
                         sender=self.__class__, translation=translation
@@ -4068,7 +4025,7 @@ class Component(
         return gettext("Add new translation string")
 
     def suggest_repo_link(self):
-        if self.is_repo_link or self.is_repo_local:
+        if self.is_repo_link or self.vcs == "local":
             return None
 
         same_repo = self.project.component_set.filter(

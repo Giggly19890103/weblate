@@ -764,15 +764,9 @@ $(function () {
     $("#screenshotModal").text($this.attr("title"));
 
     const detailsLink = $("#modalDetailsLink");
-    const detailsUrl = this.getAttribute("data-details-url");
-    if (detailsUrl) {
-      detailsLink.attr("href", detailsUrl).show();
-      if (this.getAttribute("data-can-edit")) {
-        detailsLink.text(detailsLink.getAttribute("data-edit-text"));
-      }
-    } else {
-      // No details for generic images (static pages) — hide the button
-      detailsLink.hide();
+    detailsLink.attr("href", this.getAttribute("data-details-url"));
+    if (this.getAttribute("data-can-edit")) {
+      detailsLink.text(detailsLink.getAttribute("data-edit-text"));
     }
 
     $("#imagemodal").modal("show");

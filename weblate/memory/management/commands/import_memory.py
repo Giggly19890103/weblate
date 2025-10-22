@@ -53,5 +53,3 @@ class Command(BaseCommand):
         except MemoryImportError as error:
             msg = f"Import failed: {error}"
             raise CommandError(msg) from error
-        finally:
-            options["file"].close()

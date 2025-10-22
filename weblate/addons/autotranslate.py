@@ -4,8 +4,7 @@
 
 from __future__ import annotations
 
-from collections import defaultdict
-from typing import TYPE_CHECKING, ClassVar
+from typing import TYPE_CHECKING
 
 from django.conf import settings
 from django.utils import timezone
@@ -14,18 +13,16 @@ from django.utils.translation import gettext_lazy
 from weblate.addons.base import BaseAddon
 from weblate.addons.events import AddonEvent
 from weblate.addons.forms import AutoAddonForm
-from weblate.trans.actions import ACTIONS_CONTENT, ActionEvents
-from weblate.trans.tasks import auto_translate, auto_translate_component
+from weblate.trans.tasks import auto_translate_component
 
 if TYPE_CHECKING:
-    from weblate.trans.models import Change, Component
+    from weblate.trans.models import Component
 
 
 class AutoTranslateAddon(BaseAddon):
-    events: ClassVar[set[AddonEvent]] = {
+    events: set[AddonEvent] = {
         AddonEvent.EVENT_COMPONENT_UPDATE,
         AddonEvent.EVENT_DAILY,
-        AddonEvent.EVENT_CHANGE,
     }
     name = "weblate.autotranslate.autotranslate"
     verbose = gettext_lazy("Automatic translation")
@@ -37,9 +34,7 @@ class AutoTranslateAddon(BaseAddon):
     multiple = True
     icon = "language.svg"
 
-    def component_update(
-        self, component: Component, activity_log_id: int | None = None
-    ) -> None:
+    def component_update(self, component: Component) -> None:
         conf = self.instance.configuration
         auto_translate_component.delay_on_commit(
             component.pk,
@@ -50,7 +45,7 @@ class AutoTranslateAddon(BaseAddon):
             threshold=conf["threshold"],
         )
 
-    def daily(self, component: Component, activity_log_id: int | None = None) -> None:
+    def daily(self, component: Component) -> None:
         # Translate every component less frequenctly to reduce load.
         # The translation is anyway triggered on update, so it should
         # not matter that much that we run this less often.
@@ -66,51 +61,3 @@ class AutoTranslateAddon(BaseAddon):
             return
 
         self.component_update(component)
-
-    def change_event(self, change: Change, activity_log_id: int | None = None) -> None:
-        units = []
-        if change.action in ACTIONS_CONTENT:
-            if change.unit is not None:
-                units.append(change.unit)
-        elif change.action in {
-            ActionEvents.SCREENSHOT_UPLOADED,
-            ActionEvents.SCREENSHOT_ADDED,
-        }:
-            if change.screenshot is not None:
-                units.extend(change.screenshot.units.all())
-        elif change.action in {
-            ActionEvents.SUGGESTION,
-            ActionEvents.SUGGESTION_CLEANUP,
-            ActionEvents.SUGGESTION_DELETE,
-        }:
-            if change.suggestion is not None:
-                units.append(change.suggestion.unit)
-        elif (
-            change.action
-            in {
-                ActionEvents.COMMENT,
-                ActionEvents.COMMENT_RESOLVE,
-                ActionEvents.COMMENT_DELETE,
-            }
-            and change.comment is not None
-        ):
-            units.append(change.comment.unit)
-
-        all_units = set()
-        for unit in units:
-            all_units.add(unit)
-            # for source units, trigger auto-translation on all target units
-            if unit.is_source:
-                all_units.update(unit.unit_set.exclude(pk=unit.pk))
-
-        translation_with_unit_ids = defaultdict(list)
-        for unit in all_units:
-            translation_with_unit_ids[unit.translation.id].append(unit.pk)
-
-        for translation_id, unit_ids in translation_with_unit_ids.items():
-            auto_translate.delay(
-                user_id=change.user_id,
-                translation_id=translation_id,
-                unit_ids=unit_ids,
-                **self.instance.configuration,
-            )

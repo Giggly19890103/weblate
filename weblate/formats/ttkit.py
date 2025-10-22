@@ -14,7 +14,7 @@ import os
 import re
 import subprocess
 from io import StringIO
-from typing import TYPE_CHECKING, Any, BinaryIO, ClassVar
+from typing import TYPE_CHECKING, Any, BinaryIO
 
 from django.core.exceptions import ValidationError
 from django.utils.functional import cached_property
@@ -26,6 +26,7 @@ from translate.misc import quote
 from translate.misc.multistring import multistring
 from translate.misc.xml_helpers import setXMLspace
 from translate.storage.base import TranslationStore
+from translate.storage.base import TranslationUnit as TranslateToolkitUnit
 from translate.storage.catkeys import CatkeysFile
 from translate.storage.csvl10n import csvunit
 from translate.storage.jsonl10n import BaseJsonUnit, JsonFile
@@ -66,8 +67,6 @@ from weblate.utils.state import (
 
 if TYPE_CHECKING:
     from collections.abc import Callable
-
-    from translate.storage.base import TranslationUnit as TranslateToolkitUnit
 
 LOCATIONS_RE = re.compile(r"^([+-]|.*, [+-]|.*:[+-])")
 PO_DOCSTRING_LOCATION = re.compile(r":docstring of [a-zA-Z0-9._]+:[0-9]+")
@@ -1490,7 +1489,6 @@ class RESXFormat(TTKitFormat):
     autoload: tuple[str, ...] = ("*.resx",)
     language_format = "bcp"
     supports_plural: bool = True
-    store: RESXFile
 
 
 class AndroidFormat(TTKitFormat):
@@ -1506,7 +1504,7 @@ class AndroidFormat(TTKitFormat):
     autoload: tuple[str, ...] = ("strings*.xml", "values*.xml")
     language_format = "android"
     check_flags = ("java-printf-format",)
-    autoaddon: ClassVar[dict[str, dict[str, Any]]] = {"weblate.cleanup.blank": {}}
+    autoaddon = {"weblate.cleanup.blank": {}}
     plural_preference = (
         Plural.SOURCE_ANDROID,
         Plural.SOURCE_CLDR,
@@ -1877,7 +1875,7 @@ class SubRipFormat(TTKitFormat):
     unit_class = SubtitleUnit
     autoload: tuple[str, ...] = ("*.srt",)
     monolingual = True
-    autoaddon: ClassVar[dict[str, dict[str, Any]]] = {"weblate.flags.same_edit": {}}
+    autoaddon = {"weblate.flags.same_edit": {}}
 
     @staticmethod
     def mimetype() -> str:

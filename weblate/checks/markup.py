@@ -26,12 +26,12 @@ from docutils.nodes import (
     problematic,
     reference,
     strong,
-    substitution_reference,
+    system_message,
 )
 from docutils.parsers.rst import languages
 from docutils.parsers.rst.states import Inliner, Struct
 
-from weblate.checks.base import TargetCheck
+from weblate.checks.base import MissingExtraDict, TargetCheck
 from weblate.utils.html import (
     MD_BROKEN_LINK,
     MD_LINK,
@@ -46,15 +46,10 @@ if TYPE_CHECKING:
     from collections.abc import Iterable
 
     from django_stubs_ext import StrOrPromise
-    from docutils.nodes import (
-        system_message,
-    )
     from lxml.etree import _Element
 
-    from weblate.checks.base import MissingExtraDict
     from weblate.trans.models import Unit
 
-    from .base import FixupType
     from .models import Check
 
 BBCODE_MATCH = re.compile(
@@ -327,9 +322,9 @@ class MarkdownLinkCheck(MarkdownBaseCheck):
         src_anchors = {x[2] for x in src_match if x[2] and x[2][0] in link_start}
         return tgt_anchors != src_anchors
 
-    def get_fixup(self, unit: Unit) -> Iterable[FixupType] | None:
+    def get_fixup(self, unit: Unit):
         if MD_BROKEN_LINK.findall(unit.target):
-            return [("regex", MD_BROKEN_LINK.pattern, "](", "u")]
+            return [(MD_BROKEN_LINK.pattern, "](")]
         return None
 
 
@@ -452,7 +447,7 @@ def extract_rst_references(text: str) -> tuple[dict[str, str], Counter, list[str
 
                     result.append((name, node.rawsource))
                     break
-        elif isinstance(node, (footnote_reference, substitution_reference)):
+        elif isinstance(node, footnote_reference):
             result.append((node.rawsource, node.rawsource))
             alltags.append(node.rawsource)
         elif isinstance(node, reference):
@@ -593,8 +588,6 @@ def validate_rst_snippet(
                 "Too many autonumbered footnote",
                 # Can not work on snippets
                 "Enumerated list start value not ordinal",
-                # Substitutions are typically defined at the document level
-                "Undefined substitution referenced",
             )
         ):
             return

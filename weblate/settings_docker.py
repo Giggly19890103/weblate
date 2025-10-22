@@ -7,13 +7,6 @@ from logging.handlers import SysLogHandler
 
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
-from social_core.backends.saml import (
-    OID_COMMON_NAME,
-    OID_GIVEN_NAME,
-    OID_MAIL,
-    OID_SURNAME,
-    OID_USERID,
-)
 
 from weblate.api.spectacular import (
     get_drf_settings,
@@ -424,19 +417,12 @@ if WEBLATE_SAML_IDP_ENTITY_ID:
             "entity_id": WEBLATE_SAML_IDP_ENTITY_ID,
             "url": get_env_str("WEBLATE_SAML_IDP_URL"),
             "x509cert": get_env_str("WEBLATE_SAML_IDP_X509CERT"),
-            "attr_full_name": get_env_str(
-                "WEBLATE_SAML_ID_ATTR_FULL_NAME", OID_COMMON_NAME
-            ),
-            "attr_first_name": get_env_str(
-                "WEBLATE_SAML_ID_ATTR_FIRST_NAME", OID_GIVEN_NAME
-            ),
-            "attr_last_name": get_env_str(
-                "WEBLATE_SAML_ID_ATTR_LAST_NAME", OID_SURNAME
-            ),
-            "attr_username": get_env_str("WEBLATE_SAML_ID_ATTR_USERNAME", OID_USERID),
-            "attr_email": get_env_str("WEBLATE_SAML_ID_ATTR_EMAIL", OID_MAIL),
+            "attr_name": get_env_str("WEBLATE_SAML_ID_ATTR_NAME", "full_name"),
+            "attr_username": get_env_str("WEBLATE_SAML_ID_ATTR_USERNAME", "username"),
+            "attr_email": get_env_str("WEBLATE_SAML_ID_ATTR_EMAIL", "email"),
             "attr_user_permanent_id": get_env_str(
-                "WEBLATE_SAML_ID_ATTR_USER_PERMANENT_ID", OID_USERID
+                "WEBLATE_SAML_ID_ATTR_USER_PERMANENT_ID",
+                "urn:oid:0.9.2342.19200300.100.1.1",
             ),
         }
     }
@@ -1184,7 +1170,6 @@ WEBLATE_ADDONS = [
     "weblate.addons.flags.TargetEditAddon",
     "weblate.addons.flags.SameEditAddon",
     "weblate.addons.flags.BulkEditAddon",
-    "weblate.addons.flags.TargetRepoUpdateAddon",
     "weblate.addons.generate.GenerateFileAddon",
     "weblate.addons.generate.PseudolocaleAddon",
     "weblate.addons.generate.PrefillAddon",
@@ -1499,6 +1484,7 @@ SENTRY_TRACES_SAMPLE_RATE = get_env_float("SENTRY_TRACES_SAMPLE_RATE")
 SENTRY_PROFILES_SAMPLE_RATE = get_env_float("SENTRY_PROFILES_SAMPLE_RATE", 1.0)
 SENTRY_TOKEN = get_env_str("SENTRY_TOKEN")
 SENTRY_SEND_PII = get_env_bool("SENTRY_SEND_PII", False)
+AKISMET_API_KEY = get_env_str("WEBLATE_AKISMET_API_KEY")
 ZAMMAD_URL = get_env_str("WEBLATE_ZAMMAD_URL")
 
 # Web Monetization

@@ -24,14 +24,13 @@
 # Nicolas Van Aarsen <nicovanaarsen@gmail.com>, 2025.
 # Jérôme <jerbring@hotmail.com>, 2025.
 # Nifou <nifou@mailfence.com>, 2025.
-# Laurent FAVOLE <lfavole@users.noreply.hosted.weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Weblate 5.13.1\n"
 "Report-Msgid-Bugs-To: https://github.com/WeblateOrg/weblate/issues\n"
 "POT-Creation-Date: 2025-09-03 14:08+0200\n"
-"PO-Revision-Date: 2025-09-11 12:02+0000\n"
-"Last-Translator: Laurent FAVOLE <lfavole@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2025-08-31 06:34+0000\n"
+"Last-Translator: Julien Humbert <julroy67@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/weblate/"
 "documentation/fr/>\n"
 "Language: fr\n"
@@ -39,7 +38,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.13.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: ../../admin/access.rst:4 ../../admin/projects.rst:215
@@ -12098,7 +12097,7 @@ msgstr "Les commandes suivantes sont disponibles :"
 
 #: ../../admin/install.rst:1507
 msgid "weblate/examples/weblate.nginx.granian.conf"
-msgstr "weblate/examples/weblate.nginx.granian.conf"
+msgstr ""
 
 #: ../../admin/install.rst:1514 ../../admin/install.rst:1626
 #, fuzzy
@@ -13766,7 +13765,7 @@ msgstr "Active :ref:`gitlab_auth`."
 
 #: ../../admin/install/docker.rst:1373
 msgid "Gitea"
-msgstr "Gitea"
+msgstr ""
 
 #: ../../admin/install/docker.rst:1379
 msgid "Enables Gitea authentication."
@@ -15481,7 +15480,7 @@ msgstr ""
 
 #: ../../admin/machine.rst:66
 msgid "Alibaba"
-msgstr "Alibaba"
+msgstr ""
 
 #: ../../admin/machine.rst:0
 #, fuzzy
@@ -15716,7 +15715,7 @@ msgstr "Réaliser une mise à jour complète sur l’unité de traduction."
 
 #: ../../admin/machine.rst:198
 msgid "Baidu"
-msgstr "Baidu"
+msgstr ""
 
 #: ../../admin/machine.rst:211 ../../admin/machine.rst:645
 #: ../../admin/machine.rst:963
@@ -16469,7 +16468,7 @@ msgstr ""
 
 #: ../../admin/machine.rst:788
 msgid "Systran"
-msgstr "Systran"
+msgstr ""
 
 #: ../../admin/machine.rst:805
 #, fuzzy
@@ -39292,7 +39291,7 @@ msgstr "Générer des fichiers MO"
 
 #: ../../contributing/trademark.rst:31
 msgid "**Do:**"
-msgstr "**Faites :**"
+msgstr ""
 
 #: ../../contributing/trademark.rst:33
 msgid "Use the Weblate trademark exactly as shown in the list above."
@@ -39306,7 +39305,7 @@ msgstr ""
 
 #: ../../contributing/trademark.rst:36
 msgid "**Don't:**"
-msgstr "**Ne faites pas :**"
+msgstr ""
 
 #: ../../contributing/trademark.rst:38
 msgid ""
@@ -42605,7 +42604,7 @@ msgstr "Fichier XML plat"
 
 #: ../../snippets/file-format-parameters.rst:13
 msgid "json_indent"
-msgstr "json_indent"
+msgstr ""
 
 #: ../../snippets/file-format-parameters.rst:13
 #: ../../snippets/file-format-parameters.rst:17
@@ -42618,15 +42617,15 @@ msgstr ""
 
 #: ../../snippets/file-format-parameters.rst:17
 msgid "json_indent_style"
-msgstr "json_indent_style"
+msgstr ""
 
 #: ../../snippets/file-format-parameters.rst:25
 msgid "json_sort_keys"
-msgstr "json_sort_keys"
+msgstr ""
 
 #: ../../snippets/file-format-parameters.rst:29
 msgid "json_use_compact_separators"
-msgstr "json_use_compact_separators"
+msgstr ""
 
 #: ../../snippets/file-format-parameters.rst:33
 #, fuzzy
@@ -42640,7 +42639,7 @@ msgstr "Utiliser les correspondances approximatives"
 
 #: ../../snippets/file-format-parameters.rst:35
 msgid "po_keep_previous"
-msgstr "po_keep_previous"
+msgstr ""
 
 #: ../../snippets/file-format-parameters.rst:35
 msgid "Keep previous msgids of translated strings"
@@ -42668,7 +42667,7 @@ msgstr "Ne pas inclure d’informations de localisation dans le fichier"
 
 #: ../../snippets/file-format-parameters.rst:52
 msgid "xml_closing_tags"
-msgstr "xml_closing_tags"
+msgstr ""
 
 #: ../../snippets/file-format-parameters.rst:52
 msgid ""
@@ -44582,7 +44581,7 @@ msgstr ""
 
 #: ../../index.rst:45
 msgid "FAQ"
-msgstr "FAQ"
+msgstr ""
 
 #: ../../index.rst:46
 msgid "Check our :doc:`faq`."
@@ -45883,7 +45882,7 @@ msgstr "Expression rationnelle"
 
 #: ../../security/privacy-compliance.rst:81
 msgid "Framework"
-msgstr "Framework"
+msgstr ""
 
 #: ../../security/privacy-compliance.rst:81
 msgid "Weblate support"
@@ -46124,7 +46123,7 @@ msgstr ""
 #: ../../security/threat-model.rst:62 ../../security/threat-model.rst:98
 #: ../../security/threat-model.rst:118
 msgid "**DoS**"
-msgstr "**DoS**"
+msgstr ""
 
 #: ../../security/threat-model.rst:63
 msgid ""
@@ -46161,7 +46160,7 @@ msgstr ""
 #: ../../security/threat-model.rst:82 ../../security/threat-model.rst:110
 #: ../../security/threat-model.rst:122 ../../security/threat-model.rst:134
 msgid "**Tampering**"
-msgstr "**Falsification**"
+msgstr ""
 
 #: ../../security/threat-model.rst:71
 msgid ""
@@ -46183,7 +46182,7 @@ msgstr "Traductions Weblate"
 
 #: ../../security/threat-model.rst:74 ../../security/threat-model.rst:130
 msgid "**Spoofing**"
-msgstr "**Usurpation d'identité**"
+msgstr ""
 
 #: ../../security/threat-model.rst:75
 msgid ""

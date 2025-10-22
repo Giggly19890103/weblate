@@ -139,7 +139,6 @@ Learn more about :ref:`contributing`.
     contributing/release
     contributing/modules
     contributing/about
-    contributing/code_of_conduct
     contributing/license
     contributing/trademark
 
@@ -156,7 +155,6 @@ Learn more about :ref:`contributing`.
    security/disaster-recovery-plan
    security/threat-model
    security/privacy-compliance
-   security/localization-threat
 
 .. toctree::
    :caption: File formats

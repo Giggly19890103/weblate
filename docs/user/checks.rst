@@ -1084,7 +1084,6 @@ reStructuredText term references or other markup do not match source, the typica
 * Space between inline tag and backticks.
 * The reference name is not being translated.
 * Using quotes instead of backticks.
-* Mismatched substitutions or footnote references.
 
 .. seealso::
 

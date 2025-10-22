@@ -562,6 +562,8 @@ class EditJoomlaTest(EditTest):
 
 
 class EditRubyYAMLTest(EditTest):
+    has_plurals = False
+
     def create_component(self):
         return self.create_ruby_yaml()
 

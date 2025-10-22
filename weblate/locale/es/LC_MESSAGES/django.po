@@ -19,13 +19,12 @@
 # Nat A <dontknowhat_na@hotmail.com>, 2025.
 # eulalio <eulalio@disroot.org>, 2025.
 # Arantxa <arantxafigueroa4@gmail.com>, 2025.
-# Alejandro Moctezuma <moctezumaalejandro25@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Weblate 5.13.1\n"
 "Report-Msgid-Bugs-To: https://github.com/WeblateOrg/weblate/issues\n"
 "POT-Creation-Date: 2025-09-03 12:07+0000\n"
-"PO-Revision-Date: 2025-10-03 23:02+0000\n"
+"PO-Revision-Date: 2025-09-06 17:03+0000\n"
 "Last-Translator: eulalio <eulalio@disroot.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/weblate/"
 "application/es/>\n"
@@ -14231,7 +14230,7 @@ msgstr "Nueva revisión: {}"
 msgctxt "Number of edits on a change in Damerau–Levenshtein distance"
 msgid "%(count)d character edited"
 msgid_plural "%(count)d characters edited"
-msgstr[0] "%(count)d carácter editado"
+msgstr[0] "%(count)s carácter editado"
 msgstr[1] "%(count)s caracteres editados"
 
 #: weblate/trans/change_display.py:470
@@ -14239,13 +14238,16 @@ msgid "Current translation"
 msgstr "Traducción actual"
 
 #: weblate/trans/change_display.py:472
+#, fuzzy
+#| msgid "Previous translation was \"%s\"."
 msgid "Previous translation"
-msgstr "Traducción anterior"
+msgstr "La traducción anterior era «%s»."
 
 #: weblate/trans/change_display.py:476
-#, python-format
+#, fuzzy, python-format
+#| msgid "Weblate status"
 msgid "State: %(state)s"
-msgstr "Estado: %(state)s"
+msgstr "Estado de Weblate"
 
 #: weblate/trans/context_processors.py:134
 msgid "Hosted Weblate, the place to localize your software project."
@@ -14353,7 +14355,7 @@ msgstr "Conservar los msgid anteriores de las cadenas traducidas"
 
 #: weblate/trans/file_format_params.py:219
 msgid "Do not include location information in the file"
-msgstr "No incluya información de ubicación en el archivo"
+msgstr ""
 
 #: weblate/trans/file_format_params.py:227
 msgid "Use fuzzy matching"
@@ -14406,12 +14408,16 @@ msgid "FlatXML Root name"
 msgstr "Archivo XML plano"
 
 #: weblate/trans/file_format_params.py:331
+#, fuzzy
+#| msgid "Flat XML file"
 msgid "FlatXML value name"
-msgstr "Nombre del valor FlatXML"
+msgstr "Archivo XML plano"
 
 #: weblate/trans/file_format_params.py:340
+#, fuzzy
+#| msgid "Category name"
 msgid "FlatXML key name"
-msgstr "Nombre de la clave FlatXML"
+msgstr "Nombre de la categoría"
 
 #: weblate/trans/filter.py:23 weblate/trans/filter.py:121
 msgid "All strings"
@@ -14851,18 +14857,12 @@ msgid ""
 "Approved-only commit policy requires translation reviews to be enabled. "
 "Please enable translation reviews first or choose a different commit policy."
 msgstr ""
-"La política de confirmación solo aprobada requiere que las revisiones de "
-"traducción estén habilitadas. Habilitar primero las revisiones de traducción "
-"o eligir una diferente política de confirmación."
 
 #: weblate/trans/forms.py:2340
 msgid ""
 "Translation reviews are required for approved-only commit policy. Please "
 "choose a different commit policy before disabling translation reviews."
 msgstr ""
-"Se requieren revisiones de traducción para la política de confirmación solo "
-"aprobada. Eligir una política de confirmación diferente antes de "
-"deshabilitar las revisiones de traducción."
 
 #: weblate/trans/forms.py:2388
 msgid "Access"
@@ -14959,8 +14959,10 @@ msgid "String will be part of the glossary in all languages"
 msgstr "La cadena formará parte del glosario de todos los idiomas"
 
 #: weblate/trans/forms.py:2734
+#, fuzzy
+#| msgid "Project is now open for translation updates."
 msgid "Mark this option for translations that should not be used."
-msgstr "Marque esta opción para las traducciones que no deban usarse."
+msgstr "El proyecto ahora acepta actualizaciones a las traducciones."
 
 #: weblate/trans/forms.py:2739
 msgid "Untranslatable term"
@@ -15379,8 +15381,10 @@ msgid "Component created via ZIP upload"
 msgstr "Componente creado"
 
 #: weblate/trans/models/change.py:69
+#, fuzzy
+#| msgid "Component created"
 msgid "Component created via document upload"
-msgstr "Componente creado mediante la carga de documentos"
+msgstr "Componente creado"
 
 #. Translators: condensed rendering of a change action in history
 #: weblate/trans/models/change.py:531
@@ -17576,7 +17580,7 @@ msgstr "Vacía"
 #: weblate/utils/state.py:18
 msgctxt "String state"
 msgid "Needs editing"
-msgstr "Necesita edición"
+msgstr "Necesitan edición"
 
 #: weblate/utils/state.py:19
 msgctxt "String state"

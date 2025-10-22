@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Weblate 5.13.1\n"
 "Report-Msgid-Bugs-To: https://github.com/WeblateOrg/weblate/issues\n"
 "POT-Creation-Date: 2025-09-03 14:08+0200\n"
-"PO-Revision-Date: 2025-09-30 10:02+0000\n"
+"PO-Revision-Date: 2025-09-09 17:07+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/weblate/"
 "documentation/hr/>\n"
@@ -144,11 +144,13 @@ msgid ""
 msgstr ""
 
 #: ../../admin/access.rst:68
+#, fuzzy
+#| msgid "The default value can be changed by :setting:`DEFAULT_SHARED_TM`."
 msgid ""
 "The default can also be changed by setting :setting:`DEFAULT_ACCESS_CONTROL`."
 msgstr ""
-"Standardna dozvola se može promijeniti pomoću "
-":setting:`DEFAULT_ACCESS_CONTROL`."
+"Standardna vrijednost se može promijeniti pomoću :setting:"
+"`DEFAULT_SHARED_TM`."
 
 #: ../../admin/access.rst:72
 msgid ""
@@ -165,11 +167,11 @@ msgstr ""
 
 #: ../../admin/access.rst:88
 msgid "Managing per-project access control"
-msgstr "Upravljanje kontrole pristupa projektima"
+msgstr "Upravljanje kontrole pristupa projektima pojedinačno"
 
 #: ../../admin/access.rst:93
 msgid "For `Public`, `Protected` and `Private` projects:"
-msgstr "Za `Javne`, `Zastićene` i `Privatne` projekte:"
+msgstr "Za „javne”, „zaštićene” i „privatne” projekte:"
 
 #: ../../admin/access.rst:95
 msgid ""
@@ -185,20 +187,24 @@ msgid ""
 msgstr ""
 
 #: ../../admin/access.rst:102 ../../admin/access.rst:820
+#, fuzzy
+#| msgid "Administration"
 msgid "`Administration`"
-msgstr "`Adminitracija`"
+msgstr "Adminitracija"
 
 #: ../../admin/access.rst:103
 msgid "All available permissions for the project."
 msgstr "Sve dostupne dozvole za projekt."
 
 #: ../../admin/access.rst:105
+#, fuzzy
+#| msgid "Review"
 msgid "`Review`"
-msgstr "`Pregledaj`"
+msgstr "Pregled"
 
 #: ../../admin/access.rst:106
 msgid "Approve translations in a review."
-msgstr "Odobri prijevode koji se pregledavaju."
+msgstr "Odobri prijevode koji se nalaze u pregledu."
 
 #: ../../admin/access.rst:108
 msgid "Available only if :ref:`review workflow <reviews>` is on."
@@ -209,8 +215,10 @@ msgid "For `Protected` and `Private` projects only:"
 msgstr "Samo za „zaštićene” i „privatne” projekte:"
 
 #: ../../admin/access.rst:112 ../../admin/access.rst:956
+#, fuzzy
+#| msgid "Translate"
 msgid "`Translate`"
-msgstr "`Prevedi`"
+msgstr "Prevedi"
 
 #: ../../admin/access.rst:113
 msgid "Translate the project and upload translations made offline."
@@ -229,32 +237,40 @@ msgstr ""
 "manage_units>`) i podatke izvornog izraza."
 
 #: ../../admin/access.rst:119
+#, fuzzy
+#| msgid "Languages"
 msgid "`Languages`"
-msgstr "`Jezici`"
+msgstr "Jezici"
 
 #: ../../admin/access.rst:120
 msgid "Manage translated languages (add or remove translations)."
 msgstr "Upravljaj prevedenim jezicima (dodaj ili ukloni prijevode)."
 
 #: ../../admin/access.rst:122
+#, fuzzy
+#| msgid "Glossary"
 msgid "`Glossary`"
-msgstr "` Glosar`"
+msgstr "Glosar"
 
 #: ../../admin/access.rst:123
 msgid "Manage glossary (add, remove, and upload entries)."
 msgstr "Upravljaj glosarom (dodaj ili ukloni unose i prenesi glosar)."
 
 #: ../../admin/access.rst:125
+#, fuzzy
+#| msgid "Memory"
 msgid "`Memory`"
-msgstr "`Memorija`"
+msgstr "Memorija"
 
 #: ../../admin/access.rst:126
 msgid "Manage translation memory."
 msgstr "Upravljaj prevodilačkom memorijom."
 
 #: ../../admin/access.rst:128
+#, fuzzy
+#| msgid "Screenshots"
 msgid "`Screenshots`"
-msgstr "`Snimke ekrana`"
+msgstr "Snimke ekrana"
 
 #: ../../admin/access.rst:129
 msgid "Manage screenshots (add, remove, and associate them to source strings)."
@@ -262,8 +278,10 @@ msgstr ""
 "Upravljaj snimkana ekrana (dodaj, ukloni i poveži ih s izvornim izrazima)."
 
 #: ../../admin/access.rst:132 ../../admin/access.rst:972
+#, fuzzy
+#| msgid "Automatic translation"
 msgid "`Automatic translation`"
-msgstr "`Automatski prijevod`"
+msgstr "Automatski prijevod"
 
 #: ../../admin/access.rst:133
 msgid "Can use automatic translation."
@@ -271,12 +289,12 @@ msgstr "Može koristiti automatsko prevođenje."
 
 #: ../../admin/access.rst:135
 msgid "`VCS`"
-msgstr "`Sustav za kontrolu verzija`"
+msgstr ""
 
 #: ../../admin/access.rst:136
 msgid "Manage VCS and access the exported repository."
 msgstr ""
-"Upravljaj sustavom za kontrolu verzija i pristupi izvezenom repozitoriju."
+"Upravljaj sustavom za kontrolu verzija i pristupiti izvezenom repozitoriju."
 
 #: ../../admin/access.rst:138 ../../admin/access.rst:989
 msgid "`Billing`"
@@ -291,16 +309,12 @@ msgid ""
 "These features are available on the :guilabel:`Access control` page in the "
 "project’s menu :guilabel:`Operations` ↓ :guilabel:`Users`."
 msgstr ""
-"Ove su funkcije dostupne na stranici :guilabel:`Kontrola pristupa` u "
-"izborniku projekta :guilabel:`Operacije` ↓ :guilabel:`Korisnici`."
 
 #: ../../admin/access.rst:148
 msgid ""
 "You can limit teams to languages or components, and assign them designated "
 "access roles (see :ref:`privileges`)."
 msgstr ""
-"Timove može ograničiti na jezike ili komponente i dodijeliti im određene "
-"uloge pristupa (pogledaj :ref:`privileges`)."
 
 #: ../../admin/access.rst:153
 msgid "Team administrators"
@@ -389,8 +403,10 @@ msgid ""
 msgstr ""
 
 #: ../../admin/access.rst:219
+#, fuzzy
+#| msgid "Project access control"
 msgid "Per-project access tokens"
-msgstr "Tokeni za pristup projektima"
+msgstr "Kontrola pristupa projektu"
 
 #: ../../admin/access.rst:223
 msgid ""
@@ -400,8 +416,10 @@ msgid ""
 msgstr ""
 
 #: ../../admin/access.rst:234
+#, fuzzy
+#| msgid "Simple access control"
 msgid "Site-wide access control"
-msgstr "Globalna kontrola pristupa"
+msgstr "Jednostavna kontrola pristupa"
 
 #: ../../snippets/not-hosted.rst:3
 msgid "This feature is unavailable on Hosted Weblate."
@@ -852,8 +870,6 @@ msgid ""
 "After installation, a default set of teams is created (see :ref:`default-"
 "teams`)."
 msgstr ""
-"Nakon instalacije se izrađuju zadani skupovi timova (vidi :ref:`default-"
-"teams`)."
 
 #: ../../admin/access.rst:475
 msgid ""
@@ -862,10 +878,6 @@ msgid ""
 "actually change them, please define a new role if you want to define your "
 "own set of permissions."
 msgstr ""
-"Ove se uloge i timovi stvaraju prilikom instalacije. Ugrađene uloge se "
-"uvijek altualiziraju migracijom baze podataka prilikom nadogradnje. Ne mogu "
-"se zapravo promijeniti Definiraj novu ulogu ako želiš definirati vlastiti "
-"skup dozvola."
 
 #: ../../admin/access.rst:483
 msgid "List of privileges"
@@ -920,8 +932,10 @@ msgid ":guilabel:`Administration`"
 msgstr ":guilabel:`Adminitracija`"
 
 #: ../../admin/access.rst:493
+#, fuzzy
+#| msgid ":guilabel:`Public`"
 msgid ":guilabel:`Billing`"
-msgstr ":guilabel:`Naplata`"
+msgstr ":guilabel:`Javno`"
 
 #: ../../admin/access.rst:495 ../../api.rst:2325
 msgid "Changes"
@@ -945,8 +959,10 @@ msgstr "Pošalji komentar"
 #: ../../admin/access.rst:659 ../../admin/access.rst:671
 #: ../../admin/access.rst:691 ../../admin/access.rst:719
 #: ../../admin/access.rst:741 ../../admin/access.rst:753
+#, fuzzy
+#| msgid ":guilabel:`Edit source strings`"
 msgid ":guilabel:`Edit source`"
-msgstr ":guilabel:`Uredi izvor`"
+msgstr ":guilabel:`Uredi izvorne izraze`"
 
 #: ../../admin/access.rst:501 ../../admin/access.rst:527
 #: ../../admin/access.rst:541 ../../admin/access.rst:549
@@ -958,8 +974,10 @@ msgstr ":guilabel:`Uredi izvor`"
 #: ../../admin/access.rst:723 ../../admin/access.rst:743
 #: ../../admin/access.rst:755 ../../admin/access.rst:767
 #: ../../admin/access.rst:789
+#, fuzzy
+#| msgid ":guilabel:`Protected`"
 msgid ":guilabel:`Power user`"
-msgstr ":guilabel:`Napredni korisnik`"
+msgstr ":guilabel:`Zaštićeno`"
 
 #: ../../admin/access.rst:503 ../../admin/access.rst:513
 #: ../../admin/access.rst:529 ../../admin/access.rst:535
@@ -975,8 +993,10 @@ msgstr ":guilabel:`Napredni korisnik`"
 #: ../../admin/access.rst:745 ../../admin/access.rst:757
 #: ../../admin/access.rst:769 ../../admin/access.rst:791
 #: ../../admin/access.rst:801
+#, fuzzy
+#| msgid "Translation comment"
 msgid ":guilabel:`Translation coordinator`"
-msgstr ":guilabel:`Koordinator prijevoda`"
+msgstr "Komentar za prijevod"
 
 #: ../../admin/access.rst:505 ../../admin/access.rst:515
 #: ../../admin/access.rst:569 ../../admin/access.rst:621
@@ -986,16 +1006,20 @@ msgstr ":guilabel:`Koordinator prijevoda`"
 #: ../../admin/access.rst:727 ../../admin/access.rst:747
 #: ../../admin/access.rst:759 ../../admin/access.rst:858
 #: ../../admin/access.rst:936 ../../admin/access.rst:953
+#, fuzzy
+#| msgid "Review strings"
 msgid ":guilabel:`Review strings`"
-msgstr ":guilabel:`Pregledaj izraze`"
+msgstr "Pregledaj izraze"
 
 #: ../../admin/access.rst:507 ../../admin/access.rst:571
 #: ../../admin/access.rst:623 ../../admin/access.rst:635
 #: ../../admin/access.rst:667 ../../admin/access.rst:681
 #: ../../admin/access.rst:699 ../../admin/access.rst:729
 #: ../../admin/access.rst:749 ../../admin/access.rst:761
+#, fuzzy
+#| msgid ":guilabel:`Private`"
 msgid ":guilabel:`Translate`"
-msgstr ":guilabel:`Prevedi`"
+msgstr ":guilabel:`Privatno`"
 
 #: ../../admin/access.rst:509
 msgid "Delete comment"
@@ -1015,14 +1039,17 @@ msgstr "Uredi postavke komponente"
 
 #: ../../admin/access.rst:519
 msgid "Lock component, preventing translations"
-msgstr "Zaključaj komponentu, onemogućuje prevođenje"
+msgstr "Zaključaj komponentu, onemogućuje prevođenja"
 
 #: ../../admin/access.rst:521 ../../admin/access.rst:771
 #: ../../admin/access.rst:775 ../../admin/access.rst:779
 #: ../../admin/access.rst:783 ../../admin/access.rst:793
 #: ../../admin/access.rst:797
+#, fuzzy
+#| msgctxt "Access-control role"
+#| msgid "Manage repository"
 msgid ":guilabel:`Manage repository`"
-msgstr ":guilabel:`Upravljaj repozitorijem`"
+msgstr "Upravljaj repozitorijem"
 
 #: ../../admin/access.rst:523 ../../api.rst:2618 ../../user/glossary.rst:4
 #: ../../user/translating.rst:310
@@ -1036,8 +1063,10 @@ msgstr "Dodaj unos u glosar"
 #: ../../admin/access.rst:525 ../../admin/access.rst:533
 #: ../../admin/access.rst:539 ../../admin/access.rst:547
 #: ../../admin/access.rst:555
+#, fuzzy
+#| msgid "Manage glossary"
 msgid ":guilabel:`Manage glossary`"
-msgstr ":guilabel:`Upravljaj glosarom`"
+msgstr "Upravljaj glosarom"
 
 #: ../../admin/access.rst:531
 msgid "Add glossary terminology"
@@ -1229,8 +1258,10 @@ msgstr "Preuzmi prevodilačku datoteku"
 
 #: ../../admin/access.rst:721 ../../admin/access.rst:765
 #: ../../admin/access.rst:787
+#, fuzzy
+#| msgid "Access the internal repository"
 msgid ":guilabel:`Access repository`"
-msgstr ":guilabel:`Pristupi repozitoriju`"
+msgstr "Pristupi internom repozitoriju"
 
 #: ../../admin/access.rst:733
 msgid "Add several languages for translation"
@@ -1270,7 +1301,7 @@ msgstr "Prenesi promjenu iz internog repozitorija"
 
 #: ../../admin/access.rst:781
 msgid "Reset changes in the internal repository"
-msgstr "Resetiraj promjene u internom repozitoriju"
+msgstr "Vrati promjene u internom repozitoriju"
 
 #: ../../admin/access.rst:785
 msgid "View upstream repository location"
@@ -1286,7 +1317,7 @@ msgstr "Objave"
 
 #: ../../admin/access.rst:799
 msgid "Post announcements"
-msgstr "Objavi objave"
+msgstr "Šalji objave"
 
 #: ../../admin/access.rst:803
 msgid "Site wide privileges"
@@ -1315,39 +1346,53 @@ msgid "List of built-in roles"
 msgstr "Popis ugrađenih uloga"
 
 #: ../../admin/access.rst:821 ../../admin/access.rst:915
+#, fuzzy
+#| msgid ":guilabel:`Custom`"
 msgid ":guilabel:`Post announcements`"
-msgstr ":guilabel:`Objavi objave`"
+msgstr ":guilabel:`Prilagođeno`"
 
 #: ../../admin/access.rst:822 ../../admin/access.rst:990
 msgid ":guilabel:`View billing info`"
 msgstr ":guilabel:`Pogledaj podatke naplate`"
 
 #: ../../admin/access.rst:823
+#, fuzzy
+#| msgid "Download changes"
 msgid ":guilabel:`Download changes`"
-msgstr ":guilabel:`Preuzmi promjene`"
+msgstr "Preuzmi promjene"
 
 #: ../../admin/access.rst:824 ../../admin/access.rst:870
 #: ../../admin/access.rst:895 ../../admin/access.rst:916
 #: ../../admin/access.rst:943 ../../admin/access.rst:957
+#, fuzzy
+#| msgid ":guilabel:`Custom`"
 msgid ":guilabel:`Post comment`"
-msgstr ":guilabel:`Objavi komentar`"
+msgstr ":guilabel:`Prilagođeno`"
 
 #: ../../admin/access.rst:825
+#, fuzzy
+#| msgid "Delete comment"
 msgid ":guilabel:`Delete comment`"
-msgstr ":guilabel:`Izbriši komentar`"
+msgstr "Izbriši komentar"
 
 #: ../../admin/access.rst:826 ../../admin/access.rst:917
 #: ../../admin/access.rst:944
+#, fuzzy
+#| msgid "Resolve comment"
 msgid ":guilabel:`Resolve comment`"
-msgstr ":guilabel:`Riješi komentar`"
+msgstr "Riješi komentar"
 
 #: ../../admin/access.rst:827
+#, fuzzy
+#| msgid "Edit component settings"
 msgid ":guilabel:`Edit component settings`"
-msgstr ":guilabel:`Uredi postavke komponente`"
+msgstr "Uredi postavke komponente"
 
 #: ../../admin/access.rst:828 ../../admin/access.rst:982
+#, fuzzy
+#| msgid "Lock component, preventing translations"
 msgid ":guilabel:`Lock component, preventing translations`"
-msgstr ":guilabel:`Zaključaj komponentu, onemogućuje prevođenja`"
+msgstr "Zaključaj komponentu, onemogućuje prevođenja"
 
 #: ../../admin/access.rst:829 ../../admin/access.rst:889
 #: ../../admin/access.rst:896 ../../admin/access.rst:918
@@ -1371,119 +1416,165 @@ msgstr ":guilabel:`Dodaj terminologiju glosara`"
 
 #: ../../admin/access.rst:833 ../../admin/access.rst:893
 #: ../../admin/access.rst:899 ../../admin/access.rst:922
+#, fuzzy
+#| msgid "Upload glossary entries"
 msgid ":guilabel:`Upload glossary entries`"
-msgstr ":guilabel:`Prenesi zapise u glosaru`"
+msgstr "Prenesi zapise u glosaru"
 
 #: ../../admin/access.rst:834 ../../admin/access.rst:871
 #: ../../admin/access.rst:900 ../../admin/access.rst:923
 #: ../../admin/access.rst:945 ../../admin/access.rst:958
+#, fuzzy
+#| msgid "Use automatic suggestions"
 msgid ":guilabel:`Use automatic suggestions`"
-msgstr ":guilabel:`Koristi automatske prijedloge`"
+msgstr "Koristi automatske prijedloge"
 
 #: ../../admin/access.rst:835 ../../admin/access.rst:975
+#, fuzzy
+#| msgid "Delete translation memory"
 msgid ":guilabel:`Delete translation memory`"
-msgstr ":guilabel:`Izbriši prevodilačku memoriju`"
+msgstr "Izbriši prevodilačku memoriju"
 
 #: ../../admin/access.rst:836 ../../admin/access.rst:976
+#, fuzzy
+#| msgid "Edit translation memory"
 msgid ":guilabel:`Edit translation memory`"
-msgstr ":guilabel:`Uredi prevodilačku memoriju`"
+msgstr "Uredi prevodilačku memoriju"
 
 #: ../../admin/access.rst:837
+#, fuzzy
+#| msgid "Edit project settings"
 msgid ":guilabel:`Edit project settings`"
-msgstr ":guilabel:`Uredi postavke projekta`"
+msgstr "Uredi postavke projekta"
 
 #: ../../admin/access.rst:838
+#, fuzzy
+#| msgid "Manage project access"
 msgid ":guilabel:`Manage project access`"
-msgstr ":guilabel:`Upravljaj pristupima projektu`"
+msgstr "Upravljaj pristupima projektu"
 
 #: ../../admin/access.rst:839
+#, fuzzy
+#| msgid "Download reports"
 msgid ":guilabel:`Download reports`"
-msgstr ":guilabel:`Preuzmi izvještaje`"
+msgstr "Preuzmi izvještaje"
 
 #: ../../admin/access.rst:840 ../../admin/access.rst:924
 #: ../../admin/access.rst:978
+#, fuzzy
+#| msgid ":guilabel:`Add suggestion`"
 msgid ":guilabel:`Add screenshot`"
-msgstr ":guilabel:`Dodaj snimku ekrana`"
+msgstr ":guilabel:`Dodaj prijedlog`"
 
 #: ../../admin/access.rst:841 ../../admin/access.rst:925
 #: ../../admin/access.rst:979
+#, fuzzy
+#| msgid "Delete screenshot"
 msgid ":guilabel:`Delete screenshot`"
-msgstr ":guilabel:`Izbriši snimku ekrana`"
+msgstr "Izbriši snimku ekrana"
 
 #: ../../admin/access.rst:842 ../../admin/access.rst:926
 #: ../../admin/access.rst:980
+#, fuzzy
+#| msgid "Edit screenshot"
 msgid ":guilabel:`Edit screenshot`"
-msgstr ":guilabel:`Uredi snimku ekrana`"
+msgstr "Uredi snimku ekrana"
 
 #: ../../admin/access.rst:843 ../../admin/access.rst:872
+#, fuzzy
+#| msgid "Edit additional string info"
 msgid ":guilabel:`Edit additional string info`"
-msgstr ":guilabel:`Uredi dodatne informacije o izrazu`"
+msgstr "Uredi dodatne informacije o izrazu"
 
 #: ../../admin/access.rst:844 ../../admin/access.rst:873
 #: ../../admin/access.rst:901 ../../admin/access.rst:927
 #: ../../admin/access.rst:946 ../../admin/access.rst:959
+#, fuzzy
+#| msgid ":guilabel:`Add suggestion`"
 msgid ":guilabel:`Accept suggestion`"
-msgstr ":guilabel:`Prihvati prijedlog`"
+msgstr ":guilabel:`Dodaj prijedlog`"
 
 #: ../../admin/access.rst:846 ../../admin/access.rst:903
 #: ../../admin/access.rst:929
+#, fuzzy
+#| msgid ":guilabel:`Add suggestion`"
 msgid ":guilabel:`Delete suggestion`"
-msgstr ":guilabel:`Izbriši prijedlog`"
+msgstr ":guilabel:`Dodaj prijedlog`"
 
 #: ../../admin/access.rst:847 ../../admin/access.rst:875
 #: ../../admin/access.rst:904 ../../admin/access.rst:930
 #: ../../admin/access.rst:948 ../../admin/access.rst:961
+#, fuzzy
+#| msgid ":guilabel:`Add suggestion`"
 msgid ":guilabel:`Vote on suggestion`"
-msgstr ":guilabel:`Glasaj za prijedlog`"
+msgstr ":guilabel:`Dodaj prijedlog`"
 
 #: ../../admin/access.rst:848 ../../admin/access.rst:905
 #: ../../admin/access.rst:931 ../../admin/access.rst:968
+#, fuzzy
+#| msgid "Add language for translation"
 msgid ":guilabel:`Add language for translation`"
-msgstr ":guilabel:`Dodaj jezik za prijevod`"
+msgstr "Dodaj jezik za prijevod"
 
 #: ../../admin/access.rst:849 ../../admin/access.rst:969
+#, fuzzy
+#| msgid "Add several languages for translation"
 msgid ":guilabel:`Add several languages for translation`"
-msgstr ":guilabel:`Dodaj nekoliko jezika za prijevod`"
+msgstr "Dodaj nekoliko jezika za prijevod"
 
 #: ../../admin/access.rst:850 ../../admin/access.rst:973
 msgid ":guilabel:`Perform automatic translation`"
 msgstr ":guilabel:`Izvrši automatsko prevođenje`"
 
 #: ../../admin/access.rst:851 ../../admin/access.rst:970
+#, fuzzy
+#| msgid "Delete existing translation"
 msgid ":guilabel:`Delete existing translation`"
-msgstr ":guilabel:`Izbriši postojeći prijevod`"
+msgstr "Izbriši postojeći prijevod"
 
 #: ../../admin/access.rst:852 ../../admin/access.rst:876
 #: ../../admin/access.rst:885 ../../admin/access.rst:906
 #: ../../admin/access.rst:932 ../../admin/access.rst:949
 #: ../../admin/access.rst:962 ../../admin/access.rst:971
+#, fuzzy
+#| msgid "Download translation file"
 msgid ":guilabel:`Download translation file`"
-msgstr ":guilabel:`Preuzmi prevodilačku datoteku`"
+msgstr "Preuzmi prevodilačku datoteku"
 
 #: ../../admin/access.rst:853
+#, fuzzy
+#| msgid ":guilabel:`Add suggestion`"
 msgid ":guilabel:`Add new string`"
-msgstr ":guilabel:`Dodaj novi izraz`"
+msgstr ":guilabel:`Dodaj prijedlog`"
 
 #: ../../admin/access.rst:854 ../../admin/access.rst:877
 #: ../../admin/access.rst:907 ../../admin/access.rst:933
 #: ../../admin/access.rst:950 ../../admin/access.rst:963
+#, fuzzy
+#| msgid "Dismiss failing check"
 msgid ":guilabel:`Dismiss failing check`"
-msgstr ":guilabel:`Odbaci neuspjelu provjeru`"
+msgstr "Odbaci neuspjelu provjeru"
 
 #: ../../admin/access.rst:855
+#, fuzzy
+#| msgid "Remove a string"
 msgid ":guilabel:`Remove a string`"
-msgstr ":guilabel:`Ukloni izraz`"
+msgstr "Ukloni izraz"
 
 #: ../../admin/access.rst:856 ../../admin/access.rst:878
 #: ../../admin/access.rst:908 ../../admin/access.rst:934
 #: ../../admin/access.rst:951 ../../admin/access.rst:964
+#, fuzzy
+#| msgid ":guilabel:`Administration`"
 msgid ":guilabel:`Edit strings`"
-msgstr ":guilabel:`Uredi izraze`"
+msgstr ":guilabel:`Adminitracija`"
 
 #: ../../admin/access.rst:857 ../../admin/access.rst:935
 #: ../../admin/access.rst:952
+#, fuzzy
+#| msgid "Edit string when suggestions are enforced"
 msgid ":guilabel:`Edit string when suggestions are enforced`"
-msgstr ":guilabel:`Uredi izraz kad se prijedlozi primjenjuju`"
+msgstr "Uredi izraz kad se prijedlozi primjenjuju"
 
 #: ../../admin/access.rst:859 ../../admin/access.rst:879
 #: ../../admin/access.rst:909 ../../admin/access.rst:937
@@ -1491,96 +1582,139 @@ msgid ":guilabel:`Edit source strings`"
 msgstr ":guilabel:`Uredi izvorne izraze`"
 
 #: ../../admin/access.rst:860
+#, fuzzy
+#| msgid "Define author of uploaded translation"
 msgid ":guilabel:`Define author of uploaded translation`"
-msgstr ":guilabel:`Odredi autora prenesenog prijevoda`"
+msgstr "Odredi autora prenesenog prijevoda"
 
 #: ../../admin/access.rst:861 ../../admin/access.rst:880
 #: ../../admin/access.rst:910 ../../admin/access.rst:938
 #: ../../admin/access.rst:954 ../../admin/access.rst:965
+#, fuzzy
+#| msgid "Overwrite existing strings with upload"
 msgid ":guilabel:`Overwrite existing strings with upload`"
-msgstr ":guilabel:`Prepiši postojeće izraze s prenesenim podatcima`"
+msgstr "Prepiši postojeće izraze s prenesenim podatcima"
 
 #: ../../admin/access.rst:862 ../../admin/access.rst:881
 #: ../../admin/access.rst:911 ../../admin/access.rst:939
 #: ../../admin/access.rst:955 ../../admin/access.rst:966
+#, fuzzy
+#| msgid "Upload translations"
 msgid ":guilabel:`Upload translations`"
-msgstr ":guilabel:`Prenesi prijevode`"
+msgstr "Prenesi prijevode"
 
 #: ../../admin/access.rst:863 ../../admin/access.rst:886
 #: ../../admin/access.rst:912 ../../admin/access.rst:940
 #: ../../admin/access.rst:983
+#, fuzzy
+#| msgid "Access the internal repository"
 msgid ":guilabel:`Access the internal repository`"
-msgstr ":guilabel:`Pristupi internom repozitoriju`"
+msgstr "Pristupi internom repozitoriju"
 
 #: ../../admin/access.rst:864 ../../admin/access.rst:984
+#, fuzzy
+#| msgid "Commit changes to the internal repository"
 msgid ":guilabel:`Commit changes to the internal repository`"
-msgstr ":guilabel:`Spremi promjene u interni repozitorij`"
+msgstr "Spremi promjene u interni repozitorij"
 
 #: ../../admin/access.rst:865 ../../admin/access.rst:985
+#, fuzzy
+#| msgid "Push change from the internal repository"
 msgid ":guilabel:`Push change from the internal repository`"
-msgstr ":guilabel:`Prenesi promjenu iz internog repozitorija`"
+msgstr "Prenesi promjenu iz internog repozitorija"
 
 #: ../../admin/access.rst:866 ../../admin/access.rst:986
+#, fuzzy
+#| msgid "Reset changes in the internal repository"
 msgid ":guilabel:`Reset changes in the internal repository`"
-msgstr ":guilabel:`Resetiraj promjene u internom repozitoriju`"
+msgstr "Vrati promjene u internom repozitoriju"
 
 #: ../../admin/access.rst:867 ../../admin/access.rst:987
+#, fuzzy
+#| msgid "Update the internal repository"
 msgid ":guilabel:`Update the internal repository`"
-msgstr ":guilabel:`Aktualiziraj interni repozitorij`"
+msgstr "Aktualiziraj interni repozitorij"
 
 #: ../../admin/access.rst:868 ../../admin/access.rst:887
 #: ../../admin/access.rst:913 ../../admin/access.rst:941
 #: ../../admin/access.rst:988
+#, fuzzy
+#| msgid "View upstream repository location"
 msgid ":guilabel:`View upstream repository location`"
-msgstr ":guilabel:`Prikaži mjesto izvornog repozitorija`"
+msgstr "Prikaži mjesto izvornog repozitorija"
 
 #: ../../admin/access.rst:869
 msgid "`Edit source`"
 msgstr "`Uredi izvor`"
 
 #: ../../admin/access.rst:882
+#, fuzzy
+#| msgid "Add suggestion"
 msgid "`Add suggestion`"
-msgstr "`Dodaj prijedlog`"
+msgstr "Dodaj prijedlog"
 
 #: ../../admin/access.rst:884
+#, fuzzy
+#| msgctxt "Access-control role"
+#| msgid "Access repository"
 msgid "`Access repository`"
-msgstr "`Pristupi repozitoriju`"
+msgstr "Pristupi repozitoriju"
 
 #: ../../admin/access.rst:888
+#, fuzzy
+#| msgid "Manage glossary"
 msgid "`Manage glossary`"
-msgstr "`Upravljaj glosarom`"
+msgstr "Upravljaj glosarom"
 
 #: ../../admin/access.rst:894
+#, fuzzy
+#| msgid "`Power users`"
 msgid "`Power user`"
-msgstr "`Napredni korisnik`"
+msgstr "`Napredni korisnici`"
 
 #: ../../admin/access.rst:914
+#, fuzzy
+#| msgid "Translation comment"
 msgid "`Translation coordinator`"
-msgstr "`Koordinator prijevoda`"
+msgstr "Komentar za prijevod"
 
 #: ../../admin/access.rst:942
+#, fuzzy
+#| msgid "Review strings"
 msgid "`Review strings`"
-msgstr "`Pregledaj izraze`"
+msgstr "Pregledaj izraze"
 
 #: ../../admin/access.rst:967
+#, fuzzy
+#| msgctxt "Access-control role"
+#| msgid "Manage languages"
 msgid "`Manage languages`"
-msgstr "`Upravljaj jezicima`"
+msgstr "Upravljaj jezicima"
 
 #: ../../admin/access.rst:974
+#, fuzzy
+#| msgid "Manage translation memory"
 msgid "`Manage translation memory`"
-msgstr "`Upravljaj prevodilačkom memorijom`"
+msgstr "Upravljaj prevodilačkom memorijom"
 
 #: ../../admin/access.rst:977
+#, fuzzy
+#| msgid "Manage screenshots"
 msgid "`Manage screenshots`"
-msgstr "`Upravljaj snimkama ekrana`"
+msgstr "Upravljaj snimkama ekrana"
 
 #: ../../admin/access.rst:981
+#, fuzzy
+#| msgctxt "Access-control role"
+#| msgid "Manage repository"
 msgid "`Manage repository`"
-msgstr "`Upravljaj repozitorijem`"
+msgstr "Upravljaj repozitorijem"
 
 #: ../../admin/access.rst:991
+#, fuzzy
+#| msgid "Add new projects"
 msgid "`Add new projects`"
-msgstr "`Dodaj nove projekte`"
+msgstr "Dodaj nove projekte"
 
 #: ../../admin/access.rst:998
 msgid "List of teams"
@@ -1612,27 +1746,35 @@ msgstr ""
 "`ANONYMOUS_USER_NAME`)."
 
 #: ../../admin/access.rst:1009
+#, fuzzy
+#| msgid ""
+#| "You can remove roles from this team to limit permissions for non-"
+#| "authenticated users."
 msgid ""
 "Remove roles from this team to limit permissions for non-authenticated users."
 msgstr ""
-"Ukloni uloge iz ovog tima za ograničavanje dozvola za neautentificirane "
-"korisnike."
+"Možeš ukloniti uloge iz ovog tima za ograničavanje dozvola za "
+"neautentificirane korisnike."
 
 #: ../../admin/access.rst:1012
 msgid "Default roles: `Add suggestion`, `Access repository`"
-msgstr "Standarne uloge: `Dodaj prijedlog`, `Pristupi repozitoriju`"
+msgstr "Standardne uloge: `Dodaj prijedlog`, `Pristupi repozitoriju`"
 
 #: ../../admin/access.rst:1014
 msgid "`Viewers`"
 msgstr "`Gledatelji`"
 
 #: ../../admin/access.rst:1015
+#, fuzzy
+#| msgid ""
+#| "This role ensures visibility of public projects for all users. By "
+#| "default, all users are members of this team."
 msgid ""
 "This role ensures the visibility of public projects to all users. By "
 "default, all users are members of this team."
 msgstr ""
-"Ova uloga osigurava vidljivost javnih projekata za sve korisnike. Standardno "
-"su svi korisnici članovi ovog tima."
+"Ova uloga osigurava vidljivost javnih projekata za sve korisnike. Svi "
+"korisnici su članovi ovog tima."
 
 #: ../../admin/access.rst:1018 ../../admin/access.rst:1026
 msgid ""
@@ -1661,39 +1803,46 @@ msgstr "Standardne uloge: `Napredni korisnik`"
 
 #: ../../admin/access.rst:1031 ../../workflows.rst:190
 msgid "`Reviewers`"
-msgstr "`Pregledatelji`"
+msgstr ""
 
 #: ../../admin/access.rst:1032
 msgid "Group for reviewers (see :ref:`workflows`)."
-msgstr "Grupa za pregledatelje (pogledaj :ref:`workflows`)."
+msgstr ""
 
 #: ../../admin/access.rst:1034
 msgid "Default roles: `Review strings`"
-msgstr "Standardne uloge: `Pregledaj izraze`"
+msgstr ""
 
 #: ../../admin/access.rst:1036
 msgid "`Managers`"
-msgstr "`Administratori`"
+msgstr ""
 
 #: ../../admin/access.rst:1037
 msgid "Group for administrators."
-msgstr "Grupa za administratore."
+msgstr ""
 
 #: ../../admin/access.rst:1039
 msgid "Default roles: `Administration`"
-msgstr "Standardne uloge: `Administrator`"
+msgstr ""
 
 #: ../../admin/access.rst:1041
+#, fuzzy
+#| msgctxt "Access-control team name"
+#| msgid "Project creators"
 msgid "`Project creators`"
-msgstr "`Osnivači projekta`"
+msgstr "Osnivači projekta"
 
 #: ../../admin/access.rst:1044
+#, fuzzy
+#| msgid "User has been removed from this project."
 msgid "Users who can create new projects."
-msgstr "Korisnici koji mogu stvarati nove projekte."
+msgstr "Korisnik je uklonjen iz ovog projekta."
 
 #: ../../admin/access.rst:1046
+#, fuzzy
+#| msgid "Add new projects"
 msgid "Default roles: `Add new projects`"
-msgstr "Standardne uloge: `Dodaj nove projekte`"
+msgstr "Dodaj nove projekte"
 
 #: ../../admin/access.rst:1050
 msgid ""
@@ -1701,9 +1850,6 @@ msgid ""
 "unexpected problems! If you have no use for them, simply remove all their "
 "privileges instead."
 msgstr ""
-"Nikada nemoj uklanjajti unaprijed definirane Weblate timove i korisnike, jer "
-"to može dovesti do neočekivanih problema! Ako ih ne trebaš, jednostavno "
-"ukloni sve njihove dozvole."
 
 #: ../../admin/access.rst:1055
 #, fuzzy
@@ -1769,24 +1915,32 @@ msgid "Component update"
 msgstr "aktualiziranje komponente"
 
 #: ../../admin/addons.rst:35
+#, fuzzy
+#| msgid "When new strings appear in a component."
 msgid "Triggered whenever a change happens in a component such as:"
-msgstr "Pokreće se kad god se dogodi promjena u komponenti kao što je:"
+msgstr "Kad se u komponenti pojave novi izrazi."
 
 #: ../../admin/addons.rst:37
+#, fuzzy
+#| msgid "String added in the repository"
 msgid "Strings are changed in the repository."
-msgstr "Izrazi su promijenjeni u repozitoriju."
+msgstr "Izraz dodan u repozitorij"
 
 #: ../../admin/addons.rst:38
+#, fuzzy
+#| msgid "New string added"
 msgid "A string is added."
-msgstr "Dodan je jedan izraz."
+msgstr "Novi izraz dodan"
 
 #: ../../admin/addons.rst:39
+#, fuzzy
+#| msgid "Updates the LINGUAS file when a new translation is added."
 msgid "A new translation is added."
-msgstr "Dodan je jedan novi prijevod."
+msgstr "Aktualizira LINGUAS datoteku kad se doda novi prijevod."
 
 #: ../../admin/addons.rst:44
 msgid "Daily"
-msgstr "Dnevno"
+msgstr ""
 
 #: ../../admin/addons.rst:46
 msgid ""
@@ -1803,8 +1957,10 @@ msgid "Event change"
 msgstr "Nedavna promjena"
 
 #: ../../admin/addons.rst:53
+#, fuzzy
+#| msgid "date the user is created"
 msgid "Triggered after a Change event is created."
-msgstr "Pokreće se nakon što se stvori događaj promjene."
+msgstr "datum kada je korisnik stvoren"
 
 #: ../../admin/addons.rst:58
 #, fuzzy
@@ -2857,8 +3013,10 @@ msgstr "Prilagodi gettext rezultat"
 
 #: ../../admin/addons.rst:750 ../../admin/addons.rst:899
 #: ../../admin/addons.rst:1430 ../../admin/addons.rst:1445
+#, fuzzy
+#| msgid "See :ref:`format-plurals`"
 msgid "Replaced by :ref:`file_format_params`."
-msgstr "Zamijenjeno s :ref:`file_format_params`."
+msgstr "Pogledaj :ref:`format-plurals`"
 
 #: ../../admin/addons.rst:754 ../../admin/addons.rst:1451
 #: ../../snippets/file-format-parameters.rst:37
@@ -3757,7 +3915,7 @@ msgstr ""
 
 #: ../../admin/addons.rst:1525
 msgid "Upstream repository URL."
-msgstr "URL izvornog repozitorija."
+msgstr ""
 
 #: ../../admin/addons.rst:1529
 msgid "Absolute path to VCS repository."
@@ -3894,8 +4052,10 @@ msgid "Backups, see :doc:`backup`."
 msgstr ""
 
 #: ../../admin/admin.rst:16
+#, fuzzy
+#| msgid "Shared translation memory"
 msgid "Shared translation memory, see :doc:`memory`."
-msgstr "Dijeljena prevodilačka memorija, pogledaj :doc:`memory`."
+msgstr "Dijeljena prevodilačka memorija"
 
 #: ../../admin/admin.rst:17
 msgid ""
@@ -3912,8 +4072,10 @@ msgid "Alerts overview for all components, see :ref:`alerts`."
 msgstr ""
 
 #: ../../admin/admin.rst:20
+#, fuzzy
+#| msgid "Adjust translation flags (see :ref:`custom-checks`)"
 msgid "Users and teams, see :ref:`custom-acl`."
-msgstr "Korisnici i timovi, pogledaj :ref:`custom-acl`."
+msgstr "Prilagodi prevodilačke oznake (pogledaj :ref:`custom-checks`)"
 
 #: ../../admin/admin.rst:21
 msgid ":ref:`manage-appearance`."
@@ -4075,7 +4237,7 @@ msgstr ""
 #: ../../admin/announcements.rst:10
 msgid ""
 "Announce the purpose, deadlines, status, or specify targets for translation."
-msgstr "Objavi svrhu, rokove, stanje ili odredi ciljeve za prijevod."
+msgstr ""
 
 #: ../../admin/announcements.rst:12
 msgid ""
@@ -4090,24 +4252,18 @@ msgid ""
 "This can be useful for various things from announcing the purpose of the "
 "website to specifying targets for translations."
 msgstr ""
-"Može biti korisno za razne stvari, od najave svrhe web stranice do "
-"određivanja ciljeva za prijevode."
 
 #: ../../admin/announcements.rst:18
 msgid ""
 "The announcements can posted on each level in the :guilabel:`Operations` "
 "menu, using :guilabel:`Post announcement`:"
 msgstr ""
-"Objave se mogu objaviti na svakoj razini u izborniku :guilabel:`Operacije`, "
-"pomoću :guilabel:`Objavi objave`:"
 
 #: ../../admin/announcements.rst:21
 msgid ""
 "Image showing an announcement that reads: \"Translations will be used only "
 "if they reach 60%\" atop the dashboard view."
 msgstr ""
-"Slika koja prikazuje obavijest: „Prijevodi će se koristiti samo ako dosegnu "
-"60 %” na vrhu prikaza pregledne ploče."
 
 #: ../../admin/announcements.rst:24
 msgid "It can be also added using the admin interface:"
@@ -4825,11 +4981,13 @@ msgstr ""
 
 #: ../../admin/backup.rst:4
 msgid "Backing up and moving Weblate"
-msgstr "Sigurnosno kopiranje i premještanje Weblatea"
+msgstr ""
 
 #: ../../admin/backup.rst:9
+#, fuzzy
+#| msgid "Remote backups"
 msgid "Project level backups"
-msgstr "Sigurnosne kopije na razini projekta"
+msgstr "Daljinske sigurnosne kopije"
 
 #: ../../admin/backup.rst:15
 msgid ""
@@ -4855,8 +5013,6 @@ msgstr ""
 msgid ""
 "The backups currently do not include access control information and history."
 msgstr ""
-"Sigurnosne kopije trenutačno ne uključuju podatke o kontroli pristupa i "
-"povijest."
 
 #: ../../admin/backup.rst:27
 msgid ""
@@ -5458,8 +5614,10 @@ msgid ""
 msgstr ""
 
 #: ../../admin/checks.rst:33
+#, fuzzy
+#| msgid "Source string location"
 msgid "Source string additional flags:"
-msgstr "Dodatne oznake za izvorni izraz:"
+msgstr "Mjesto izvornog izraza"
 
 #: ../../admin/checks.rst:35
 msgid ":ref:`additional` describes manual editing."
@@ -5489,7 +5647,7 @@ msgstr ""
 
 #: ../../admin/checks.rst:41
 msgid "File-format specific flags."
-msgstr "Oznake specifične za format datoteka."
+msgstr ""
 
 #: ../../admin/checks.rst:42
 msgid ":ref:`component` (:ref:`component-check_flags`)."
@@ -8132,11 +8290,11 @@ msgstr ""
 "komponentu."
 
 #: ../../admin/continuous.rst:22
+#, fuzzy
+#| msgid "Push changes into upstream repository."
 msgid ""
 "Changes are pushed back to the upstream repository (see :ref:`push-changes`)."
-msgstr ""
-"Promjene se prenese natrag u izvorni repozitorij (pogledaj :ref:`push-"
-"changes`)."
+msgstr "Prenesi promjene u izvorni repozitorij."
 
 #: ../../admin/continuous.rst:73
 msgid ""
@@ -8199,10 +8357,10 @@ msgid ""
 msgstr ""
 
 #: ../../admin/continuous.rst:119
+#, fuzzy
+#| msgid "You can import existing translation memory files into Weblate."
 msgid "Avoiding merge conflicts by changing translation files in Weblate only"
-msgstr ""
-"Izbjegni probleme pri sjedinjavanju mijenjanjem prevodilačkih datoteka samo "
-"u Weblateu"
+msgstr "U Weblate možeš uvesti postojeće datoteke prevodilačkih memorija."
 
 #: ../../admin/continuous.rst:121
 msgid ""
@@ -8604,28 +8762,40 @@ msgid "Pagure merge request from branch"
 msgstr ""
 
 #: ../../admin/continuous.rst:445
+#, fuzzy
+#| msgid "Bitbucket Server pull request"
 msgid "Azure DevOps pull request from fork"
-msgstr ""
+msgstr "Zahtjev za preuzimanje na Bitbucket poslužitelju"
 
 #: ../../admin/continuous.rst:450
+#, fuzzy
+#| msgid "Bitbucket Server pull request"
 msgid "Azure DevOps pull request from branch"
-msgstr ""
+msgstr "Zahtjev za preuzimanje na Bitbucket poslužitelju"
 
 #: ../../admin/continuous.rst:455
+#, fuzzy
+#| msgid "Bitbucket Server pull request"
 msgid "Bitbucket Data Center pull request from fork"
-msgstr ""
+msgstr "Zahtjev za preuzimanje na Bitbucket poslužitelju"
 
 #: ../../admin/continuous.rst:460
+#, fuzzy
+#| msgid "Bitbucket Server pull request"
 msgid "Bitbucket Data Center pull request from branch"
-msgstr ""
+msgstr "Zahtjev za preuzimanje na Bitbucket poslužitelju"
 
 #: ../../admin/continuous.rst:465
+#, fuzzy
+#| msgid "Bitbucket Server pull request"
 msgid "Bitbucket Cloud pull request from fork"
-msgstr ""
+msgstr "Zahtjev za preuzimanje na Bitbucket poslužitelju"
 
 #: ../../admin/continuous.rst:470
+#, fuzzy
+#| msgid "Bitbucket Server pull request"
 msgid "Bitbucket Cloud pull request from branch"
-msgstr ""
+msgstr "Zahtjev za preuzimanje na Bitbucket poslužitelju"
 
 #: ../../admin/continuous.rst:475
 msgid "Can be empty in case :ref:`component-repo` supports pushing."
@@ -8760,8 +8930,10 @@ msgid ""
 msgstr ""
 
 #: ../../admin/continuous.rst:569
+#, fuzzy
+#| msgid "Translations contributions"
 msgid "Propagation preconditions:"
-msgstr "Preduvjeti za dijeljenje:"
+msgstr "Doprinositelji prijevodima"
 
 #: ../../admin/continuous.rst:571
 msgid ""
@@ -9081,7 +9253,7 @@ msgstr "Pregled arhitekture"
 
 #: ../../admin/install.rst:130
 msgid "Web server"
-msgstr "Web server"
+msgstr "Web poslužitelj"
 
 #: ../../admin/install.rst:131
 msgid "Handling incoming HTTP requests, :ref:`static-files`."
@@ -9109,8 +9281,10 @@ msgid "Use dedicated node when scaling Weblate horizontally."
 msgstr ""
 
 #: ../../admin/install.rst:138
+#, fuzzy
+#| msgid "Web server"
 msgid "WSGI server"
-msgstr "WSGI server"
+msgstr "Web poslužitelj"
 
 #: ../../admin/install.rst:139
 msgid "A WSGI server serving web pages to users."
@@ -9153,8 +9327,10 @@ msgid "Use networked storage when scaling Weblate horizontally."
 msgstr ""
 
 #: ../../admin/install.rst:154
+#, fuzzy
+#| msgid "Email server setup"
 msgid "E-mail server"
-msgstr "E-mail server"
+msgstr "Postava e-mail poslužitelja"
 
 #: ../../admin/install.rst:155
 msgid ""
@@ -9243,7 +9419,7 @@ msgstr "https://github.com/WeblateOrg/translation-finder"
 
 #: ../../admin/install.rst:198
 msgid "Python Social Auth"
-msgstr "Python Social Auth"
+msgstr ""
 
 #: ../../admin/install.rst:199
 msgid "https://python-social-auth.readthedocs.io/"
@@ -9251,7 +9427,7 @@ msgstr "https://python-social-auth.readthedocs.io/"
 
 #: ../../admin/install.rst:200
 msgid "Django REST Framework"
-msgstr "Django REST Framework"
+msgstr ""
 
 #: ../../admin/install.rst:201
 msgid "https://www.django-rest-framework.org/"
@@ -9259,31 +9435,35 @@ msgstr "https://www.django-rest-framework.org/"
 
 #: ../../admin/install.rst:205
 msgid "Optional dependencies"
-msgstr "Opcionalne ovisnosti"
+msgstr ""
 
 #: ../../admin/install.rst:208
 msgid "Optional dependency specifier"
-msgstr "Specifiator opcionalne ovisnosti"
+msgstr ""
 
 #: ../../admin/install.rst:209
+#, fuzzy
+#| msgid "Python Package"
 msgid "Python packages"
-msgstr "Python paketi"
+msgstr "Python paket"
 
 #: ../../admin/install.rst:210
 msgid "Weblate feature"
 msgstr "Weblate funkcija"
 
 #: ../../admin/install.rst:0
+#, fuzzy
+#| msgid "`django-auth-ldap <https://pypi.org/project/django-auth-ldap>`_"
 msgid ""
 "`aliyun-python-sdk-alimt <https://pypi.org/project/aliyun-python-sdk-alimt>`_"
-msgstr ""
-"`aliyun-python-sdk-alimt <https://pypi.org/project/aliyun-python-sdk-alimt>`_"
+msgstr "`django-auth-ldap <https://pypi.org/project/django-auth-ldap>`_"
 
 #: ../../admin/install.rst:0
+#, fuzzy
+#| msgid "`django-auth-ldap <https://pypi.org/project/django-auth-ldap>`_"
 msgid ""
 "`aliyun-python-sdk-core <https://pypi.org/project/aliyun-python-sdk-core>`_"
-msgstr ""
-"`aliyun-python-sdk-core <https://pypi.org/project/aliyun-python-sdk-core>`_"
+msgstr "`django-auth-ldap <https://pypi.org/project/django-auth-ldap>`_"
 
 #: ../../admin/install.rst:0
 msgid "`boto3 <https://pypi.org/project/boto3>`_"
@@ -9291,29 +9471,34 @@ msgstr "`boto3 <https://pypi.org/project/boto3>`_"
 
 #: ../../admin/install.rst:0
 msgid "`python-akismet <https://pypi.org/project/python-akismet>`_"
-msgstr "`python-akismet <https://pypi.org/project/python-akismet>`_"
+msgstr ""
 
 #: ../../admin/install.rst:0
+#, fuzzy
+#| msgid "`boto3 <https://pypi.org/project/boto3>`_"
 msgid "`logging-gelf <https://pypi.org/project/logging-gelf>`_"
-msgstr "`logging-gelf <https://pypi.org/project/logging-gelf>`_"
+msgstr "`boto3 <https://pypi.org/project/boto3>`_"
 
 #: ../../admin/install.rst:0
 msgid "`git-review <https://pypi.org/project/git-review>`_"
-msgstr "`git-review <https://pypi.org/project/git-review>`_"
+msgstr ""
 
 #: ../../admin/install.rst:0
+#, fuzzy
+#| msgid "`boto3 <https://pypi.org/project/boto3>`_"
 msgid "`google-cloud-storage <https://pypi.org/project/google-cloud-storage>`_"
-msgstr "`google-cloud-storage <https://pypi.org/project/google-cloud-storage>`_"
+msgstr "`boto3 <https://pypi.org/project/boto3>`_"
 
 #: ../../admin/install.rst:0
 msgid ""
 "`google-cloud-translate <https://pypi.org/project/google-cloud-translate>`_"
 msgstr ""
-"`google-cloud-translate <https://pypi.org/project/google-cloud-translate>`_"
 
 #: ../../admin/install.rst:236
+#, fuzzy
+#| msgid ":ref:`mt-google-translate-api-v3`"
 msgid ":ref:`mt-google-translate-api-v3` with glossary support"
-msgstr ":ref:`mt-google-translate-api-v3` s podrškom glosara"
+msgstr ":ref:`mt-google-translate-api-v3`"
 
 #: ../../admin/install.rst:0
 msgid "`django-auth-ldap <https://pypi.org/project/django-auth-ldap>`_"
@@ -9321,67 +9506,90 @@ msgstr "`django-auth-ldap <https://pypi.org/project/django-auth-ldap>`_"
 
 #: ../../admin/install.rst:0
 msgid "`mercurial <https://pypi.org/project/mercurial>`_"
-msgstr "`mercurial <https://pypi.org/project/mercurial>`_"
+msgstr ""
 
 #: ../../admin/install.rst:0
 msgid "`mysqlclient <https://pypi.org/project/mysqlclient>`_"
-msgstr "`mysqlclient <https://pypi.org/project/mysqlclient>`_"
+msgstr ""
 
 #: ../../admin/install.rst:248
+#, fuzzy
+#| msgid ":ref:`database-setup`"
 msgid "MySQL or MariaDB, see :ref:`database-setup`"
-msgstr "MySQL ili MariaDB, pogledaj :ref:`database-setup`"
+msgstr ":ref:`database-setup`"
 
 #: ../../admin/install.rst:0
+#, fuzzy
+#| msgid "`boto3 <https://pypi.org/project/boto3>`_"
 msgid "`openai <https://pypi.org/project/openai>`_"
-msgstr "`openai <https://pypi.org/project/openai>`_"
+msgstr "`boto3 <https://pypi.org/project/boto3>`_"
 
 #: ../../admin/install.rst:0
 msgid "`psycopg <https://pypi.org/project/psycopg>`_"
-msgstr "`psycopg <https://pypi.org/project/psycopg>`_"
+msgstr ""
 
 #: ../../admin/install.rst:256
+#, fuzzy
+#| msgid "PostgreSQL database setup"
 msgid "PostgreSQL, see :ref:`database-setup`"
-msgstr "PostgreSQL, pogledaj :ref:`database-setup`"
+msgstr "Postava PostgreSQL baze podataka"
 
 #: ../../admin/install.rst:0
 msgid "`python3-saml <https://pypi.org/project/python3-saml>`_"
-msgstr "`python3-saml <https://pypi.org/project/python3-saml>`_"
+msgstr ""
 
 #: ../../admin/install.rst:0
+#, fuzzy
+#| msgid "`django-auth-ldap <https://pypi.org/project/django-auth-ldap>`_"
 msgid "`djangosaml2idp <https://pypi.org/project/djangosaml2idp>`_"
-msgstr "`djangosaml2idp <https://pypi.org/project/djangosaml2idp>`_"
+msgstr "`django-auth-ldap <https://pypi.org/project/django-auth-ldap>`_"
 
 #: ../../admin/install.rst:264
+#, fuzzy
+#| msgid "Integrating with Weblate"
 msgid "Integrating SAML 2 IDP into Weblate"
-msgstr "Integracija SAML 2 IDP-a u Weblate"
+msgstr "Integracija s Weblateom"
 
 #: ../../admin/install.rst:0
+#, fuzzy
+#| msgid "`boto3 <https://pypi.org/project/boto3>`_"
 msgid "`wlhosted <https://pypi.org/project/wlhosted>`_"
-msgstr "`wlhosted <https://pypi.org/project/wlhosted>`_"
+msgstr "`boto3 <https://pypi.org/project/boto3>`_"
 
 #: ../../admin/install.rst:268 ../../admin/install.rst:272
+#, fuzzy
+#| msgid "Weblate administration"
 msgid "Hosted Weblate integration"
-msgstr "Hosted Weblate integracija"
+msgstr "Weblate administracija"
 
 #: ../../admin/install.rst:0
+#, fuzzy
+#| msgid "`boto3 <https://pypi.org/project/boto3>`_"
 msgid "`wllegal <https://pypi.org/project/wllegal>`_"
-msgstr "`wllegal <https://pypi.org/project/wllegal>`_"
+msgstr "`boto3 <https://pypi.org/project/boto3>`_"
 
 #: ../../admin/install.rst:0
+#, fuzzy
+#| msgid "`boto3 <https://pypi.org/project/boto3>`_"
 msgid "`granian <https://pypi.org/project/granian>`_"
-msgstr "`granian <https://pypi.org/project/granian>`_"
+msgstr "`boto3 <https://pypi.org/project/boto3>`_"
 
 #: ../../admin/install.rst:276
+#, fuzzy
+#| msgid "Discover Weblate"
 msgid "wsgi server for Weblate"
-msgstr "wsgi server za Weblate"
+msgstr "Otkrij Weblate"
 
 #: ../../admin/install.rst:0
+#, fuzzy
+#| msgid ""
+#| "`django-zxcvbn-password <https://pypi.org/project/django-zxcvbn-"
+#| "password>`_"
 msgid ""
 "`django-zxcvbn-password-validator <https://pypi.org/project/django-zxcvbn-"
 "password-validator>`_"
 msgstr ""
-"`django-zxcvbn-password-validator <https://pypi.org/project/django-zxcvbn-"
-"password-validator>`_"
+"`django-zxcvbn-password <https://pypi.org/project/django-zxcvbn-password>`_"
 
 #: ../../admin/install.rst:282
 msgid ""
@@ -11028,8 +11236,14 @@ msgid ""
 msgstr ""
 
 #: ../../admin/install.rst:1832
+#, fuzzy
+#| msgid ""
+#| "`All changes in detail <https://github.com/WeblateOrg/weblate/"
+#| "milestone/104?closed=1>`__."
 msgid "`Weblate plugin for Munin <https://github.com/WeblateOrg/munin>`_"
-msgstr "`Weblate dodatak za Munin <https://github.com/WeblateOrg/munin>`_"
+msgstr ""
+"`Detaljni prikaz svih promjena <https://github.com/WeblateOrg/weblate/"
+"milestone/104?closed=1>`__."
 
 #: ../../admin/install.rst:1837 ../../admin/install/docker.rst:1804
 msgid "Collecting error reports and monitoring performance"
@@ -11493,7 +11707,7 @@ msgstr ""
 
 #: ../../admin/install/docker.rst:279
 msgid "Stop Weblate container:"
-msgstr "Zaustavi Weblate kontejner:"
+msgstr "Zaustavi spremnik Weblatea:"
 
 #: ../../admin/install/docker.rst:285
 msgid "Backup the database:"
@@ -11823,8 +12037,10 @@ msgid ""
 msgstr ""
 
 #: ../../admin/install/docker.rst:731
+#, fuzzy
+#| msgid ":setting:`INTERLEDGER_PAYMENT_POINTERS`"
 msgid "Configures :setting:`INTERLEDGER_PAYMENT_BUILTIN`."
-msgstr "Konfigurira :setting:`INTERLEDGER_PAYMENT_BUILTIN`."
+msgstr ":setting:`INTERLEDGER_PAYMENT_POINTERS`"
 
 #: ../../admin/install/docker.rst:737
 msgid ""
@@ -11962,8 +12178,10 @@ msgid "Configures :setting:`DEFAULT_SHARED_TM`."
 msgstr ""
 
 #: ../../admin/install/docker.rst:878
+#, fuzzy
+#| msgid ":setting:`INTERLEDGER_PAYMENT_POINTERS`"
 msgid "Configures :setting:`DEFAULT_AUTOCLEAN_TM`."
-msgstr "Konfigurira :setting:`DEFAULT_AUTOCLEAN_TM`."
+msgstr ":setting:`INTERLEDGER_PAYMENT_POINTERS`"
 
 #: ../../admin/install/docker.rst:882
 msgid "Configures the Akismet API key, see :setting:`AKISMET_API_KEY`."
@@ -12478,7 +12696,7 @@ msgstr ""
 
 #: ../../admin/install/docker.rst:1616
 msgid "Caching server setup"
-msgstr "Postavljanje predmemoriranja servera"
+msgstr "Postava poslužitelja predmemorije"
 
 #: ../../admin/install/docker.rst:1618
 msgid ""
@@ -12519,11 +12737,11 @@ msgstr ""
 
 #: ../../admin/install/docker.rst:1662
 msgid "Email server setup"
-msgstr "Postavljanje e-mail servera"
+msgstr "Postava e-mail poslužitelja"
 
 #: ../../admin/install/docker.rst:1664
 msgid "To make outgoing e-mail work, you need to provide a mail server."
-msgstr "Za funkcioniranje slanja e-mailova moraš navesti e-mail server."
+msgstr "Za funkcioniranje slanja e-mailova moraš navesti e-mail poslužitelj."
 
 #: ../../admin/install/docker.rst:1666
 msgid "Example TLS configuration:"
@@ -12539,7 +12757,7 @@ msgstr "Ime računala e-mail servera ili IP sdresa."
 
 #: ../../admin/install/docker.rst:1705
 msgid "Mail server port, defaults to 25."
-msgstr "Priključak e-mail servera, zadano je 25."
+msgstr "Priključak e-mail poslužitelja. Standardno je 25."
 
 #: ../../admin/install/docker.rst:1713
 msgid "E-mail authentication user."
@@ -13568,12 +13786,16 @@ msgid ""
 msgstr ""
 
 #: ../../admin/languages.rst:27
+#, fuzzy
+#| msgid ""
+#| "`All changes in detail <https://github.com/WeblateOrg/weblate/"
+#| "milestone/104?closed=1>`__."
 msgid ""
 "`Current language definitions <https://github.com/WeblateOrg/language-data/"
 "blob/main/languages.csv>`_"
 msgstr ""
-"`Trenutačne definicije jezika <https://github.com/WeblateOrg/language-data/"
-"blob/main/languages.csv>`_"
+"`Detaljni prikaz svih promjena <https://github.com/WeblateOrg/weblate/"
+"milestone/104?closed=1>`__."
 
 #: ../../admin/languages.rst:32
 msgid "Parsing language codes"
@@ -13924,8 +14146,10 @@ msgid ":guilabel:`Component source language`"
 msgstr "Komponenta preimenovana"
 
 #: ../../admin/machine.rst:55
+#, fuzzy
+#| msgid "Component renamed"
 msgid "Uses the component source language."
-msgstr "Koristi izvorni jezik komponente."
+msgstr "Komponenta preimenovana"
 
 #: ../../admin/machine.rst:57
 msgid "This was the behavior before the 5.11 release."
@@ -13938,12 +14162,12 @@ msgid ":guilabel:`Secondary language defined in project or component`"
 msgstr "Novi jezik dodan u %(component)s"
 
 #: ../../admin/machine.rst:59
+#, fuzzy
+#| msgid "Component name"
 msgid ""
 "Use project :ref:`project-secondary_language` or component :ref:`component-"
 "secondary_language`."
-msgstr ""
-"Koristi projekt :ref:`project-secondary_language` ili komponentu :ref"
-":`component-secondary_language`."
+msgstr "Ime komponente"
 
 #: ../../admin/machine.rst:61
 msgid ""
@@ -15235,8 +15459,10 @@ msgid "Example of performance profiling"
 msgstr "Primjer za podudarajuće datoteke"
 
 #: ../../admin/management.rst:175
+#, fuzzy
+#| msgid "Example of JSON file:"
 msgid "Example of memory profiling"
-msgstr "Primjer profiliranja memorije"
+msgstr "Primjer JSON datoteke:"
 
 #: ../../admin/management.rst:193
 msgid "Displays length of Celery task queues."
@@ -15591,8 +15817,10 @@ msgid ""
 msgstr ""
 
 #: ../../admin/management.rst:588
+#, fuzzy
+#| msgid ":ref:`projectbackup`"
 msgid "Imports :ref:`projectbackup`."
-msgstr "Uvozi :ref:`projectbackup`."
+msgstr ":ref:`projectbackup`"
 
 #: ../../admin/management.rst:592
 msgid ""
@@ -15642,8 +15870,14 @@ msgid ""
 msgstr ""
 
 #: ../../admin/management.rst:642
+#, fuzzy
+#| msgid ""
+#| "Auto-translate the newly added strings with :ref:`addon-weblate."
+#| "autotranslate.autotranslate`."
 msgid "To install :ref:`addon-weblate.gettext.mo` for all components:"
-msgstr "Za instalaciju :ref:`addon-weblate.gettext.mo` za sve komponente:"
+msgstr ""
+"Automatski prevedi novo dodane izraze s :ref:`addon-weblate.autotranslate."
+"autotranslate`."
 
 #: ../../admin/management.rst:659
 msgid "Installs an site-wide automatic suggestion service."
@@ -15723,8 +15957,10 @@ msgid "Lists all Weblate dependencies and their versions."
 msgstr ""
 
 #: ../../admin/management.rst:772
+#, fuzzy
+#| msgid "File format"
 msgid "Lists File format parameters."
-msgstr "Navodi parametre formata datoteke."
+msgstr "Format datoteke"
 
 #: ../../admin/management.rst:779
 msgid ""
@@ -16018,12 +16254,12 @@ msgid "Autoclean translation memory"
 msgstr "Automatski očisti prevodilačku memoriju"
 
 #: ../../admin/memory.rst:86
+#, fuzzy
+#| msgid "The translation was automatically locked due to following alerts:"
 msgid ""
 "The translation memory is automatically cleaned up by removing obsolete and "
 "outdated entries."
-msgstr ""
-"Prevodilačka memorija se automatski čisti uklanjanjem nepotrebnih i "
-"zastarjelih unosa."
+msgstr "Prijevod je automatski zaključan zbog sljedećih upozorenja:"
 
 #: ../../admin/memory.rst:88
 msgid ""
@@ -16112,8 +16348,10 @@ msgid "Imports TMX or JSON files into the translation memory"
 msgstr ""
 
 #: ../../admin/memory.rst:151
+#, fuzzy
+#| msgid "Version control repositories for translations."
 msgid "Removes all entries with pending status from the translation memory"
-msgstr "Uklanja sve unose sa statusom čekanja iz prevodilačke memorije"
+msgstr "Repozitoriji kontrola verzija za prijevode."
 
 #: ../../admin/memory.rst:155
 msgid ""
@@ -16892,7 +17130,7 @@ msgstr "Aktiviraj preglede"
 
 #: ../../admin/projects.rst:236
 msgid "Enable review workflow for translations, see :ref:`reviews`."
-msgstr "Aktiviraj radni tok pregleda za prijevode, pogledaj :ref:`reviews`."
+msgstr "Aktiviraj tok pregleda za prijevode, pogledaj :ref:`reviews`."
 
 #: ../../admin/projects.rst:245
 msgid "Enable source reviews"
@@ -16901,8 +17139,7 @@ msgstr "Aktiviraj preglede izvora"
 #: ../../admin/projects.rst:247
 msgid "Enable review workflow for source strings, see :ref:`source-reviews`."
 msgstr ""
-"Aktiviraj radni tok pregleda za izvorne izraze, pogledaj :ref:`source-"
-"reviews`."
+"Aktiviraj tok pregleda za izvorne izraze, pogledaj :ref:`source-reviews`."
 
 #: ../../admin/projects.rst:257
 #, fuzzy
@@ -17318,7 +17555,7 @@ msgstr "Uredi osnovnu datoteku"
 
 #: ../../admin/projects.rst:562
 msgid "Whether to allow editing strings in the :ref:`component-template`."
-msgstr "Da li dopustiti uređivanje izraza u :ref:`component-template`."
+msgstr ""
 
 #: ../../admin/projects.rst:576
 msgid ""
@@ -17326,9 +17563,6 @@ msgid ""
 "translation file provided by developers and is used when creating actual "
 "source strings."
 msgstr ""
-"Međujezična datoteka za :ref:`monolingual`. U većini slučajeva ovo je "
-"prevodilačka datoteka koju pružaju programeri i koristi se pri stvaranju "
-"stvarnih izvornih izraza."
 
 #: ../../admin/projects.rst:580
 msgid ""
@@ -17337,10 +17571,6 @@ msgid ""
 "into the source language, translating to other languages is prohibited. This "
 "provides :ref:`source-quality-gateway`."
 msgstr ""
-"Kada je postavljeno, izvorni izrazi se temelje na ovoj datoteci, ali svi "
-"ostali jezici se temelje na :ref:`component-template`. U slučaju da izraz "
-"nije preveden na izvorni jezik, prevođenje na druge jezike je zabranjeno. To "
-"omogućuje :ref:`source-quality-gateway`."
 
 #: ../../admin/projects.rst:594 ../../devel/gettext.rst:228
 #: ../../formats/android.rst:80 ../../formats/apple.rst:33
@@ -17612,12 +17842,16 @@ msgid ""
 msgstr ""
 
 #: ../../admin/projects.rst:785
+#, fuzzy
+#| msgid ""
+#| "Improved :http:post:`/api/translations/(string:project)/(string:"
+#| "component)/(string:language)/units/`."
 msgid ""
 ":http:post:`/api/translations/(string:project)/(string:component)/(string:"
 "language)/units/`"
 msgstr ""
-":http:post:`/api/translations/"
-"(string:project)/(string:component)/(string:language)/units/`"
+"Poboljšano :http:post:`/api/translations/(string:project)/(string:component)/"
+"(string:language)/units/`."
 
 #: ../../admin/projects.rst:790
 msgid "Language code style"
@@ -19425,8 +19659,10 @@ msgid "Number of languages user can translate"
 msgstr "Broj jezika koje korisnik može prevoditi"
 
 #: ../../api.rst:420
+#, fuzzy
+#| msgid "Translations with contribution"
 msgid "List translations with contributions from a user."
-msgstr "Navedi prijevode s doprinosima korisnika."
+msgstr "Prijevodi s doprinosom"
 
 #: ../../api.rst:424
 msgid ""
@@ -20166,8 +20402,10 @@ msgid "Service name"
 msgstr "Usluga"
 
 #: ../../api.rst:1303
+#, fuzzy
+#| msgid "Save configuration."
 msgid "Service configuration in JSON"
-msgstr "Konfiguracija usluge u JSON-u"
+msgstr "Spremi konfiguraciju."
 
 #: ../../api.rst:1311
 msgid ""
@@ -20902,6 +21140,10 @@ msgid "translation unit labels, available on source units"
 msgstr ""
 
 #: ../../api.rst:2244
+#, fuzzy
+#| msgid ""
+#| "unit state, 0 - untranslated, 10 - needs editing, 20 - translated, 30 - "
+#| "approved, 100 - read only"
 msgid ""
 "unit state, 0 - untranslated, 10 - needs editing, 20 - translated, 30 - "
 "approved, 100 - read-only"
@@ -21031,9 +21273,6 @@ msgid ""
 "comment scope - global, translation (available on all non-source units), "
 "report (need review workflow enabled, see :ref:`reviews`)"
 msgstr ""
-"opseg komentara – globalno, prijevod (dostupan na svim jedinicama koje nisu "
-"izvorne), izvještaj (zahtijeva aktiviran radni tok pregleda, vidi "
-":ref:`reviews`"
 
 #: ../../api.rst:2315
 #, fuzzy
@@ -21076,8 +21315,10 @@ msgid "URL of the commenter's object"
 msgstr "URL povezanog objekta prijevoda"
 
 #: ../../api.rst:2321
+#, fuzzy
+#| msgid "Generated on %(timestamp)s."
 msgid "creation timestamp of the comment"
-msgstr "vremenska oznaka nastanka komentara"
+msgstr "Izrađeno %(timestamp)s."
 
 #: ../../api.rst:2331
 msgid "Filtering of changes was introduced in the 4.1 release."
@@ -21537,22 +21778,33 @@ msgid "language code (if applicable)"
 msgstr "jezični kod (ako je primjenjivo)"
 
 #: ../../api.rst:2696
+#, fuzzy
+#| msgid "Added :http:get:`/api/categories/(int:id)/statistics/`."
 msgid ":http:get:`/api/languages/(string:language)/statistics/`"
-msgstr ":http:get:`/api/languages/(string:language)/statistics/`"
+msgstr "Dodano :http:get:`/api/categories/(int:id)/statistics/`."
 
 #: ../../api.rst:2697
+#, fuzzy
+#| msgid "Added :http:get:`/api/projects/(string:project)/file/`."
 msgid ":http:get:`/api/projects/(string:project)/statistics/`"
-msgstr ":http:get:`/api/projects/(string:project)/statistics/`"
+msgstr "Dodano :http:get:`/api/projects/(string:project)/file/`."
 
 #: ../../api.rst:2698
+#, fuzzy
+#| msgid "Added :http:get:`/api/categories/(int:id)/statistics/`."
 msgid ":http:get:`/api/categories/(int:id)/statistics/`"
-msgstr ":http:get:`/api/categories/(int:id)/statistics/`"
+msgstr "Dodano :http:get:`/api/categories/(int:id)/statistics/`."
 
 #: ../../api.rst:2699
+#, fuzzy
+#| msgid ""
+#| ":http:get:`/api/components/(string:project)/(string:component)/` exposes "
+#| "component lock state."
 msgid ""
 ":http:get:`/api/components/(string:project)/(string:component)/statistics/`"
 msgstr ""
-":http:get:`/api/components/(string:project)/(string:component)/statistics/`"
+":http:get:`/api/components/(string:project)/(string:component)/` prikazuje "
+"stanje zaključavanja komponente."
 
 #: ../../api.rst:2700
 msgid ""
@@ -21722,8 +21974,10 @@ msgid "Link to a parent category."
 msgstr "Poveznica za nadređenu kategoriju."
 
 #: ../../api.rst:2780
+#, fuzzy
+#| msgid "Edit partial information about cateogry."
 msgid "Edit partial information about category."
-msgstr "Uredi dijelove informacija o kategoriji."
+msgstr "Uredi djelomične informacije o kategoriji."
 
 #: ../../api.rst:0
 msgid "param id"
@@ -21734,20 +21988,28 @@ msgid "type id"
 msgstr "id vrste"
 
 #: ../../api.rst:2784 ../../api.rst:2794
+#, fuzzy
+#| msgid "Optional cateogry configuration"
 msgid "Optional category configuration"
 msgstr "Opcionalna konfiguracija kategorije"
 
 #: ../../api.rst:2790
+#, fuzzy
+#| msgid "Edit full information about cateogry."
 msgid "Edit full information about category."
 msgstr "Uredi sve informacije o kategoriji."
 
 #: ../../api.rst:2800
+#, fuzzy
+#| msgid "Delete cateogry."
 msgid "Delete category."
 msgstr "Izbriši kategoriju."
 
 #: ../../api.rst:2809
+#, fuzzy
+#| msgid "List statistics of a user."
 msgid "Returns statistics for a category."
-msgstr "Vraća statistiku za katogoriju."
+msgstr "Prikaži statistiku korisnika."
 
 #: ../../api.rst:2821
 msgid "Notification hooks"
@@ -21813,8 +22075,6 @@ msgid ""
 "https://docs.github.com/en/get-started/customizing-your-github-workflow/"
 "exploring-integrations/about-webhooks"
 msgstr ""
-"https://docs.github.com/en/get-started/customizing-your-github-workflow/"
-"exploring-integrations/about-webhooks"
 
 #: ../../api.rst:2866
 msgid "Generic information about GitHub Webhooks"
@@ -21837,7 +22097,7 @@ msgstr ""
 
 #: ../../api.rst:2879
 msgid "https://docs.gitlab.com/user/project/integrations/webhooks/"
-msgstr "https://docs.gitlab.com/user/project/integrations/webhooks/"
+msgstr ""
 
 #: ../../api.rst:2880
 msgid "Generic information about GitLab Webhooks"
@@ -21855,7 +22115,7 @@ msgstr ""
 
 #: ../../api.rst:2893
 msgid "https://support.atlassian.com/bitbucket-cloud/docs/manage-webhooks/"
-msgstr "https://support.atlassian.com/bitbucket-cloud/docs/manage-webhooks/"
+msgstr ""
 
 #: ../../api.rst:2894
 msgid "Generic information about Bitbucket Webhooks"
@@ -21873,7 +22133,7 @@ msgstr ""
 
 #: ../../api.rst:2907
 msgid "https://docs.pagure.org/pagure/usage/using_webhooks.html"
-msgstr "https://docs.pagure.org/pagure/usage/using_webhooks.html"
+msgstr ""
 
 #: ../../api.rst:2908
 msgid "Generic information about Pagure Webhooks"
@@ -21900,8 +22160,6 @@ msgid ""
 "https://learn.microsoft.com/en-us/azure/devops/service-hooks/services/"
 "webhooks?view=azure-devops"
 msgstr ""
-"https://learn.microsoft.com/en-us/azure/devops/service-hooks/services/"
-"webhooks?view=azure-devops"
 
 #: ../../api.rst:2927
 msgid "Generic information about Azure DevOps Web Hooks"
@@ -21919,7 +22177,7 @@ msgstr ""
 
 #: ../../api.rst:2940
 msgid "https://docs.gitea.io/en-us/webhooks/"
-msgstr "https://docs.gitea.io/en-us/webhooks/"
+msgstr ""
 
 #: ../../api.rst:2941
 msgid "Generic information about Gitea Webhooks"
@@ -21937,7 +22195,7 @@ msgstr ""
 
 #: ../../api.rst:2954
 msgid "https://gitee.com/help/categories/40"
-msgstr "https://gitee.com/help/categories/40"
+msgstr ""
 
 #: ../../api.rst:2955
 msgid "Generic information about Gitee Webhooks"
@@ -21976,8 +22234,10 @@ msgid "`RSS on Wikipedia <https://en.wikipedia.org/wiki/RSS>`_"
 msgstr "`RSS na Wikipediji <https://hr.wikipedia.org/wiki/RSS>`_"
 
 #: ../../changes.rst:2
+#, fuzzy
+#| msgid "Weblate 5.1.1"
 msgid "Weblate 5.13.1"
-msgstr "Weblate 5.13.1"
+msgstr "Weblate 5.1.1"
 
 #: ../../changes.rst:4
 msgid "*Released on September 4th 2025.*"
@@ -22004,8 +22264,10 @@ msgstr "Nove funkcije"
 #: ../../changes.rst:1301 ../../changes.rst:1329 ../../changes.rst:1366
 #: ../../changes.rst:1397 ../../changes.rst:1440 ../../changes.rst:1469
 #: ../../changes.rst:1514
+#, fuzzy
+#| msgid "**Improvements**"
 msgid "Improvements"
-msgstr "Poboljšanja"
+msgstr "**Poboljšanja**"
 
 #: ../../changes.rst:10
 msgid "Smarter retries of unwritable pending changes."
@@ -22031,8 +22293,10 @@ msgstr ""
 #: ../../changes.rst:1248 ../../changes.rst:1281 ../../changes.rst:1306
 #: ../../changes.rst:1342 ../../changes.rst:1373 ../../changes.rst:1412
 #: ../../changes.rst:1445 ../../changes.rst:1478 ../../changes.rst:1535
+#, fuzzy
+#| msgid "**Bug fixes**"
 msgid "Bug fixes"
-msgstr "Ispravci grešaka"
+msgstr "**Ispravljene greške**"
 
 #: ../../changes.rst:15
 msgid "Sign-in form not shown for LDAP."
@@ -22065,8 +22329,11 @@ msgid ":ref:`mt-libretranslate` compatibility with LibreTranslate 1.7.0."
 msgstr "Poboljšana kompatibilnost s upravljačima lozinki."
 
 #: ../../changes.rst:21
+#, fuzzy
+#| msgctxt "Notification name"
+#| msgid "You were mentioned in a comment"
 msgid "Username autocompletion in comments."
-msgstr "Automatsko dovršavanje korisničkog imena u komentarima."
+msgstr "Spomenut/a si u komentaru"
 
 #: ../../changes.rst:22
 msgid "Shorten session expiry while in :ref:`2fa`."
@@ -22086,8 +22353,10 @@ msgstr ""
 #: ../../changes.rst:964 ../../changes.rst:1126 ../../changes.rst:1232
 #: ../../changes.rst:1285 ../../changes.rst:1350 ../../changes.rst:1421
 #: ../../changes.rst:1488 ../../changes.rst:1543
+#, fuzzy
+#| msgid "**Compatibility**"
 msgid "Compatibility"
-msgstr "Kompatibilnost"
+msgstr "**Kompatibilnost**"
 
 #: ../../changes.rst:28
 #, fuzzy
@@ -22118,8 +22387,10 @@ msgstr "Dodana podrška za preraspoređivanje spremljenih promjena."
 #: ../../changes/v4.rst:768 ../../changes/v4.rst:859 ../../changes/v4.rst:934
 #: ../../changes/v4.rst:1020 ../../changes/v4.rst:1095
 #: ../../changes/v4.rst:1168
+#, fuzzy
+#| msgid "**Upgrading**"
 msgid "Upgrading"
-msgstr "Nadogradnja"
+msgstr "**Nadogradnja**"
 
 #: ../../changes.rst:32 ../../changes.rst:88 ../../changes.rst:129
 #: ../../changes.rst:148 ../../changes.rst:212 ../../changes.rst:235
@@ -22182,8 +22453,10 @@ msgstr ""
 "milestone/104?closed=1>`__."
 
 #: ../../changes.rst:43
+#, fuzzy
+#| msgid "Weblate 5.1"
 msgid "Weblate 5.13"
-msgstr "Weblate 5.13"
+msgstr "Weblate 5.1"
 
 #: ../../changes.rst:45
 msgid "*Released on August 15th 2025.*"
@@ -22259,8 +22532,10 @@ msgid "Background commits are now identified by an internal user."
 msgstr ""
 
 #: ../../changes.rst:64
+#, fuzzy
+#| msgid "Toggle navigation"
 msgid "Reorganized navigation menu."
-msgstr "Reorganizirani navigacijski izbornik."
+msgstr "Uključi/isključi navigaciju"
 
 #: ../../changes.rst:65
 msgid ""
@@ -22465,8 +22740,10 @@ msgid ":ref:`mt-deepl` integration now supports using next-gen LLM model."
 msgstr "Dozvoli apsolutne poveznice u mjestima izvornih izraza."
 
 #: ../../changes.rst:124
+#, fuzzy
+#| msgid ":ref:`projectbackup`"
 msgid "Restoring :ref:`projectbackup` with votes."
-msgstr "Obnavljanje :ref:`projectbackup` s glasovima."
+msgstr ":ref:`projectbackup`"
 
 #: ../../changes.rst:125
 #, fuzzy
@@ -22487,8 +22764,10 @@ msgstr ""
 "milestone/104?closed=1>`__."
 
 #: ../../changes.rst:138
+#, fuzzy
+#| msgid "Weblate 5.1.1"
 msgid "Weblate 5.12.1"
-msgstr "Weblate 5.12.1"
+msgstr "Weblate 5.1.1"
 
 #: ../../changes.rst:140 ../../changes.rst:159
 msgid "*Released on June 16th 2025.*"
@@ -22499,20 +22778,28 @@ msgid ":ref:`sbom` now includes serial number."
 msgstr ""
 
 #: ../../changes.rst:154
+#, fuzzy
+#| msgid ""
+#| "`All changes in detail <https://github.com/WeblateOrg/weblate/"
+#| "milestone/104?closed=1>`__."
 msgid ""
 "`All changes in detail <https://github.com/WeblateOrg/weblate/milestone/147?"
 "closed=1>`__."
 msgstr ""
-"`Detaljan prikaz promjena <https://github.com/WeblateOrg/weblate/milestone/"
-"147?closed=1>`__."
+"`Detaljni prikaz svih promjena <https://github.com/WeblateOrg/weblate/"
+"milestone/104?closed=1>`__."
 
 #: ../../changes.rst:157
+#, fuzzy
+#| msgid "Weblate 5.1"
 msgid "Weblate 5.12"
-msgstr "Weblate 5.12"
+msgstr "Weblate 5.1"
 
 #: ../../changes.rst:162
+#, fuzzy
+#| msgid "Security FAQ"
 msgid "Security"
-msgstr "Sigurnost"
+msgstr "Često postavljena pitanja o privatnosti"
 
 #: ../../changes.rst:163
 msgid ""
@@ -22535,8 +22822,8 @@ msgid ""
 "Added :http:post:`/api/units/(int:id)/comments/` to create a new comment for "
 "the given translation unit."
 msgstr ""
-"Dodano je :http:post:`/api/projects/(string:project)/components/` za "
-"stvaranje novih komponenti."
+"Koristi :http:post:`/api/projects/(string:project)/components/` za stvaranje "
+"novih komponenti."
 
 #: ../../changes.rst:169
 msgid ""
@@ -22554,20 +22841,26 @@ msgid ":ref:`sbom` is now being provided for Weblate."
 msgstr ""
 
 #: ../../changes.rst:172
+#, fuzzy
+#| msgid ":doc:`/contributing/documentation`"
 msgid ":doc:`/security/index` documentation."
-msgstr ":doc:`/security/index` dokumentacija."
+msgstr ":doc:`/contributing/documentation`"
 
 #: ../../changes.rst:173
 msgid "Added support for :doc:`/formats/compose-multiplatform-resources`."
 msgstr ""
 
 #: ../../changes.rst:174
+#, fuzzy
+#| msgid "Translation comment"
 msgid "Added :guilabel:`Translation Coordinator` role."
-msgstr "Dodana je uloga :guilabel:`Translation Coordinator`."
+msgstr "Komentar za prijevod"
 
 #: ../../changes.rst:175
+#, fuzzy
+#| msgid ":ref:`addon-weblate.autotranslate.autotranslate` add-on"
 msgid ":ref:`addon-weblate.webhook.slack` is now available as an add-on."
-msgstr ":ref:`addon-weblate.webhook.slack` je sada dostupan kao dodatak."
+msgstr ":ref:`addon-weblate.autotranslate.autotranslate` dodatak"
 
 #: ../../changes.rst:176
 msgid ""
@@ -22773,8 +23066,10 @@ msgid "Weblate 5.11.2"
 msgstr "Weblate 5.11.2"
 
 #: ../../changes.rst:269
+#, fuzzy
+#| msgid "Use automatic suggestions"
 msgid "Glossary performance in zen mode and automatic suggestions."
-msgstr "Performanse glosara u zen modusu i automatski prijedlozi."
+msgstr "Koristi automatske prijedloge"
 
 #: ../../changes.rst:270
 #, fuzzy
@@ -22793,8 +23088,10 @@ msgid "Improved error handling on ZIP upload."
 msgstr "Poboljšana je brzina globalne pretrage."
 
 #: ../../changes.rst:276
+#, fuzzy
+#| msgid "**Compatibility**"
 msgid "Django 5.2 compatibility."
-msgstr "Django 5.2 kompatibilnost."
+msgstr "**Kompatibilnost**"
 
 #: ../../changes.rst:277
 #, fuzzy
@@ -22843,8 +23140,10 @@ msgid ":ref:`addon-weblate.webhook.webhook` is now enabled in Docker."
 msgstr ""
 
 #: ../../changes.rst:303
+#, fuzzy
+#| msgid "Forbidden glossary term"
 msgid "Removing pending glossary terms."
-msgstr "Uklanjanje pojmova na čekanju iz glosara."
+msgstr "Zabranjen pojam u glosaru"
 
 #: ../../changes.rst:313
 #, fuzzy
@@ -22899,12 +23198,12 @@ msgstr ""
 "Popis provjera koje se ne mogu zanemariti, pogledaj :ref:`enforcing-checks`."
 
 #: ../../changes.rst:327
+#, fuzzy
+#| msgid "New language added to %(component)s"
 msgid ""
 ":ref:`secondary-languages` can now be specified in :ref:`project` and :ref:"
 "`component`."
-msgstr ""
-":ref:`secondary-languages` se sada može specificirati u :ref:`project` i "
-":ref:`component`."
+msgstr "Novi jezik dodan u %(component)s"
 
 #: ../../changes.rst:328
 msgid ":ref:`mt-sources` can now be customized."
@@ -22938,12 +23237,16 @@ msgid ""
 msgstr ""
 
 #: ../../changes.rst:337
+#, fuzzy
+#| msgid "This string has been translated in the past"
 msgid "Changes in string flags are now tracked in history."
-msgstr "Promjene u oznakama izraza se sada zapisuju u povijest."
+msgstr "Ovaj je izraz već prije bio preveden"
 
 #: ../../changes.rst:338
+#, fuzzy
+#| msgid ":doc:`/admin/machine`"
 msgid ":doc:`/admin/machine` documentation extended."
-msgstr "Proširena je :doc:`/admin/machine` dokumentacija."
+msgstr ":doc:`/admin/machine`"
 
 #: ../../changes.rst:339
 #, fuzzy
@@ -22992,8 +23295,10 @@ msgid "Fixed captcha verification when some time zone was configured."
 msgstr ""
 
 #: ../../changes.rst:350
+#, fuzzy
+#| msgid "Improved :ref:`workflow-customization` configuration forms."
 msgid "Improved translation propagation performance."
-msgstr "Poboljšana performansa dijeljenja prijevoda."
+msgstr "Poboljšanje :ref:`workflow-customization` obrazaca konfiguracije."
 
 #: ../../changes.rst:351
 msgid ""
@@ -23037,8 +23342,10 @@ msgid "*Released on March 19th 2025.*"
 msgstr "*Objavljeno 19. ožujka 2025.*"
 
 #: ../../changes.rst:377
+#, fuzzy
+#| msgid "Dismiss failing check"
 msgid "Fixed dismissing of checks."
-msgstr "Ispravljeno odbacivanje provjera."
+msgstr "Odbaci neuspjelu provjeru"
 
 #: ../../changes.rst:378
 #, fuzzy
@@ -23348,8 +23655,10 @@ msgid ""
 msgstr ""
 
 #: ../../changes.rst:506
+#, fuzzy
+#| msgid ":ref:`mt-microsoft-translator`"
 msgid "Improved language compatibility in :ref:`mt-microsoft-translator`."
-msgstr "Poboljšana jezična kompatibilnost u :ref:`mt-microsoft-translator`."
+msgstr ":ref:`mt-microsoft-translator`"
 
 #: ../../changes.rst:507
 #, fuzzy
@@ -23493,10 +23802,10 @@ msgid "*Released on December 19th 2024.*"
 msgstr "*Objavljeno 19. prosinca 2024.*"
 
 #: ../../changes.rst:553
+#, fuzzy
+#| msgid ":ref:`vcs-bitbucket-data-center`"
 msgid "Renamed :ref:`vcs-bitbucket-data-center` to match new product name."
-msgstr ""
-":ref:`vcs-bitbucket-data-center` je preimenovano kako bi odgovaralo novom "
-"imenu proizvoda."
+msgstr ":ref:`vcs-bitbucket-data-center`"
 
 #: ../../changes.rst:554
 msgid ":http:get:`/api/users/` supports searching by user ID."
@@ -23578,8 +23887,7 @@ msgstr "Dodano :http:get:`/api/projects/(string:project)/file/`."
 
 #: ../../changes.rst:602
 msgid "Added :http:post:`/api/projects/{string:project}/machinery_settings/`."
-msgstr ""
-"Dodano je :http:post:`/api/projects/{string:project}/machinery_settings/`."
+msgstr "Dodano :http:post:`/api/projects/{string:project}/machinery_settings/`"
 
 #: ../../changes.rst:604
 msgid ""
@@ -23656,7 +23964,7 @@ msgid ""
 "project)/(string:component)/(string:language)/file/`."
 msgstr ""
 "Detaljnjije poruke grešaka za :http:post:`/api/translations/"
-"(string:project)/(string:component)/(string:language)/file/`."
+"(string:project)/(string:component)/(string:language)/file/`"
 
 #: ../../changes.rst:624
 msgid ""
@@ -24163,10 +24471,12 @@ msgid ":ref:`mt-cyrtranslit` automatic suggestion service."
 msgstr ":ref:`mt-alibaba` usluga za automatske prijedloge."
 
 #: ../../changes.rst:856
+#, fuzzy
+#| msgid ""
+#| ":ref:`addon-weblate.discovery.discovery` now reports skipped entries."
 msgid ":ref:`addon-weblate.properties.sort` can now do case-sensitive sorting."
 msgstr ""
-":ref:`addon-weblate.properties.sort` sada razvrstava razlikujući velika i "
-"mala slova."
+":ref:`addon-weblate.discovery.discovery`sada prijavljuje preskočene unose."
 
 #: ../../changes.rst:857
 msgid ""
@@ -24610,8 +24920,10 @@ msgid "Weblate 5.5.1"
 msgstr "Weblate 5.5.1"
 
 #: ../../changes.rst:1054
+#, fuzzy
+#| msgid ":ref:`Searching` supports ``source_changed:DATETIME``."
 msgid ":doc:`/user/search` supports ``source_changed:DATETIME``."
-msgstr ":doc:`/user/search` podržava ``source_changed:DATETIME``."
+msgstr ":ref:`Searching` podržava ``source_changed:DATETIME``."
 
 #: ../../changes.rst:1055
 msgid "Added several new :ref:`component-language_code_style`."
@@ -24704,8 +25016,10 @@ msgid ":ref:`addons` can be now installed project-wide and site-wide."
 msgstr ""
 
 #: ../../changes.rst:1093
+#, fuzzy
+#| msgid "API improvements"
 msgid "API improvements."
-msgstr "API poboljšanja."
+msgstr "API poboljšanja"
 
 #: ../../changes.rst:1095
 msgid "Added :http:get:`/api/categories/(int:id)/statistics/`."
@@ -24788,8 +25102,10 @@ msgid ":ref:`check-max-size` sometimes ignored ``font-spacing:SPACING`` flag."
 msgstr ""
 
 #: ../../changes.rst:1119
+#, fuzzy
+#| msgid "Fixed untranslating strings in :ref:`javaprop`."
 msgid "Fixed per-language statistics on nested categories."
-msgstr "Ispravljena statistika po jeziku za ugniježđene kategorije."
+msgstr "Ispravljeno je neprevođenje izraza u :ref:`javaprop`."
 
 #: ../../changes.rst:1120
 msgid "Fixed categories listing on per-language pages."
@@ -25288,8 +25604,10 @@ msgid "*Released on November 16th 2023.*"
 msgstr "*Objavljeno 16. studenoga 2023.*"
 
 #: ../../changes.rst:1326
+#, fuzzy
+#| msgid ":ref:`vcs-azure-devops`"
 msgid ":ref:`vcs-azure-devops`."
-msgstr ":ref:`vcs-azure-devops`."
+msgstr ":ref:`vcs-azure-devops`"
 
 #: ../../changes.rst:1330
 #, fuzzy
@@ -30005,8 +30323,10 @@ msgid "Fixed query parsing in navigation bar search."
 msgstr ""
 
 #: ../../changes/v4.rst:11
+#, fuzzy
+#| msgid "Fixed untranslating strings in :ref:`javaprop`."
 msgid "Fixed language filtering in reports."
-msgstr "Ispravljeno filtriranje jezika u izvještajima."
+msgstr "Ispravljeno je neprevođenje izraza u :ref:`javaprop`."
 
 #: ../../changes/v4.rst:12
 #, fuzzy
@@ -31462,9 +31782,10 @@ msgid "Weblate now requires Python 3.7 or newer."
 msgstr ""
 
 #: ../../changes/v4.rst:475
+#, fuzzy
+#| msgid "The server does not allow authentication."
 msgid "Fixed some write operations with project token authentication."
-msgstr ""
-"Ispravljene su neke operacije pisanja s autentifikacijom tokena projekta."
+msgstr "Poslužitelj ne dozvoljava autentifikaciju."
 
 #: ../../changes/v4.rst:476
 msgid "Fixed string state tracking when the strings changes in the repository."
@@ -34798,8 +35119,10 @@ msgid ""
 msgstr ""
 
 #: ../../contributing/documentation.rst:42
+#, fuzzy
+#| msgid "Machinery is now called automatic suggestions."
 msgid "Documenting permissions, checks, add-ons and automatic suggestions"
-msgstr "Dokumentiranje dozvola, provjera, dodataka i automatskih prijedloga"
+msgstr "Strojno prevođenje sada se naziva „automatski prijedlozi”."
 
 #: ../../contributing/documentation.rst:44
 msgid ""
@@ -36744,8 +37067,10 @@ msgid "URL of the VCS repository with your project"
 msgstr "URL VCS repozitorija s tvojim projektom"
 
 #: ../../devel/gettext.rst:230
+#, fuzzy
+#| msgid "gettext PO file"
 msgid "Choose :guilabel:`gettext PO file`"
-msgstr "Odaberi :guilabel:`gettext PO datoteka`"
+msgstr "gettext PO datoteka"
 
 #: ../../devel/gettext.rst:232
 msgid "New language"
@@ -36753,7 +37078,7 @@ msgstr "Novi jezik"
 
 #: ../../devel/gettext.rst:232
 msgid "Choose :guilabel:`Create new language file`"
-msgstr "Odaberi :guilabel:`Stvori nocu jezičnu datoteku`"
+msgstr ""
 
 #: ../../devel/gettext.rst:235
 msgid "And that's it, you're now ready to start translating your software!"
@@ -37157,6 +37482,8 @@ msgid ""
 msgstr ""
 
 #: ../../devel/integration.rst:94
+#, fuzzy
+#| msgid "Updating target language files"
 msgid "Updating target-language files"
 msgstr "Aktualiziranje datoteka ciljnog jezika"
 
@@ -37185,8 +37512,10 @@ msgid ""
 msgstr ""
 
 #: ../../devel/integration.rst:124
+#, fuzzy
+#| msgid "Add new string"
 msgid "Introducing new strings"
-msgstr "Uvođenje novih izraza"
+msgstr "Dodaj novi izraz"
 
 #: ../../devel/integration.rst:126
 msgid ""
@@ -37639,38 +37968,34 @@ msgid ""
 "Would you prefer Sphinx to generate just single PO file? Since Sphinx 3.3.0 "
 "you can achieve this using:"
 msgstr ""
-"Želiš li radije da Sphinx generira samo jednu PO datoteku? Od Sphinx verzije "
-"3.3.0 to možeš postići pomoću:"
 
 #: ../../devel/sphinx.rst:62
 msgid ""
 "You can find several documentation projects being translated using this "
 "approach:"
 msgstr ""
-"Postoje nekoliko projekata dokumentacije koji se prevode koristeći ovaj "
-"pristup:"
 
 #: ../../devel/sphinx.rst:64
 msgid ""
 "`Weblate documentation <https://docs.weblate.org/>`_ (you are reading that "
 "now)"
-msgstr "`Weblate dokumentacija <https://docs.weblate.org/>`_ (nju upravo čitaš)"
+msgstr ""
 
 #: ../../devel/sphinx.rst:65
 msgid "`Godot engine documentation <https://docs.godotengine.org/en/stable/>`_"
-msgstr "`Godot engine dokumentacija <https://docs.godotengine.org/en/stable/>`_"
+msgstr ""
 
 #: ../../devel/sphinx.rst:66
 msgid "`Gallette documentation <https://doc.galette.eu/>`_"
-msgstr "`Gallette dokumentacija <https://doc.galette.eu/>`_"
+msgstr ""
 
 #: ../../devel/sphinx.rst:67
 msgid "`phpMyAdmin documentation <https://docs.phpmyadmin.net/>`_"
-msgstr "`phpMyAdmin dokumentacija <https://docs.phpmyadmin.net/>`_"
+msgstr ""
 
 #: ../../devel/starting.rst:4
 msgid "Starting with internationalization"
-msgstr "Uvod u internacionalizaciju"
+msgstr ""
 
 #: ../../devel/starting.rst:6
 msgid ""
@@ -37699,7 +38024,7 @@ msgstr ""
 
 #: ../../devel/starting.rst:24
 msgid "Choosing internationalization framework"
-msgstr "Odabir okvira za internacionalizaciju"
+msgstr ""
 
 #: ../../devel/starting.rst:26
 msgid ""
@@ -37718,11 +38043,11 @@ msgstr ""
 
 #: ../../devel/starting.rst:36
 msgid "Platform"
-msgstr "Platforma"
+msgstr ""
 
 #: ../../devel/starting.rst:36
 msgid "Recommended format"
-msgstr "Preporučeni format"
+msgstr ""
 
 #: ../../devel/starting.rst:38
 msgid "Android"
@@ -37738,7 +38063,7 @@ msgstr "Qt"
 
 #: ../../devel/starting.rst:44
 msgid "Python"
-msgstr "Python"
+msgstr ""
 
 #: ../../devel/starting.rst:46
 msgid "PHP"
@@ -37746,19 +38071,19 @@ msgstr "PHP"
 
 #: ../../devel/starting.rst:46
 msgid ":ref:`gettext` [#php]_"
-msgstr ":ref:`gettext` [#php]_"
+msgstr ""
 
 #: ../../devel/starting.rst:48
 msgid "C/C++"
-msgstr "C/C++"
+msgstr ""
 
 #: ../../devel/starting.rst:50
 msgid "C#"
-msgstr "C#"
+msgstr ""
 
 #: ../../devel/starting.rst:52
 msgid "Perl"
-msgstr "Perl"
+msgstr ""
 
 #: ../../devel/starting.rst:54
 msgid "Ruby"
@@ -37766,7 +38091,7 @@ msgstr "Ruby"
 
 #: ../../devel/starting.rst:56
 msgid "Web extensions"
-msgstr "Web proširenja"
+msgstr ""
 
 #: ../../devel/starting.rst:58
 msgid "Java"
@@ -37774,15 +38099,15 @@ msgstr "Java"
 
 #: ../../devel/starting.rst:58
 msgid ":ref:`xliff` [#java]_"
-msgstr ":ref:`xliff` [#java]_"
+msgstr ""
 
 #: ../../devel/starting.rst:60
 msgid "JavaScript"
-msgstr "JavaScript"
+msgstr ""
 
 #: ../../devel/starting.rst:60
 msgid ":ref:`js-i18next` [#js]_"
-msgstr ":ref:`js-i18next` [#js]_"
+msgstr ""
 
 #: ../../devel/starting.rst:65
 msgid ""
@@ -37806,48 +38131,42 @@ msgid ""
 msgstr ""
 
 #: ../../devel/third-party.rst:2
+#, fuzzy
+#| msgid "Localization guide"
 msgid "Localization libraries and packages"
-msgstr "Biblioteke za lokalizaciju i paketi"
+msgstr "Priručnik za lokalizaciju"
 
 #: ../../devel/third-party.rst:4
 msgid ""
 "Weblate can be integrated into your framework using :doc:`/api`. This page "
 "lists third-party libraries which integrate Weblate."
 msgstr ""
-"Weblate se može integrirati u tvoj okvir pomoću :doc:`/api`. Ova stranica "
-"navodi biblioteke trećih strana koje integriraju Weblate."
 
 #: ../../devel/third-party.rst:7
+#, fuzzy
+#| msgid "Delete translation memory"
 msgid ""
 "`Weblate Translation Provider for Symfony Translation <https://github.com/"
 "m2mtech/weblate-translation-provider/>`_"
-msgstr ""
-"`Weblate pružatelj prijevoda za Symfony prijevode <https://github.com/"
-"m2mtech/weblate-translation-provider/>`_"
+msgstr "Izbriši prevodilačku memoriju"
 
 #: ../../devel/third-party.rst:8
 msgid ""
 "`Weblate plugin for Figma <https://www.figma.com/community/"
 "plugin/1053050985172660071/weblate-integration>`_"
 msgstr ""
-"`Weblate dodatak za Figma <https://www.figma.com/community/plugin/"
-"1053050985172660071/weblate-integration>`_"
 
 #: ../../devel/third-party.rst:9
 msgid ""
 "`WeblateFX, a JavaFX-based Weblate desktop client <https://github.com/"
 "javierllorente/weblatefx>`_"
 msgstr ""
-"`WeblateFX, desktop klijent za Weblate temeljen na JavaFX <https://"
-"github.com/javierllorente/weblatefx>`_"
 
 #: ../../devel/third-party.rst:10
 msgid ""
 "`JWeblate, a Java-based Weblate library <https://github.com/javierllorente/"
 "jweblate>`_"
 msgstr ""
-"`JWeblate, Weblate biblioteka temeljena na Java <https://github.com/"
-"javierllorente/jweblate>`_"
 
 #: ../../devel/third-party.rst:11
 msgid ""
@@ -38657,15 +38976,18 @@ msgid ""
 msgstr ""
 
 #: ../../faq.rst:488
+#, fuzzy
+#| msgid ""
+#| "In case the translation to the source language is desired, please change "
+#| "the source language in the project settings."
 msgid ""
 "In case the translation to the source language is desired, please change "
 "the :ref:`component-source_language` in the component settings. You might "
 "want to use `English (Developer)` as a source language, or utilize :ref:"
 "`source-quality-gateway`."
 msgstr ""
-"U slučaju da se želi prijevod na izvorni jezik, promijeni :ref:`component-"
-"source_language` u postavkama projekta. Možda želiš koristiti `engleski "
-"(programer)` kao izvorni jezik ili koristi :ref:`source-quality-gateway`."
+"U slučaju da se želi prijevod na izvorni jezik, promijeni izvorni jezik u "
+"postavkama projekta."
 
 #: ../../faq.rst:489
 msgid ""
@@ -41674,8 +41996,10 @@ msgid "Failure scenario: full host/system loss"
 msgstr ""
 
 #: ../../security/disaster-recovery-plan.rst:43
+#, fuzzy
+#| msgid "Permission checking"
 msgid "Provision new host."
-msgstr "Osiguravanje novog hosta."
+msgstr "Provjera dozvole"
 
 #: ../../security/disaster-recovery-plan.rst:44
 msgid "Bootstrap Weblate using provisioning software."
@@ -41687,8 +42011,10 @@ msgid "Restore Weblate backup following :ref:`restore-borg`."
 msgstr ""
 
 #: ../../security/disaster-recovery-plan.rst:46
+#, fuzzy
+#| msgid "Stop Weblate container:"
 msgid "Restart Weblate container."
-msgstr "Ponovo pokreni Weblate kontejner."
+msgstr "Zaustavi spremnik Weblatea:"
 
 #: ../../security/disaster-recovery-plan.rst:47
 #, fuzzy
@@ -41725,8 +42051,10 @@ msgid "Follow steps from :ref:`drp-host` to deploy the system on a new host."
 msgstr ""
 
 #: ../../security/disaster-recovery-plan.rst:64
+#, fuzzy
+#| msgid "Validation failed, please try again."
 msgid "Validation and testing"
-msgstr "Validacija i testiranje"
+msgstr "Provjera neuspjela, pokušaj ponovo."
 
 #: ../../security/disaster-recovery-plan.rst:66
 msgid "**Backup Verification:** Monthly restore test of Weblate backups."
@@ -42818,8 +43146,10 @@ msgid ""
 msgstr ""
 
 #: ../../security/threat-model.rst:96
+#, fuzzy
+#| msgid "Access the internal repository"
 msgid "Direct access to integrated code repositories."
-msgstr "Izravan pristup integriranim repozitorijima koda."
+msgstr "Pristupi internom repozitoriju"
 
 #: ../../security/threat-model.rst:99
 msgid ""
@@ -42828,8 +43158,10 @@ msgid ""
 msgstr ""
 
 #: ../../security/threat-model.rst:100 ../../security/threat-model.rst:120
+#, fuzzy
+#| msgid "Delete comment"
 msgid "Weblate unavailability."
-msgstr "Nedostupnost Weblatea."
+msgstr "Izbriši komentar"
 
 #: ../../security/threat-model.rst:102 ../../security/threat-model.rst:106
 #, fuzzy
@@ -42912,8 +43244,10 @@ msgid ""
 msgstr ""
 
 #: ../../security/threat-model.rst:128
+#, fuzzy
+#| msgid "Security issues"
 msgid "Accountability issues."
-msgstr "Problemi s odgovornošću."
+msgstr "Sigurnosni problemi"
 
 #: ../../security/threat-model.rst:129
 #, fuzzy
@@ -42928,8 +43262,10 @@ msgid ""
 msgstr ""
 
 #: ../../security/threat-model.rst:132
+#, fuzzy
+#| msgid "Account e-mail"
 msgid "Account compromise."
-msgstr "Kompromitacija računa."
+msgstr "E-mail adresa računa"
 
 #: ../../security/threat-model.rst:133
 msgid "(Web UI)"
@@ -42962,8 +43298,10 @@ msgid ""
 msgstr ""
 
 #: ../../security/threat-model.rst:144
+#, fuzzy
+#| msgid "Privacy"
 msgid "Privacy breach."
-msgstr "Kršenje privatnosti."
+msgstr "Privatnost"
 
 #: ../../security/threat-model.rst:147
 #, fuzzy
@@ -42988,8 +43326,10 @@ msgid "Enforced 2FA, see :ref:`2fa`."
 msgstr "Izvorni izraz, pogledaj :ref:`additional`."
 
 #: ../../security/threat-model.rst:152
+#, fuzzy
+#| msgid "Per-project permission management"
 msgid "Robust session management."
-msgstr "Robusno upravljanje sesijama."
+msgstr "Individualno upravljanje dozvolama za projekte"
 
 #: ../../security/threat-model.rst:153
 msgid ""
@@ -43031,8 +43371,10 @@ msgid ""
 msgstr ""
 
 #: ../../security/threat-model.rst:160
+#, fuzzy
+#| msgid "Backup service credentials"
 msgid "Secure storage of VCS credentials."
-msgstr "Sigurno spremište podataka prijave na sustav za kontrolu verzija (VCS)."
+msgstr "Vjerodajnice za uslugu izrade sigurnosnih kopija"
 
 #: ../../security/threat-model.rst:161
 msgid ""
@@ -44354,16 +44696,18 @@ msgid "Inconsistent reStructuredText markup in the translated message."
 msgstr "Nedosljedno reStructuredText označavanja u prevedenoj poruci."
 
 #: ../../user/checks.rst:1080
+#, fuzzy
+#| msgid "Markdown link references do not match source"
 msgid ""
 "reStructuredText term references or other markup do not match source, the "
 "typical causes for these errors are:"
-msgstr ""
-"reStructuredText reference pojma ili druge oznake ne odgovaraju izvornom "
-"kodu, tipični uzroci tih grešaka su:"
+msgstr "Markdown reference poveznica se ne poklapaju s izvorom"
 
 #: ../../user/checks.rst:1082
+#, fuzzy
+#| msgid "Mismatched question mark"
 msgid "Mismatched or missing backticks."
-msgstr "Neusklađeni ili nedostajući navodni znakovi „gravis”."
+msgstr "Nepoklapanje upitnika"
 
 #: ../../user/checks.rst:1083 ../../user/checks.rst:1623
 msgid ""
@@ -44529,10 +44873,10 @@ msgid "Mismatched \\\\n"
 msgstr "Nepoklapanje \\n"
 
 #: ../../user/checks.rst:1262
+#, fuzzy
+#| msgid "Number of \\\\n literals in translation does not match source"
 msgid "Number of \\\\n literals in translation does not match source."
-msgstr ""
-"Broj \\\\n"
-" literala u prijevodu se ne poklapa s izvorom."
+msgstr "Broj novih redaka \\\\n u prijevodu se ne poklapa s izvorom"
 
 #: ../../user/checks.rst:1269
 msgid ""
@@ -44862,14 +45206,16 @@ msgid "reStructuredText syntax error in the translation."
 msgstr "Greška reStructuredText sintakse u prijevodu."
 
 #: ../../user/checks.rst:1620
+#, fuzzy
+#| msgid "reStructuredText syntax error in the translation."
 msgid "reStructuredText syntax error in the translation. Issues to look for:"
-msgstr ""
-"Greška reStructuredText sintakse u prijevodu. Problemi koji se trebaju "
-"pregledati:"
+msgstr "Greška reStructuredText sintakse u prijevodu."
 
 #: ../../user/checks.rst:1622
+#, fuzzy
+#| msgid "Missing query string."
 msgid "Mismatched closing/opening tags."
-msgstr "Nepoklapajuće otvarajuće/zatvarajuće oznake."
+msgstr "Nedostaje izraz za upit."
 
 #: ../../user/checks.rst:1634
 msgid "Reused translation"
@@ -45136,10 +45482,13 @@ msgid "Ellipsis"
 msgstr "Trotočka"
 
 #: ../../user/checks.rst:1907
+#, fuzzy
+#| msgid ""
+#| "The string uses three dots (...) instead of an ellipsis character (…)"
 msgid ""
 "The string uses three dots (``...``) instead of an ellipsis character (``…"
 "``)."
-msgstr "Izraz koristi tri točke (``...``) umjesto trotočku (``…``)."
+msgstr "Izraz koristi tri točke (...) umjesto trotočku (…)"
 
 #: ../../user/checks.rst:1908 ../../user/checks.rst:1931
 #: ../../user/checks.rst:2066 ../../user/checks.rst:2093
@@ -45532,12 +45881,16 @@ msgid ""
 msgstr ""
 
 #: ../../user/files.rst:52
+#, fuzzy
+#| msgid ""
+#| "Improved :http:post:`/api/translations/(string:project)/(string:"
+#| "component)/(string:language)/units/`."
 msgid ""
 ":http:get:`/api/translations/(string:project)/(string:component)/(string:"
 "language)/file/`"
 msgstr ""
-":http:get:`/api/translations/"
-"(string:project)/(string:component)/(string:language)/file/`"
+"Poboljšano :http:post:`/api/translations/(string:project)/(string:component)/"
+"(string:language)/units/`."
 
 #: ../../user/files.rst:58
 msgid "Downloading components, categories or projects"
@@ -46361,11 +46714,11 @@ msgstr ""
 
 #: ../../user/search.rst:40
 msgid "String priority."
-msgstr "Prioritet izraza."
+msgstr ""
 
 #: ../../user/search.rst:42
 msgid "String unique identifier."
-msgstr "Jedinstveni identifikator izraza."
+msgstr ""
 
 #: ../../user/search.rst:44
 msgid "String position in the translation file."
@@ -46373,15 +46726,19 @@ msgstr "Pozicija izraza u prevodilačkoj datoteci."
 
 #: ../../user/search.rst:46
 msgid "Timestamp for when the string was added to Weblate."
-msgstr "Vremenska oznaka kada je izraz dodan u Weblate."
+msgstr ""
 
 #: ../../user/search.rst:48
+#, fuzzy
+#| msgid ""
+#| "Search for string states (``approved``, ``translated``, ``needs-"
+#| "editing``, ``empty``, ``read-only``), supports :ref:`search-operators`."
 msgid ""
 "Search for string states (``approved``, ``translated``, ``needs-editing``, "
 "``empty``, ``read-only``)."
 msgstr ""
 "Traži stanja izraza (``odobreno``, ``prevedeno``, ``treba urediti``, "
-"``prazno``, ``samo-za-čitanje``)."
+"``prazno``, ``samo-za-čitanje``), podržava :ref:`search-operators`."
 
 #: ../../user/search.rst:50
 msgid ""
@@ -46905,15 +47262,16 @@ msgid ""
 "Labels are used to categorize strings within a project to further customize "
 "the localization workflow (for example to define categories of strings)."
 msgstr ""
-"Etikete se koriste za kategorizaciju izraza unutar projekta radi daljnje "
-"prilagodbe radnog toka lokalizacije (na primjer, za definiranje kategorija "
-"izraza)."
 
 #: ../../user/translating.rst:102
+#, fuzzy
+#| msgid "Following checks are failing:"
 msgid "Following labels are used by Weblate:"
-msgstr "Weblate koristi sljedeće etikete:"
+msgstr "Neuspjele provjere:"
 
 #: ../../user/translating.rst:105
+#, fuzzy
+#| msgid "String was translated using :ref:`auto-translation`."
 msgid "String translated using :ref:`auto-translation`."
 msgstr "Izraz je preveden pomoću :ref:`auto-translation`."
 
@@ -46922,6 +47280,8 @@ msgid "Source needs review"
 msgstr "Izvor treba pregledati"
 
 #: ../../user/translating.rst:107
+#, fuzzy
+#| msgid "String was marked for review using :ref:`source-reviews`."
 msgid "String marked for review using :ref:`source-reviews`."
 msgstr "Izraz je označen za pregled pomoću :ref:`source-reviews`."
 
@@ -46982,12 +47342,14 @@ msgid ""
 msgstr ""
 
 #: ../../user/translating.rst:165
+#, fuzzy
+#| msgid "Create translation"
 msgid "Alternative translations"
-msgstr "Alternativni prijevodi"
+msgstr "Stvori prijevodi"
 
 #: ../../user/translating.rst:171
 msgid "This is currently only supported with :ref:`multivalue-csv`."
-msgstr "Ovo se trenutačno podržava samo s :ref:`multivalue-csv`."
+msgstr ""
 
 #: ../../user/translating.rst:173
 msgid ""
@@ -47003,15 +47365,17 @@ msgstr "Tipkovni prečaci"
 
 #: ../../user/translating.rst:183
 msgid "The following keyboard shortcuts can be utilized during translation:"
-msgstr "Tijekom prevođenja se mogu koristiti sljedeći tipkovni prečaci:"
+msgstr ""
 
 #: ../../user/translating.rst:186
 msgid "Keyboard shortcut"
-msgstr "Tipkovni prečac"
+msgstr ""
 
 #: ../../user/translating.rst:188
+#, fuzzy
+#| msgid ":kbd:`←`"
 msgid ":kbd:`?`"
-msgstr ":kbd:`?`"
+msgstr ":kbd:`←`"
 
 #: ../../user/translating.rst:188
 msgid "Open available keyboard shortcuts."
@@ -47019,7 +47383,7 @@ msgstr "Otvori dostupne tipkovne pračace."
 
 #: ../../user/translating.rst:190
 msgid ":kbd:`Alt+Home`"
-msgstr ":kbd:`Alt+Home`"
+msgstr ""
 
 #: ../../user/translating.rst:190
 msgid "Navigate to the first translation in the current search."
@@ -47027,7 +47391,7 @@ msgstr "Idi na prvi prijevod u trenutačoj pretrazi."
 
 #: ../../user/translating.rst:192
 msgid ":kbd:`Alt+End`"
-msgstr ":kbd:`Alt+End`"
+msgstr ""
 
 #: ../../user/translating.rst:192
 msgid "Navigate to the last translation in the current search."
@@ -47035,7 +47399,7 @@ msgstr "Idi na zadnji prijevod u trenutačoj pretrazi."
 
 #: ../../user/translating.rst:194
 msgid ":kbd:`Alt+PageUp` or"
-msgstr ":kbd:`Alt+PageUp` ili"
+msgstr ""
 
 #: ../../user/translating.rst:196
 msgid ":kbd:`Ctrl+↑` or"
@@ -47055,7 +47419,7 @@ msgstr "Navigiraj na prethodni prijevod u trenutačnoj pretrazi."
 
 #: ../../user/translating.rst:202
 msgid ":kbd:`Alt+PageDown` or"
-msgstr ":kbd:`Alt+PageDown` ili"
+msgstr ""
 
 #: ../../user/translating.rst:204
 msgid ":kbd:`Ctrl+↓` or"
@@ -47075,47 +47439,43 @@ msgstr "Navigiraj na sljedeći prijevod u trenutačnoj pretrazi."
 
 #: ../../user/translating.rst:210
 msgid ":kbd:`Ctrl+Enter` or"
-msgstr ":kbd:`Ctrl+Enter` ili"
+msgstr ""
 
 #: ../../user/translating.rst:212
 msgid ":kbd:`Cmd+Enter`"
-msgstr ":kbd:`Cmd+Enter`"
+msgstr ""
 
 #: ../../user/translating.rst:210
 msgid ""
 "Submit current form; this is same as pressing :guilabel:`Save and continue` "
 "while editing translation."
 msgstr ""
-"Pošalji trenutačni obrazac; to je isto kao i pritiskanje :guilabel:`Spremi i "
-"nastavi` tijekom uređivanja prijevoda."
 
 #: ../../user/translating.rst:214
 msgid ":kbd:`Ctrl+Shift+Enter` or"
-msgstr ":kbd:`Ctrl+Shift+Enter` ili"
+msgstr ""
 
 #: ../../user/translating.rst:216
 msgid ":kbd:`Cmd+Shift+Enter`"
-msgstr ":kbd:`Cmd+Shift+Enter`"
+msgstr ""
 
 #: ../../user/translating.rst:214
 msgid "Unmark translation as Needing edit and submit it."
-msgstr "Odznači prijevod da se „Treba urediti” i pošalji ga."
+msgstr "Odznači oznaku prijevoda „Treba urediti” i pošalji ga."
 
 #: ../../user/translating.rst:218
 msgid ":kbd:`Alt+Enter` or"
-msgstr ":kbd:`Alt+Enter` ili"
+msgstr ""
 
 #: ../../user/translating.rst:220
 msgid ":kbd:`Option+Enter`"
-msgstr ":kbd:`Option+Enter`"
+msgstr ""
 
 #: ../../user/translating.rst:218
 msgid ""
 "Submit the string as a suggestion; this works the same as pressing :guilabel:"
 "`Suggest` while editing translation."
 msgstr ""
-"Pošalji izraz kao prijedlog; to funkcionira isto kao i pritiskanje "
-":guilabel:`Predloži` tijekom uređivanja prijevoda."
 
 #: ../../user/translating.rst:222
 msgid ":kbd:`Ctrl+E` or"
@@ -47153,28 +47513,26 @@ msgstr ":kbd:`Cmd+M`"
 msgid ""
 "Shows :guilabel:`Automatic suggestions` tab, see :ref:`machine-translation`."
 msgstr ""
-"Prikazuje karticu :guilabel:`Automatski prijedlozi`, pogledaj :ref:`machine-"
-"translation`."
 
 #: ../../user/translating.rst:234
 msgid ":kbd:`Ctrl+1` to :kbd:`Ctrl+9` or"
-msgstr ":kbd:`Ctrl+1` do :kbd:`Ctrl+9` ili"
+msgstr ""
 
 #: ../../user/translating.rst:236
 msgid ":kbd:`Cmd+1` to :kbd:`Cmd+9`"
-msgstr ":kbd:`Cmd+1` do :kbd:`Cmd+9`"
+msgstr ""
 
 #: ../../user/translating.rst:234
 msgid "Copies placeable of a given number from source string."
-msgstr "Kopira rezervirano mjesto zadanog broja iz izvornog izraza."
+msgstr "Kopira rezervirano mjesto navedenog broja iz izvornog izraza."
 
 #: ../../user/translating.rst:238
 msgid ":kbd:`Ctrl+M` followed by :kbd:`1` to :kbd:`9` or"
-msgstr ":kbd:`Ctrl+M` nakon čega slijedi :kbd:`1` do :kbd:`9` ili"
+msgstr ""
 
 #: ../../user/translating.rst:241
 msgid ":kbd:`Cmd+M` followed by :kbd:`1` to :kbd:`9`"
-msgstr ":kbd:`Cmd+M` nakon čega slijedi :kbd:`1` do :kbd:`9`"
+msgstr ""
 
 #: ../../user/translating.rst:238
 msgid "Copy the machine translation of a given number to current translation."
@@ -47182,11 +47540,11 @@ msgstr "Kopiraj strojni prijevod zadanog broja u trenutačni prijevod."
 
 #: ../../user/translating.rst:244
 msgid ":kbd:`Ctrl+I` followed by :kbd:`1` to :kbd:`9` or"
-msgstr ":kbd:`Ctrl+I` nakon čega slijedi :kbd:`1` do :kbd:`9` ili"
+msgstr ""
 
 #: ../../user/translating.rst:247
 msgid ":kbd:`Cmd+I` followed by :kbd:`1` to :kbd:`9`"
-msgstr ":kbd:`Cmd+I` nakon čega slijedi :kbd:`1` do :kbd:`9`"
+msgstr ""
 
 #: ../../user/translating.rst:244
 msgid "Ignore one item in the list of failing checks."
@@ -47202,7 +47560,7 @@ msgstr ":kbd:`Cmd+J`"
 
 #: ../../user/translating.rst:250
 msgid "Shows the :guilabel:`Nearby strings` tab."
-msgstr "Prikazuje karticu :guilabel:`Obližnji izrazi`."
+msgstr ""
 
 #: ../../user/translating.rst:254
 msgid ":kbd:`Ctrl+S` or"
@@ -47241,8 +47599,10 @@ msgid "Toggle the :guilabel:`Needs editing` checkbox."
 msgstr "Aktiviraj/Deaktiviraj polje :guilabel:`Needs editing`."
 
 #: ../../user/translating.rst:266
+#, fuzzy
+#| msgid ":kbd:`←`"
 msgid ":kbd:`→`"
-msgstr ":kbd:`→`"
+msgstr ":kbd:`←`"
 
 #: ../../user/translating.rst:266
 msgid "Browse the next translation string."
@@ -47258,7 +47618,7 @@ msgstr "Idi na prethodni prevodilački izraz."
 
 #: ../../user/translating.rst:274
 msgid "Visual keyboard"
-msgstr "Vizualna tipkovnica"
+msgstr ""
 
 #: ../../user/translating.rst:276
 msgid ""
@@ -47266,57 +47626,46 @@ msgid ""
 "rows are specific to each language; it can be useful for local punctuation "
 "or characters that are hard to type by hand."
 msgstr ""
-"Mali redak vizualne tipkovnice prikazuje se neposredno iznad polja za "
-"prijevod. Njegovi redovi su specifični za svaki jezik; može biti koristan za "
-"lokalne znakove interpunkcije ili znakove koji se teško ručno upisuju."
 
 #: ../../user/translating.rst:280
 msgid "The shown symbols factor into three categories:"
-msgstr "Prikazani simboli se dijele u tri kategorije:"
+msgstr ""
 
 #: ../../user/translating.rst:282
 msgid ""
 "User configured :ref:`profile-specialchars` defined in the :ref:`user-"
 "profile`"
 msgstr ""
-"Korisnički konfigurirani :ref:`profile-specialchars` definirani u :ref:`user-"
-"profile`"
 
 #: ../../user/translating.rst:283
 msgid ""
 "Per-language characters provided by Weblate (e.g. quotes or RTL-specific "
 "characters)"
 msgstr ""
-"Znakovi po jeziku koje pruža Weblate (npr. navodnici ili specifični znakovi "
-"za pisanje s desna na lijevo)"
 
 #: ../../user/translating.rst:284
 msgid "Characters configured using :setting:`SPECIAL_CHARS`"
-msgstr "Znakovi koji su konfigurirani pomoću :setting:`SPECIAL_CHARS`"
+msgstr ""
 
 #: ../../user/translating.rst:293
 msgid ""
 "This contextual description provides related info about the current string."
 msgstr ""
-"Ovaj kontekstualni opis pruža povezane informacije o trenutačnom izrazu."
 
 #: ../../user/translating.rst:295
 msgid "String attributes"
-msgstr "Atributi izraza"
+msgstr ""
 
 #: ../../user/translating.rst:296
 msgid ""
 "Things like message ID, context (``msgctxt``) or location in source code."
 msgstr ""
-"Stvari poput ID-a poruke, konteksta (``msgctxt``) ili mjesta u izvornom kodu."
 
 #: ../../user/translating.rst:298
 msgid ""
 "Screenshots can be uploaded to Weblate to better inform translators of where "
 "and how the string is used, see :ref:`screenshots`."
 msgstr ""
-"Snimke ekrana se mogu prenijeti na Weblate kako bi se prevoditelji bolje "
-"saznali gdje i kako se izraz koristi, pogledaj :ref:`screenshots`."
 
 #: ../../user/translating.rst:300
 msgid "Nearby strings"
@@ -47328,9 +47677,6 @@ msgid ""
 "also used in a similar context and prove useful in keeping the translation "
 "consistent."
 msgstr ""
-"Prikazuje obližnje izraze iz prevodilačke datoteke. Obično se također "
-"koriste u sličnom kontekstu i korisni su za održavanje dosljednosti "
-"prijevoda."
 
 #: ../../user/translating.rst:304
 msgid "Other occurrences"
@@ -47342,25 +47688,22 @@ msgid ""
 "this tab shows all of them if they are found to be inconsistent (see :ref:"
 "`check-inconsistent`). You can choose which one to use."
 msgstr ""
-"U slučaju da se poruka pojavljuje na više mjesta (npr. više komponenti), ova "
-"kartica prikazuje sve, ako se utvrdi da su nekonzistentne (pogledaj :ref"
-":`check-inconsistent`). Možeš odabrati koju želiš koristiti."
 
 #: ../../user/translating.rst:309
 msgid "Look at similar strings translated in past, see :ref:`memory`."
-msgstr "Pogledaj slične u prošlosti prevedene izraze, pogledaj :ref:`memory`."
+msgstr ""
 
 #: ../../user/translating.rst:311
 msgid "Displays terms from the project glossary used in the current message."
-msgstr "Prikazuje pojmove iz glosara projekta korištene u trenutačnoj poruci."
+msgstr ""
 
 #: ../../user/translating.rst:312
 msgid "History"
-msgstr "Povijest"
+msgstr "Kronologija"
 
 #: ../../user/translating.rst:313
 msgid "List of people whom have changed this message recently using Weblate."
-msgstr "Popis ljudi koji su nedavno promijenili ovu poruku koristeći Weblate."
+msgstr ""
 
 #: ../../user/translating.rst:314
 msgid "Project"
@@ -47378,7 +47721,7 @@ msgstr ""
 
 #: ../../user/translating.rst:321
 msgid "Translation history"
-msgstr "Povijest prijevoda"
+msgstr ""
 
 #: ../../user/translating.rst:323
 msgid ""
@@ -47389,15 +47732,13 @@ msgstr ""
 
 #: ../../user/translating.rst:329
 msgid "Translated string length"
-msgstr "Duljina prevedenog izraza"
+msgstr ""
 
 #: ../../user/translating.rst:331
 msgid ""
 "Weblate can limit the length of a translation in several ways to ensure the "
 "translated string is not too long:"
 msgstr ""
-"Weblate može ograničiti duljinu prijevoda na nekoliko načina kako bi se "
-"osiguralo da prevedeni izraz nije predug:"
 
 #: ../../user/translating.rst:334
 msgid ""
@@ -47408,28 +47749,30 @@ msgid ""
 "bilingual one, making Weblate mistaking the translation key for the actual "
 "source string. See :ref:`bimono` for more info."
 msgstr ""
-"Zadano ograničenje za prijevod je deset puta dulje od izvornog izraza. To se "
-"može promijeniti pomoću :setting:`LIMIT_TRANSLATION_LENGTH_BY_SOURCE_LENGTH`"
-". Ako naiđeš na ovaj problem, uzrok može biti i jednojezični prijevod koji "
-"je pogrešno postavljen kao dvojezični, zbog čega Weblate brka ključ "
-"prijevoda sa stvarnim izvornim izrazom. Pogledaj :ref:`bimono` za više "
-"informacija."
 
 #: ../../user/translating.rst:339
+#, fuzzy
+#| msgid ""
+#| "Maximal length in characters defined by translation file or flag, see :"
+#| "ref:`check-max-length`."
 msgid ""
 "Maximum length in characters defined by the translation file or flag, as "
 "per :ref:`check-max-length`."
 msgstr ""
-"Maksimalni broj znakova definiran u prevodilačkoj datoteci ili oznaci, prema "
-":ref:`check-max-length`."
+"Maksimalni broj znakova definirana u prevodilačkoj datoteci ili oznakom, "
+"pogledaj :ref:`check-max-length`."
 
 #: ../../user/translating.rst:341
+#, fuzzy
+#| msgid ""
+#| "Maximal length in characters defined by translation file or flag, see :"
+#| "ref:`check-max-length`."
 msgid ""
 "Maximal rendered size in pixels as defined by flags; see :ref:`check-max-"
 "size`."
 msgstr ""
 "Maksimalna prikazana veličina u pikselima definirana u oznakama; pogledaj "
-":ref:`check-max-size`."
+":ref:`check-max-length`."
 
 #: ../../user/translating.rst:348
 msgid ""
@@ -47438,20 +47781,18 @@ msgid ""
 "memory`. All machine translations are available in a single tab of each "
 "translation page."
 msgstr ""
-"Na temelju konfiguracije i tvog prevedenog jezika, Weblate nudi prijedloge "
-"od nekoliko alata za strojno prevođenje i :ref:`translation-memory`. Svi "
-"strojni prijevodi su dostupni u jednoj kartici svake stranice prijevoda."
 
 #: ../../user/translating.rst:352
+#, fuzzy
+#| msgid "Built-in translation memory, see :ref:`translation-memory`."
 msgid ""
 "You can also perform a concordance search on the :ref:`translation-memory`."
-msgstr ""
-"Također možeš izvršiti pretragu podudarnosti u :ref:`translation-memory`."
+msgstr "Ugrađena prevodilačka memorija, pogledaj :ref:`translation-memory`."
 
 #: ../../user/translating.rst:356
 msgid ""
 "You can find the list of supported tools in :ref:`machine-translation-setup`."
-msgstr "Popis podržanih alata možeš pronaći u :ref:`machine-translation-setup`."
+msgstr ""
 
 #: ../../user/translating.rst:363
 msgid ""
@@ -47460,10 +47801,6 @@ msgid ""
 "the :guilabel:`Tools` menu, once you have selected a component and a "
 "language:"
 msgstr ""
-"Možeš koristiti automatsko prevođenje za početno prevođenje na temelju "
-"vanjskih izvora. Ovaj se alat zove :guilabel:`Automatsko prevođenje` i "
-"dostupan je u izborniku :guilabel:`Alati`, nakon što odabereš komponentu i "
-"jezik:"
 
 #: ../../user/translating.rst:369
 msgid "Two modes of operation are possible:"
@@ -47500,12 +47837,15 @@ msgid ""
 msgstr ""
 
 #: ../../user/translating.rst:387
+#, fuzzy
+#| msgid ""
+#| "Automatically translates strings using machine translation or other "
+#| "components."
 msgid ""
 "The automatically translated strings are labelled :guilabel:`Automatically "
 "translated`."
 msgstr ""
-"Automatski prevedeni izrazi su označeni s oznakom :guilabel:`Automatski "
-"prevedeno`."
+"Automatski prevodi izraze koristeći strojno prevođenje ili druge komponente."
 
 #: ../../user/translating.rst:399
 msgid ""
@@ -47561,21 +47901,21 @@ msgstr "Prilagodi prevodilačke oznake (pogledaj :ref:`custom-checks`)"
 
 #: ../../user/translating.rst:431
 msgid "Adjust string labels (see :ref:`labels`)"
-msgstr "Prilagodi oznake izraza (pogledaj :ref:`labels`)"
+msgstr ""
 
 #: ../../user/translating.rst:435
 msgid ""
 "This tool is called :guilabel:`Bulk edit`, accessible in the :guilabel:"
 "`Tools` menu of each project, component or translation."
 msgstr ""
-"Ovaj se alat zove :guilabel:`Skupno uređivanje`, dostupan u izborniku "
-":guilabel:`Alati` svakog projekta, komponente ili prijevoda."
 
 #: ../../user/translating.rst:442
 msgid ":ref:`Bulk edit add-on <addon-weblate.flags.bulk>`"
-msgstr ":ref:`Dodatak za skupno uređivanje <addon-weblate.flags.bulk>`"
+msgstr ""
 
 #: ../../user/translating.rst:445
+#, fuzzy
+#| msgid "Matrix view"
 msgid "Matrix View"
 msgstr "Prikaz tablice"
 
@@ -47594,6 +47934,8 @@ msgid ""
 msgstr ""
 
 #: ../../user/translating.rst:458
+#, fuzzy
+#| msgid "Zen mode"
 msgid "Zen Mode"
 msgstr "Zen modus"
 
@@ -47628,7 +47970,7 @@ msgstr ""
 
 #: ../../vcs.rst:14
 msgid "Accessing repositories"
-msgstr "Pristup repozitorijima"
+msgstr ""
 
 #: ../../vcs.rst:16
 msgid ""
@@ -47641,7 +47983,7 @@ msgstr ""
 
 #: ../../vcs.rst:25
 msgid "Accessing repositories from Hosted Weblate"
-msgstr "Pristup repozitorijima iz Hosted Weblate"
+msgstr ""
 
 #: ../../vcs.rst:27
 msgid ""
@@ -47705,7 +48047,7 @@ msgstr ""
 
 #: ../../vcs.rst:67
 msgid "SSH repositories"
-msgstr "SSH repozitoriji"
+msgstr ""
 
 #: ../../vcs.rst:69
 msgid ""
@@ -47733,7 +48075,7 @@ msgstr ""
 
 #: ../../vcs.rst:89
 msgid "Weblate SSH key"
-msgstr "Weblate SSH ključ"
+msgstr ""
 
 #: ../../vcs.rst:93
 msgid ""
@@ -47766,7 +48108,7 @@ msgstr ""
 
 #: ../../vcs.rst:112
 msgid "Verifying SSH host keys"
-msgstr "Provjera SSH ključeva glavnog računala"
+msgstr ""
 
 #: ../../vcs.rst:114
 msgid ""
@@ -47789,7 +48131,7 @@ msgstr ""
 
 #: ../../vcs.rst:128
 msgid "Connecting to legacy SSH servers"
-msgstr "Povezivanje na starije SSH servere"
+msgstr ""
 
 #: ../../vcs.rst:130
 msgid ""
@@ -47833,7 +48175,7 @@ msgstr ""
 
 #: ../../vcs.rst:167
 msgid "GitHub repositories"
-msgstr "GitHub repozitoriji"
+msgstr ""
 
 #: ../../vcs.rst:169
 msgid ""
@@ -47867,7 +48209,7 @@ msgstr ""
 
 #: ../../vcs.rst:195
 msgid "Weblate internal URLs"
-msgstr "Weblate interni URL-ovi"
+msgstr ""
 
 #: ../../vcs.rst:197
 msgid ""
@@ -47914,7 +48256,7 @@ msgstr ""
 
 #: ../../vcs.rst:219
 msgid "HTTPS repositories"
-msgstr "HTTPS repozitoriji"
+msgstr ""
 
 #: ../../vcs.rst:221
 msgid ""
@@ -47944,7 +48286,7 @@ msgstr ""
 
 #: ../../vcs.rst:243
 msgid "Using proxy"
-msgstr "Korištenje proxya"
+msgstr ""
 
 #: ../../vcs.rst:245
 msgid ""
@@ -47977,7 +48319,7 @@ msgstr ""
 
 #: ../../vcs.rst:271
 msgid "Git"
-msgstr "Git"
+msgstr ""
 
 #: ../../vcs.rst:275
 msgid "Weblate needs Git 2.28 or newer."
@@ -47988,8 +48330,6 @@ msgid ""
 "See :ref:`vcs-repos` for info on how to access different kinds of "
 "repositories."
 msgstr ""
-"Pogledaj :ref:`vcs-repos` za informacije o tome kako pristupiti različitim "
-"vrstama repozitorija."
 
 #: ../../vcs.rst:284
 msgid "Git with force push"
@@ -48010,7 +48350,7 @@ msgstr ""
 
 #: ../../vcs.rst:296
 msgid "Customizing Git configuration"
-msgstr "Prilagođavanje Git konfiguracije"
+msgstr ""
 
 #: ../../vcs.rst:298
 msgid ""
@@ -48110,8 +48450,10 @@ msgid ""
 msgstr ""
 
 #: ../../vcs.rst:394
+#, fuzzy
+#| msgid "GitHub pull request"
 msgid "Gitea pull requests"
-msgstr "Gitea zahtjevi za preuzimanje"
+msgstr "GitHub zahtjev za preuzimanje"
 
 #: ../../vcs.rst:398
 msgid ""
@@ -48136,8 +48478,10 @@ msgid ""
 msgstr ""
 
 #: ../../vcs.rst:423
+#, fuzzy
+#| msgid "Bitbucket Server pull request"
 msgid "Bitbucket Data Center pull requests"
-msgstr "Bitbucket Data Center zahtjevi za preuzimanje"
+msgstr "Zahtjev za preuzimanje na Bitbucket poslužitelju"
 
 #: ../../vcs.rst:427
 msgid ""
@@ -48167,8 +48511,10 @@ msgid ""
 msgstr ""
 
 #: ../../vcs.rst:456
+#, fuzzy
+#| msgid "Bitbucket Server pull request"
 msgid "Bitbucket Cloud pull requests"
-msgstr "Bitbucket Cloud zahtjevi za preuzimanje"
+msgstr "Zahtjev za preuzimanje na Bitbucket poslužitelju"
 
 #: ../../vcs.rst:460
 msgid ""
@@ -48178,8 +48524,12 @@ msgid ""
 msgstr ""
 
 #: ../../vcs.rst:466
+#, fuzzy
+#| msgid "This will push changes and create a Bitbucket Server pull request."
 msgid "This is different from Bitbucket Data Center API."
-msgstr "Ovo se razlikuje od Bitbucket Data Center API-ja."
+msgstr ""
+"Ovo će poslati promjene i stvoriti zahtjev za preuzimanje na Bitbucket "
+"poslužitelju."
 
 #: ../../vcs.rst:469
 msgid ""
@@ -48225,7 +48575,7 @@ msgstr ""
 
 #: ../../vcs.rst:516
 msgid "Gerrit"
-msgstr "Gerrit"
+msgstr ""
 
 #: ../../vcs.rst:518
 msgid ""
@@ -48241,8 +48591,10 @@ msgid ""
 msgstr ""
 
 #: ../../vcs.rst:529
+#, fuzzy
+#| msgid "Bitbucket Server pull request"
 msgid "Azure DevOps pull requests"
-msgstr "Azure DevOps zahtjevi za preuzimanje"
+msgstr "Zahtjev za preuzimanje na Bitbucket poslužitelju"
 
 #: ../../vcs.rst:531
 msgid ""
@@ -48267,7 +48619,7 @@ msgstr ""
 
 #: ../../vcs.rst:554
 msgid "Mercurial"
-msgstr "Mercurial"
+msgstr ""
 
 #: ../../vcs.rst:556
 msgid "Mercurial is another VCS you can use directly in Weblate."
@@ -48316,7 +48668,7 @@ msgstr ""
 
 #: ../../vcs.rst:612
 msgid "Local files"
-msgstr "Lokalne datoteke"
+msgstr ""
 
 #: ../../vcs.rst:616
 msgid ""
@@ -48342,7 +48694,7 @@ msgstr ""
 
 #: ../../wlc.rst:8
 msgid "Weblate Client"
-msgstr "Weblate klijent"
+msgstr ""
 
 #: ../../wlc.rst:15
 msgid ""
@@ -48356,19 +48708,20 @@ msgid ""
 msgstr ""
 
 #: ../../wlc.rst:29
+#, fuzzy
+#| msgctxt "Access-control role"
+#| msgid "Power user"
 msgid "Docker usage"
-msgstr "Korištenje Dockera"
+msgstr "Profesionalni korisnik"
 
 #: ../../wlc.rst:31
 msgid "The Weblate Client is also available as a Docker image."
-msgstr "Weblate klijent je također dostupan kao Docker paket."
+msgstr ""
 
 #: ../../wlc.rst:33
 msgid ""
 "The image is published on Docker Hub: https://hub.docker.com/r/weblate/wlc"
 msgstr ""
-"Paket je objavljen na Docker Hub stranici: https://hub.docker.com/r/weblate/"
-"wlc"
 
 #: ../../wlc.rst:35
 msgid "Installing:"
@@ -48394,7 +48747,7 @@ msgstr ""
 
 #: ../../wlc.rst:67
 msgid "Getting started"
-msgstr "Početak"
+msgstr ""
 
 #: ../../wlc.rst:69
 msgid ""
@@ -48409,7 +48762,7 @@ msgstr ""
 
 #: ../../wlc.rst:93
 msgid "Synopsis"
-msgstr "Sažetak"
+msgstr ""
 
 #: ../../wlc.rst:99
 msgid "Commands actually indicate which operation should be performed."
@@ -48423,8 +48776,10 @@ msgid ""
 msgstr ""
 
 #: ../../wlc.rst:109
+#, fuzzy
+#| msgid "Announcements"
 msgid "Arguments"
-msgstr "Argumenti"
+msgstr "Objave"
 
 #: ../../wlc.rst:111
 msgid ""
@@ -48459,79 +48814,73 @@ msgid "Overrides configuration file section in use, see :ref:`wlc-config`."
 msgstr ""
 
 #: ../../wlc.rst:137
+#, fuzzy
+#| msgid "Command"
 msgid "Commands"
-msgstr "Naredbe"
+msgstr "Naredba"
 
 #: ../../wlc.rst:139
 msgid "The following commands are available:"
-msgstr "Dostupne su sljedeće naredbe:"
+msgstr ""
 
 #: ../../wlc.rst:143
 msgid "Prints the current version."
-msgstr "Ispisuje trenutačnu verziju."
+msgstr ""
 
 #: ../../wlc.rst:147
 msgid "Lists used languages in Weblate."
-msgstr "Popisuje korištene jezike u Weblateu."
+msgstr ""
 
 #: ../../wlc.rst:151
 msgid "Lists projects in Weblate."
-msgstr "Popisuje projekte u Weblateu."
+msgstr ""
 
 #: ../../wlc.rst:155
 msgid "Lists components in Weblate."
-msgstr "Popisuje komponente u Weblateu."
+msgstr ""
 
 #: ../../wlc.rst:159
 msgid "Lists translations in Weblate."
-msgstr "Popisuje prijevode u Weblateu."
+msgstr ""
 
 #: ../../wlc.rst:163
 msgid "Shows Weblate object (translation, component or project)."
-msgstr "Prikazuje Weblate objekt (prijevod, komponenta ili projekt)."
+msgstr ""
 
 #: ../../wlc.rst:167
 msgid "Lists Weblate object (translation, component or project)."
-msgstr "Popisuje Weblate objekt (prijevod, komponenta ili projekt)."
+msgstr ""
 
 #: ../../wlc.rst:171
 msgid ""
 "Commits changes made in a Weblate object (translation, component or project)."
 msgstr ""
-"Predlaže promjene napravljene u Weblate objektu (prijevod, komponenta ili "
-"projekt)."
 
 #: ../../wlc.rst:175
 msgid ""
 "Pulls remote repository changes into Weblate object (translation, component "
 "or project)."
 msgstr ""
-"Preuzima promjene iz udaljenog repozitorija u Weblate objekt (prijevod, "
-"komponenta ili projekt)."
 
 #: ../../wlc.rst:179
 msgid ""
 "Pushes Weblate object changes into remote repository (translation, component "
 "or project)."
 msgstr ""
-"Prenosi promjene Weblate objekta u udaljeni repozitorij (prijevod, "
-"komponenta ili projekt)."
 
 #: ../../wlc.rst:185 ../../wlc.rst:241
 msgid "Supported since wlc 0.7."
-msgstr "Podržano od wlc 0.7."
+msgstr ""
 
 #: ../../wlc.rst:187
 msgid ""
 "Resets changes in Weblate object to match remote repository (translation, "
 "component or project)."
 msgstr ""
-"Resetira promjene u Weblate objektu na prethodno stanje kako bi odgovarale "
-"udaljenom repozitoriju (prijevod, komponenta ili projekt)."
 
 #: ../../wlc.rst:193 ../../wlc.rst:258
 msgid "Supported since wlc 0.9."
-msgstr "Podržano od wlc 0.9."
+msgstr ""
 
 #: ../../wlc.rst:195
 msgid ""
@@ -48553,7 +48902,7 @@ msgstr ""
 
 #: ../../wlc.rst:209 ../../wlc.rst:217 ../../wlc.rst:225
 msgid "Supported since wlc 0.5."
-msgstr "Podržano od wlc 0.5."
+msgstr ""
 
 #: ../../wlc.rst:211
 msgid "Displays lock status."
@@ -48624,43 +48973,47 @@ msgstr ""
 
 #: ../../wlc.rst:295
 msgid "Configuration files"
-msgstr "Datoteke konfiguracija"
+msgstr ""
 
 #: ../../wlc.rst:297
 msgid ":file:`.weblate`, :file:`.weblate.ini`, :file:`weblate.ini`"
-msgstr ":file:`.weblate`, :file:`.weblate.ini`, :file:`weblate.ini`"
+msgstr ""
 
 #: ../../wlc.rst:298
 msgid "Configuration file placed in the project directory."
-msgstr "Datoteka konfiguracije smještena u direktoriju projekta."
+msgstr ""
 
 #: ../../wlc.rst:299
 msgid ":file:`C:\\\\Users\\\\NAME\\\\AppData\\\\Roaming\\\\weblate.ini`"
-msgstr ":file:`C:\\\\Users\\\\NAME\\\\AppData\\\\Roaming\\\\weblate.ini`"
+msgstr ""
 
 #: ../../wlc.rst:300
 msgid "User configuration file on Windows in the roamed profile."
-msgstr "Korisnička datoteka konfiguracije u Windowsu u roamed profilu."
+msgstr ""
 
 #: ../../wlc.rst:301
 msgid ":file:`C:\\\\Users\\\\NAME\\\\AppData\\\\Local\\\\weblate.ini`"
-msgstr ":file:`C:\\\\Users\\\\NAME\\\\AppData\\\\Local\\\\weblate.ini`"
+msgstr ""
 
 #: ../../wlc.rst:302
 msgid "User configuration file on Windows in the local profile."
-msgstr "Korisnička datoteka konfiguracije u Windowsu u lokalnom profilu."
+msgstr ""
 
 #: ../../wlc.rst:303
 msgid ":file:`~/.config/weblate`"
-msgstr ":file:`~/.config/weblate`"
+msgstr ""
 
 #: ../../wlc.rst:304
+#, fuzzy
+#| msgid "Save configuration."
 msgid "User configuration file."
-msgstr "Korisnička datoteka konfiguracije."
+msgstr "Spremi konfiguraciju."
 
 #: ../../wlc.rst:306
+#, fuzzy
+#| msgid "Save configuration."
 msgid "System wide configuration file."
-msgstr "Datoteka konfiguracije sustava."
+msgstr "Spremi konfiguraciju."
 
 #: ../../wlc.rst:308
 msgid ""
@@ -48712,15 +49065,15 @@ msgstr ""
 
 #: ../../wlc.rst:351
 msgid "Examples"
-msgstr "Primjeri"
+msgstr ""
 
 #: ../../wlc.rst:353
 msgid "Print current program version:"
-msgstr "Ispiši trenutačnu verziju programa:"
+msgstr ""
 
 #: ../../wlc.rst:360
 msgid "List all projects:"
-msgstr "Popiši sve projekte:"
+msgstr ""
 
 #: ../../wlc.rst:371
 msgid "Upload translation file:"
@@ -48728,18 +49081,16 @@ msgstr "Prenesi prevodilačku datoteku:"
 
 #: ../../wlc.rst:377
 msgid "You can also designate what project :program:`wlc` should work on:"
-msgstr "Također možeš odrediti na kojem projektu :program:`wlc` treba raditi:"
+msgstr ""
 
 #: ../../wlc.rst:405
 msgid ""
 "With this setup it is easy to commit pending changes in the current project:"
 msgstr ""
-"S ovom postavkom je jednostavno poslati promjene na čekanju u trenutačnom "
-"projektu:"
 
 #: ../../workflows.rst:4
 msgid "Translation workflows"
-msgstr "Radni tokovi za prevođenje"
+msgstr ""
 
 #: ../../workflows.rst:6
 msgid ""
@@ -48785,19 +49136,25 @@ msgstr ""
 
 #: ../../workflows.rst:32
 msgid "The first existing setting applies:"
-msgstr "Primjenjuje se prva postojeća postavka:"
+msgstr ""
 
 #: ../../workflows.rst:34
+#, fuzzy
+#| msgid "Project language to remove"
 msgid "Project-language customization"
-msgstr "Prilagodba jezika projekta"
+msgstr "Jezik projekta koji se uklanja"
 
 #: ../../workflows.rst:35
+#, fuzzy
+#| msgid "Reset customization"
 msgid "Language customization"
-msgstr "Prilagodba jezika"
+msgstr "Obnovi prilagođavanje"
 
 #: ../../workflows.rst:36
+#, fuzzy
+#| msgid "Create component"
 msgid "The project/component settings"
-msgstr "Postavke projekta/komponente"
+msgstr "Stvori komponentu"
 
 #: ../../workflows.rst:40
 msgid ""
@@ -48807,7 +49164,7 @@ msgstr ""
 
 #: ../../workflows.rst:45
 msgid "Translation access"
-msgstr "Pristup prijevodu"
+msgstr ""
 
 #: ../../workflows.rst:47
 msgid ""
@@ -48901,7 +49258,7 @@ msgstr ""
 
 #: ../../workflows.rst:101
 msgid "Direct translation"
-msgstr "Izravni prijevod"
+msgstr ""
 
 #: ../../workflows.rst:102
 msgid ""
@@ -48921,7 +49278,7 @@ msgstr ""
 
 #: ../../workflows.rst:110 ../../workflows.rst:142 ../../workflows.rst:175
 msgid "Setting"
-msgstr "Postavka"
+msgstr ""
 
 #: ../../workflows.rst:110 ../../workflows.rst:142 ../../workflows.rst:175
 msgid "Note"
@@ -48934,7 +49291,7 @@ msgstr "isključeno"
 
 #: ../../workflows.rst:112 ../../workflows.rst:144 ../../workflows.rst:177
 msgid "Configured at project level."
-msgstr "Konfigurirano na razini projekta."
+msgstr ""
 
 #: ../../workflows.rst:114 ../../workflows.rst:146 ../../workflows.rst:148
 #: ../../workflows.rst:177 ../../workflows.rst:179
@@ -48943,19 +49300,19 @@ msgstr "uključeno"
 
 #: ../../workflows.rst:114 ../../workflows.rst:179
 msgid "Useful for users to be able to suggest when they are not sure."
-msgstr "Korisno za korisnike kako bi mogli predložiti kada nisu sigurni."
+msgstr ""
 
 #: ../../workflows.rst:121 ../../workflows.rst:153 ../../workflows.rst:186
 msgid "Translators group"
-msgstr "Grupa prevoditelja"
+msgstr ""
 
 #: ../../workflows.rst:121 ../../workflows.rst:153 ../../workflows.rst:186
 msgid "Or `Translate` with :ref:`per-project access control <manage-acl>`."
-msgstr "Ili`Prevedi` s :ref:`per-project access control <manage-acl>`."
+msgstr "Ili`Translate` s :ref:`per-project access control <manage-acl>`."
 
 #: ../../workflows.rst:125 ../../workflows.rst:157 ../../workflows.rst:190
 msgid "Reviewers group"
-msgstr "Grupa pregledatelja"
+msgstr ""
 
 #: ../../workflows.rst:125 ../../workflows.rst:157
 msgid "N/A"
@@ -48963,47 +49320,42 @@ msgstr "Bez podataka"
 
 #: ../../workflows.rst:125
 msgid "Not used."
-msgstr "Ne koristi se."
+msgstr ""
 
 #: ../../workflows.rst:132
 msgid "Peer review"
-msgstr "Pregled suradnika"
+msgstr ""
 
 #: ../../workflows.rst:134
 msgid ""
 "With this workflow, anybody can add a suggestion, which needs approval from "
 "additional members before it is accepted as a translation."
 msgstr ""
-"Ovaj radni tok omogućuje da svatko može dodati prijedlog, koji moraju "
-"odobriti dodatni članovi prije nego što se prihvati kao prijevod."
 
 #: ../../workflows.rst:137
 msgid "*Any user* can add suggestions."
-msgstr "*Svaki korisnik* može dodati prijedloge."
+msgstr ""
 
 #: ../../workflows.rst:138
 msgid "*Any user* can vote for suggestions."
-msgstr "*Svaki korisnik* može glasati za prijedloge."
+msgstr ""
 
 #: ../../workflows.rst:139
 msgid ""
 "Suggestions become translations when given a predetermined number of votes."
 msgstr ""
-"Prijedlozi postaju prijevodi kada dobiju unaprijed određeni broj glasova."
 
 #: ../../workflows.rst:150
 msgid "You can set higher value to require more peer reviews."
 msgstr ""
-"Možeš postaviti višu vrijednost kako bi zahtijevao/la preglede od više "
-"suradnika."
 
 #: ../../workflows.rst:157
 msgid "Not used, all translators review."
-msgstr "Ne koristi se, svi prevoditelji pregledavaju."
+msgstr ""
 
 #: ../../workflows.rst:163
 msgid "Dedicated reviewers"
-msgstr "Određeni pregledatelji"
+msgstr ""
 
 #: ../../workflows.rst:165
 msgid ""
@@ -49011,35 +49363,30 @@ msgid ""
 "translations, and one able to review them to ensure translations are "
 "consistent and that the quality is good."
 msgstr ""
-"S određenim pregledateljima postoje dvije grupe korisnika: jedna koja može "
-"predlagati prijevode i druga koja ih može pregledati te osigurati "
-"dosljednost i kvalitetu prijevoda."
 
 #: ../../workflows.rst:169
 msgid "*Any user* can edit unapproved translations."
-msgstr "*Svaki korisnik* može uređivati neodobrene prijevode."
+msgstr ""
 
 #: ../../workflows.rst:170
 msgid "*Reviewer* can approve / unapprove strings."
-msgstr "*Pregledatelj* može odobriti / odbiti izraze."
+msgstr "*Pregledatelj* može odobriti / odbiti izraz."
 
 #: ../../workflows.rst:171
 msgid "*Reviewer* can edit all translations (including approved ones)."
-msgstr "*Pregledatelj* može uređivati sve prijevode (uključujući odobrene)."
+msgstr ""
 
 #: ../../workflows.rst:172
 msgid "Suggestions can also be used to suggest changes for approved strings."
 msgstr ""
-"Prijedlozi se također mogu koristiti za predlaganje promjena za odobrene "
-"izraze."
 
 #: ../../workflows.rst:190
 msgid "Or `Review` with :ref:`per-project access control <manage-acl>`."
-msgstr "Ili `Pregledaj` s :ref:`per-project access control <manage-acl>`."
+msgstr ""
 
 #: ../../workflows.rst:196
 msgid "Turning on reviews"
-msgstr "Uključivanje pregleda"
+msgstr ""
 
 #: ../../workflows.rst:198
 msgid ""
@@ -49047,13 +49394,10 @@ msgid ""
 "`Workflow` subpage of project settings (to be found in the :guilabel:"
 "`Operations` → :guilabel:`Settings` menu):"
 msgstr ""
-"Pregledi se mogu uključiti u konfiguraciji projekta u podstranici :guilabel:`"
-"Radni tok` u postavkama projekta (nalazi se u izborniku :guilabel:`Operacije`"
-" → :guilabel:`Postavke`):"
 
 #: ../../workflows.rst:207
 msgid "Quality gateway for the source strings"
-msgstr "Sustav za provjeru kvalitete izvornih izraza"
+msgstr ""
 
 #: ../../workflows.rst:209
 msgid ""
@@ -49076,8 +49420,10 @@ msgid ""
 msgstr ""
 
 #: ../../workflows.rst:269
+#, fuzzy
+#| msgid "Starting translation into a new language"
 msgid "String consolidation using secondary language"
-msgstr "Konsolidacija izraza pomoću sekundarnog jezika"
+msgstr "Započinjanje prijevoda na novi jezik"
 
 #: ../../workflows.rst:271
 msgid ""
@@ -49099,7 +49445,7 @@ msgstr ""
 
 #: ../../workflows.rst:285
 msgid "Source strings reviews"
-msgstr "Pregledi izvornih izraza"
+msgstr ""
 
 #: ../../workflows.rst:287
 msgid ""

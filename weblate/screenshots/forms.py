@@ -24,7 +24,7 @@ class ScreenshotEditForm(forms.ModelForm):
     class Meta:
         model = Screenshot
         fields = ("name", "image", "repository_filename")
-        widgets = {  # noqa: RUF012
+        widgets = {
             "image": ScreenshotInput,
         }
 
@@ -40,11 +40,11 @@ class ScreenshotForm(forms.ModelForm):
     class Meta:
         model = Screenshot
         fields = ("name", "repository_filename", "image", "translation")
-        widgets = {  # noqa: RUF012
+        widgets = {
             "translation": SortedSelect,
             "image": ScreenshotInput,
         }
-        field_classes = {  # noqa: RUF012
+        field_classes = {
             "translation": LanguageChoiceField,
         }
 

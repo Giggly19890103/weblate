@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Weblate 5.13.1\n"
 "Report-Msgid-Bugs-To: https://github.com/WeblateOrg/weblate/issues\n"
 "POT-Creation-Date: 2025-09-03 12:07+0000\n"
-"PO-Revision-Date: 2025-09-24 13:02+0000\n"
-"Last-Translator: 이정희 <daemul72@gmail.com>\n"
+"PO-Revision-Date: 2025-09-09 17:07+0000\n"
+"Last-Translator: Changseop Yeom <ckdtjqdlgh@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/weblate/"
 "application/ko/>\n"
 "Language: ko\n"
@@ -66,11 +66,16 @@ msgid "Use account e-mail address"
 msgstr "계정의 전자우편 주소를 사용"
 
 #: weblate/accounts/forms.py:200
+#, fuzzy
+#| msgid ""
+#| "Used in version control commits. The address will stay in the repository "
+#| "forever once changes are committed by Weblate."
 msgid ""
 "Used in version-control commits. The address stays in the repository forever "
 "once changes are committed by Weblate."
-msgstr "버전 관리 커밋에 사용됩니다. Weblate에서 변경사항을 커밋하면 해당 주소가 "
-"저장소에 영구적으로 저장됩니다."
+msgstr ""
+"버전 제어 커밋에 사용됩니다. 주소는 Weblate에서 변경 사항을 커밋하면 저장소"
+"에 영원히 남습니다."
 
 #: weblate/accounts/forms.py:233 weblate/accounts/models.py:823
 msgid "Public e-mail"
@@ -158,9 +163,13 @@ msgid "Message"
 msgstr "메시지"
 
 #: weblate/accounts/forms.py:607
+#, fuzzy
+#| msgid ""
+#| "Please contact us in English, otherwise we might be unable to process "
+#| "your request."
 msgid ""
 "Please contact us in English. Otherwise, we might not process your request."
-msgstr "영어로 문의해 주세요. 그렇지 않으면 요청이 처리되지 않을 수 있습니다."
+msgstr "영어로 문의하지 않으면, 요청을 처리하지 못할 수 있습니다."
 
 #: weblate/accounts/forms.py:624 weblate/accounts/templatetags/authnames.py:35
 #: weblate/auth/models.py:470 weblate/auth/models.py:1199
@@ -172,6 +181,8 @@ msgid "E-mail"
 msgstr "전자우편"
 
 #: weblate/accounts/forms.py:625
+#, fuzzy
+#| msgid "E-mail with a confirmation link will be sent here."
 msgid "An e-mail with a confirmation link will be sent here."
 msgstr "확인 링크가 포함된 이메일이 여기로 전송됩니다."
 
@@ -192,8 +203,10 @@ msgid "Current password"
 msgstr "현재 비밀번호"
 
 #: weblate/accounts/forms.py:723
+#, fuzzy
+#| msgid "Leave empty if you have not yet set a password."
 msgid "Leave empty if you have not set a password yet."
-msgstr "아직 비밀번호를 설정하지 않으셨다면 비워두세요."
+msgstr "아직 비밀번호를 설정하지 않으셨다면, 입력하지 않아도 됩니다."
 
 #: weblate/accounts/forms.py:737
 msgid "You have entered an invalid password."
@@ -349,6 +362,8 @@ msgid "Screenshots uploaded"
 msgstr "스크린숏 업로드됨"
 
 #: weblate/accounts/forms.py:1055
+#, fuzzy
+#| msgid "Chosen sorting is not supported."
 msgid "The chosen sorting is not supported."
 msgstr "선택한 정렬은 지원되지 않습니다."
 
@@ -393,10 +408,14 @@ msgid "Recovery token"
 msgstr "복구 토큰"
 
 #: weblate/accounts/forms.py:1202
+#, fuzzy
+#| msgid ""
+#| "Recovery token can be used just once, mark your token as used after using "
+#| "it."
 msgid ""
 "Recovery codes can only be used once. Remember to mark used ones as expired."
-msgstr "복구 코드는 한 번만 사용할 수 있습니다. 사용한 코드는 만료됨으로 표시해 "
-"주세요."
+msgstr ""
+"복구 토큰은 한 번만 사용할 수 있습니다. 사용 후 토큰을 사용됨으로 표시하세요."
 
 #: weblate/accounts/forms.py:1259
 msgid "Enter the code from the app"
@@ -481,8 +500,10 @@ msgstr "계속된 로그인 시도 실패로 계정이 잠겼습니다."
 
 #. Translators: Audit log entry
 #: weblate/accounts/models.py:255
+#, fuzzy
+#| msgid "Could not send message to administrator."
 msgid "Account locked by the site administrator."
-msgstr "사이트 관리자가 계정을 잠갔습니다."
+msgstr "관리자에게 메시지를 보낼 수 없습니다."
 
 #. Translators: Audit log entry
 #: weblate/accounts/models.py:257
@@ -592,9 +613,10 @@ msgid "Two-factor authentication sign in using {device}"
 msgstr "{device}를 사용하여 2단계 인증 로그인"
 
 #: weblate/accounts/models.py:303
-#, python-brace-format
+#, fuzzy, python-brace-format
+#| msgid "Two-factor authentication sign in using {device}"
 msgid "Two-factor authentication failed using {device_type}"
-msgstr "{device_type}을 사용하여 2단계 인증에 실패했습니다"
+msgstr "{device}를 사용하여 2단계 인증 로그인"
 
 #. Translators: Audit log entry
 #: weblate/accounts/models.py:311
@@ -758,8 +780,10 @@ msgid ""
 msgstr "프로젝트에서 문자열을 번역할 때마다 해당 문자열을 보기 시작합니다."
 
 #: weblate/accounts/models.py:700
+#, fuzzy
+#| msgid "Contribute to shared translation memory"
 msgid "Contribute to personal translation memory"
-msgstr "개인 번역 메모리에 기여하기"
+msgstr "공유된 번역 메모리에 기여"
 
 #: weblate/accounts/models.py:703
 msgid ""
@@ -771,8 +795,10 @@ msgid "Watched translations"
 msgstr "참여중인 번역"
 
 #: weblate/accounts/models.py:715 weblate/templates/dashboard/user.html:23
+#, fuzzy
+#| msgid "All components"
 msgid "All component lists"
-msgstr "모든 구성요소 목록"
+msgstr "모든 구성요소"
 
 #: weblate/accounts/models.py:716 weblate/templates/dashboard/user.html:88
 msgid "Component list"
@@ -805,8 +831,10 @@ msgid "Website URL"
 msgstr "Weblate URL"
 
 #: weblate/accounts/models.py:760
+#, fuzzy
+#| msgid "Contact"
 msgid "Contact URL"
-msgstr "연락 URL"
+msgstr "연락"
 
 #: weblate/accounts/models.py:764
 msgid ""
@@ -1139,8 +1167,10 @@ msgid "Could not send message to administrator."
 msgstr "관리자에게 메시지를 보낼 수 없습니다."
 
 #: weblate/accounts/views.py:269
+#, fuzzy
+#| msgid "Too many messages sent, please try again later."
 msgid "Could not open a ticket, please try again later."
-msgstr "티켓을 열 수 없습니다. 나중에 다시 시도해 주세요."
+msgstr "너무 많은 메시지를 보냈습니다, 잠시 후 다시 시도하시기 바랍니다."
 
 #: weblate/accounts/views.py:274 weblate/accounts/views.py:295
 msgid "Your request has been sent, you will shortly hear from us."
@@ -1301,8 +1331,10 @@ msgid "The supplied user identity is already in use for another account."
 msgstr "이미 다른 계정에서 사용하는 ID입니다."
 
 #: weblate/accounts/views.py:1488
+#, fuzzy
+#| msgid "The authentication app was removed."
 msgid "The authentication provider could not be reached."
-msgstr "인증 제공자에게 연결할 수 없습니다."
+msgstr "인증 앱이 제거되었습니다."
 
 #: weblate/accounts/views.py:1522 weblate/accounts/views.py:1535
 msgid "Notification settings adjusted."
@@ -1557,12 +1589,13 @@ msgstr "보관할 일수"
 
 #: weblate/addons/forms.py:179
 msgid "Voting threshold"
-msgstr "투표 임계치"
+msgstr "투표 한계값"
 
 #: weblate/addons/forms.py:183
 msgid "Threshold for removal. This field has no effect with voting turned off."
-msgstr "제거를 위한 임계치입니다. 이 영역은 투표 기능이 꺼져 있을 때는 효과가 "
-"없습니다."
+msgstr ""
+"삭제하기 쉬운 값을 지정합니다. 이 영역은 투표 기능이 해제된 상태에서는 효과"
+"가 없습니다."
 
 #: weblate/addons/forms.py:190
 msgid "Regular expression to match translation files against"
@@ -1654,13 +1687,13 @@ msgstr "서식에 구성요소 마크업을 포함시키십시오."
 
 #: weblate/addons/forms.py:413
 msgid "Translation threshold"
-msgstr "번역 임계치"
+msgstr "번역 임곗값"
 
 #: weblate/addons/forms.py:419
 msgid ""
 "The percentage of translated strings that must be present for translation to "
 "be included."
-msgstr "번역에 포함되기 위해 반드시 존재해야 하는 번역된 문자열의 비율입니다."
+msgstr ""
 
 #: weblate/addons/forms.py:423
 msgid "CSS selector"
@@ -1764,8 +1797,10 @@ msgid "Change events"
 msgstr "변경된 라이선스"
 
 #: weblate/addons/forms.py:585
+#, fuzzy
+#| msgid "Website URL"
 msgid "Webhook URL"
-msgstr "Webhook URL"
+msgstr "Weblate URL"
 
 #: weblate/addons/forms.py:596
 msgid "Secret"
@@ -2530,7 +2565,7 @@ msgstr "게스트"
 #: weblate/auth/data.py:259
 msgctxt "Access-control team name"
 msgid "Viewers"
-msgstr "열람자"
+msgstr "검토자"
 
 #: weblate/auth/data.py:261
 msgctxt "Access-control team name"
@@ -2540,7 +2575,7 @@ msgstr "사용자"
 #: weblate/auth/data.py:266
 msgctxt "Access-control team name"
 msgid "Reviewers"
-msgstr "검토자"
+msgstr "재검토자"
 
 #: weblate/auth/data.py:271
 msgctxt "Access-control team name"
@@ -5299,7 +5334,7 @@ msgstr ""
 #: weblate/legal/templates/legal/terms.html:20 weblate/legal/views.py:19
 #: weblate/templates/accounts/snippets/login-info.html:10
 msgid "General Terms and Conditions"
-msgstr "일반 이용약관"
+msgstr "일반 이용 약관"
 
 #: weblate/legal/templates/legal/cookies.html:33
 #: weblate/legal/templates/legal/index.html:32
@@ -5461,7 +5496,7 @@ msgstr "인증 서비스 지역"
 #: weblate/machinery/forms.py:186
 msgctxt "Automatic suggestion service configuration"
 msgid "Category"
-msgstr "범주"
+msgstr "분류"
 
 #: weblate/machinery/forms.py:189
 msgctxt "Automatic suggestion service configuration"
@@ -6127,7 +6162,7 @@ msgstr[0] "최근 변경사항"
 #: weblate/templates/manage/index.html:101
 #: weblate/templates/snippets/donate.html:14
 msgid "Give to Weblate"
-msgstr "Weblate에 옮기기"
+msgstr "Weblate에 기부"
 
 #: weblate/templates/about/index.html:27
 msgid "Hosting translations"
@@ -7024,8 +7059,10 @@ msgstr ""
 "트에 정의된 라이선스에 따라 귀하의 기여를 제공하는 데 동의하게 됩니다."
 
 #: weblate/templates/accounts/snippets/login-title.html:4
+#, fuzzy
+#| msgid "Weblate version"
 msgid "Weblate single sign on"
-msgstr "Weblate 단일 로그인"
+msgstr "Weblate 버전"
 
 #: weblate/templates/accounts/snippets/login-title.html:5
 msgctxt "Badge for site title for Hosted Weblate"
@@ -7995,9 +8032,11 @@ msgid "About"
 msgstr "정보"
 
 #: weblate/templates/base.html:420
+#, fuzzy
+#| msgid "Website URL"
 msgctxt "Weblate website"
 msgid "Website"
-msgstr "웹사이트"
+msgstr "Weblate URL"
 
 #: weblate/templates/base.html:449 weblate/templates/base5.html:474
 #: weblate/templates/manage/index.html:43
@@ -8029,8 +8068,10 @@ msgid "About"
 msgstr "정보"
 
 #: weblate/templates/base5.html:445
+#, fuzzy
+#| msgid "Website URL"
 msgid "Website"
-msgstr "웹사이트"
+msgstr "Weblate URL"
 
 #: weblate/templates/billing/detail.html:27
 msgid "Recurring payment"
@@ -11110,8 +11151,10 @@ msgid "Project maintainers"
 msgstr "프로젝트 책임자"
 
 #: weblate/templates/snippets/info.html:47
+#, fuzzy
+#| msgid "Project removed"
 msgid "Project reviewers"
-msgstr "프로젝트 검토자"
+msgstr "프로젝트가 제거됨"
 
 #: weblate/templates/snippets/info.html:54
 msgid "Automatic component list assignment"
@@ -11753,20 +11796,22 @@ msgid "Translate %(object)s using %%23Weblate at %(share_url)s!"
 msgstr "%(share_url)s의 %%23Weblate를 이용해 %(object)s 를 번역하세요!"
 
 #: weblate/templates/snippets/share-menu.html:11
+#, fuzzy
+#| msgid "Share on X"
 msgid "Share on Bluesky"
-msgstr "Bluesky에 공유하기"
+msgstr "X에서 공유하기"
 
 #: weblate/templates/snippets/share-menu.html:16
 msgid "Share on Fediverse"
-msgstr "Fediverse에 공유하기"
+msgstr "Fediverse에서 공유하기"
 
 #: weblate/templates/snippets/share-menu.html:21
 msgid "Share on Facebook"
-msgstr "페이스북에 공유하기"
+msgstr "페이스북에서 공유하기"
 
 #: weblate/templates/snippets/share-menu.html:24
 msgid "Share on X"
-msgstr "X에 공유하기"
+msgstr "X에서 공유하기"
 
 #: weblate/templates/snippets/share-menu.html:27
 msgid "Engage page"
@@ -12800,7 +12845,7 @@ msgstr "개인 API 키"
 
 #: weblate/templates/trans/project-access.html:370
 msgid "This is your personal API key, do not share it with anybody else."
-msgstr "이것은 당신의 개인 API 키이므로 다른 사람과 공유하지 마십시오."
+msgstr "이것은 개인 API 키이므로 다른 사람과 공유하지 마십시오."
 
 #: weblate/templates/trans/project_form.html:12
 msgid "Import translation project"
@@ -13948,7 +13993,8 @@ msgstr "%s의 최근 변경사항"
 
 #. Translators: %s is site title here
 #: weblate/trans/feeds.py:36
-#, python-format
+#, fuzzy, python-format
+#| msgid "All recent changes made using Weblate in %s."
 msgid "All recent changes made using Weblate on %s."
 msgstr "%s의 모든 최근 변경사항은 Weblate를 사용하여 만들었습니다."
 
@@ -14325,7 +14371,7 @@ msgstr "번역엔진"
 
 #: weblate/trans/forms.py:947
 msgid "Score threshold"
-msgstr "점수 임계치"
+msgstr "점수 한계값"
 
 #: weblate/trans/forms.py:991
 msgid ""
@@ -15489,8 +15535,7 @@ msgstr "용어집으로 사용"
 msgid ""
 "Glossaries are different from regular translations but help keep track of "
 "and share consistent terminology."
-msgstr "용어집은 일반 번역본과 다르지만 용어를 추적하고 일관된 용어를 공유하는 데 "
-"도움이 됩니다."
+msgstr ""
 
 #: weblate/trans/models/component.py:806
 msgid "Glossary color"
@@ -15880,19 +15925,19 @@ msgstr "Weblate가 프로젝트의 \"언어-팀\" 파일 헤더를 업데이트�
 
 #: weblate/trans/models/project.py:201
 msgid "Use shared translation memory"
-msgstr "공유된 번역 메모리 사용하기"
+msgstr "공유된 번역 메모리 사용"
 
 #: weblate/trans/models/project.py:204
 msgid "Uses the pool of shared translations between projects."
-msgstr "프로젝트 간에 공유된 번역의 장을 사용하세요."
+msgstr "프로젝트 간의 공유된 번역의 장을 사용하세요."
 
 #: weblate/trans/models/project.py:208
 msgid "Contribute to shared translation memory"
-msgstr "공유된 번역 메모리에 기여하기"
+msgstr "공유된 번역 메모리에 기여"
 
 #: weblate/trans/models/project.py:211
 msgid "Contributes to the pool of shared translations between projects."
-msgstr "프로젝트 간에 공유된 번역의 장에 기여하세요."
+msgstr "프로젝트 간의 공유된 번역의 장에 기여하세요."
 
 #: weblate/trans/models/project.py:218
 msgid ""
@@ -15916,7 +15961,7 @@ msgstr "검토 활성화"
 
 #: weblate/trans/models/project.py:241 weblate/trans/models/workflow.py:25
 msgid "Requires dedicated reviewers to approve translations."
-msgstr "번역 승인을 위한 전담 검토자가 필요합니다."
+msgstr "번역 승인을 위한 전용 검토자가 필요합니다."
 
 #: weblate/trans/models/project.py:244
 msgid "Enable source reviews"
@@ -15924,7 +15969,7 @@ msgstr "원본 검토 활성화"
 
 #: weblate/trans/models/project.py:247
 msgid "Requires dedicated reviewers to approve source strings."
-msgstr "원문 문자열 승인을 위한 전담 검토자가 필요합니다."
+msgstr "원본 문자열 승인을 위한 전용 검토자가 필요합니다."
 
 #: weblate/trans/models/project.py:251
 #, fuzzy
@@ -16926,8 +16971,10 @@ msgid "Language count badge"
 msgstr "언어 코드"
 
 #: weblate/trans/widgets.py:542
+#, fuzzy
+#| msgid "Score threshold"
 msgid "Threshold"
-msgstr "임계치"
+msgstr "점수 한계값"
 
 #: weblate/trans/widgets.py:557 weblate/utils/views.py:629
 #, python-format

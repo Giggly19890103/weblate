@@ -12,7 +12,7 @@ from collections.abc import (
 from contextvars import ContextVar
 from functools import cache as functools_cache
 from itertools import chain
-from typing import TYPE_CHECKING, Any, ClassVar, Literal, TypedDict, cast
+from typing import TYPE_CHECKING, Any, Literal, TypedDict, cast
 
 import sentry_sdk
 from appconf import AppConf
@@ -20,7 +20,6 @@ from django.conf import settings
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import Group as DjangoGroup
-from django.core.validators import MinValueValidator
 from django.db import models
 from django.db.models import Prefetch, Q, UniqueConstraint
 from django.db.models.functions import Upper
@@ -489,12 +488,7 @@ class User(AbstractBaseUser):
         db_index=True,
     )
     date_expires = models.DateTimeField(
-        gettext_lazy("Expires"),
-        null=True,
-        blank=True,
-        default=None,
-        validators=[MinValueValidator(timezone.now)],
-        help_text=gettext_lazy("The account will be disabled after the expiry."),
+        gettext_lazy("Expires"), null=True, blank=True, default=None
     )
     date_joined = models.DateTimeField(
         gettext_lazy("Date joined"), default=timezone.now
@@ -518,13 +512,13 @@ class User(AbstractBaseUser):
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "username"
-    REQUIRED_FIELDS = ["email", "full_name"]  # noqa: RUF012
+    REQUIRED_FIELDS = ["email", "full_name"]
     DUMMY_FIELDS = ("first_name", "last_name", "is_staff")
 
     class Meta:
         verbose_name = "User"
         verbose_name_plural = "Users"
-        constraints = [  # noqa: RUF012
+        constraints = [
             UniqueConstraint(Upper("username"), name="weblate_auth_user_username_ci"),
             UniqueConstraint(Upper("email"), name="weblate_auth_user_email_ci"),
         ]
@@ -551,8 +545,6 @@ class User(AbstractBaseUser):
             self.full_name = self.extra_data["last_name"]
         if not self.email:
             self.email = None
-        if not self.is_active:
-            self.date_expires = None
         super().save(*args, **kwargs)
         self.clear_cache()
         if (
@@ -561,14 +553,11 @@ class User(AbstractBaseUser):
             and self.full_name != "Deleted User"
             and not self.is_anonymous
         ):
-            activity: str
-            if original.date_expires and not self.is_active:
-                activity = "disabled-expiry"
-            elif self.is_active:
-                activity = "enabled"
-            else:
-                activity = "disabled"
-            AuditLog.objects.create(user=self, request=None, activity=activity)
+            AuditLog.objects.create(
+                user=self,
+                request=None,
+                activity="enabled" if self.is_active else "disabled",
+            )
 
     def get_absolute_url(self) -> str:
         return reverse("user_page", kwargs={"user": self.username})
@@ -1023,9 +1012,7 @@ class UserBlock(models.Model):
     class Meta:
         verbose_name = "Blocked user"
         verbose_name_plural = "Blocked users"
-        unique_together = [  # noqa: RUF012
-            ("user", "project"),
-        ]
+        unique_together = [("user", "project")]
 
     def __str__(self) -> str:
         return f"{self.user} blocked for {self.project}"
@@ -1283,7 +1270,7 @@ class Invitation(models.Model):
 class WeblateAuthConf(AppConf):
     """Authentication settings."""
 
-    AUTH_RESTRICT_ADMINS: ClassVar[dict] = {}
+    AUTH_RESTRICT_ADMINS = {}
 
     # Anonymous user name
     ANONYMOUS_USER_NAME = "anonymous"

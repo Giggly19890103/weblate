@@ -26,14 +26,13 @@
 # LucasMZ <git@lucasmz.dev>, 2025.
 # Deleted User <jsdelvani@users.noreply.hosted.weblate.org>, 2025.
 # Deleted User <dedakir923@exoular.com>, 2025.
-# Jessica Patricio <jessicacacau@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Weblate 5.13.1\n"
 "Report-Msgid-Bugs-To: https://github.com/WeblateOrg/weblate/issues\n"
 "POT-Creation-Date: 2025-09-03 14:08+0200\n"
-"PO-Revision-Date: 2025-09-26 11:02+0000\n"
-"Last-Translator: Jessica Patricio <jessicacacau@gmail.com>\n"
+"PO-Revision-Date: 2025-08-25 04:03+0000\n"
+"Last-Translator: Alefsander Ribeiro Nascimento <alefsander.pvh14@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "weblate/documentation/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -41,7 +40,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.13\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: ../../admin/access.rst:4 ../../admin/projects.rst:215
@@ -3122,6 +3121,10 @@ msgid "Long lines wrapping"
 msgstr "Quebra de linhas longas"
 
 #: ../../admin/addons.rst:754 ../../snippets/file-format-parameters.rst:37
+#, fuzzy
+#| msgid ""
+#| "By default gettext wraps lines at 77 characters and at newlines. With the "
+#| "--no-wrap parameter, wrapping is only done at newlines."
 msgid ""
 "By default, gettext wraps lines at 77 characters and at newlines. With the --"
 "no-wrap parameter, wrapping is only done at newlines."
@@ -12753,7 +12756,7 @@ msgstr ""
 
 #: ../../admin/install.rst:1507
 msgid "weblate/examples/weblate.nginx.granian.conf"
-msgstr "weblate/examples/weblate.nginx.granian.conf"
+msgstr ""
 
 #: ../../admin/install.rst:1514 ../../admin/install.rst:1626
 #, fuzzy
@@ -21741,7 +21744,7 @@ msgstr ""
 
 #: ../../admin/projects.rst:1104
 msgid "Glossaries are best for:"
-msgstr "Os glossários são melhores para:"
+msgstr ""
 
 #: ../../admin/projects.rst:1106
 msgid "Ensuring consistent use of terms (e.g., UI labels, product names)."
@@ -40137,7 +40140,7 @@ msgstr ""
 
 #: ../../contributing/issues.rst:46
 msgid "Issues lifecycle"
-msgstr "Ciclo de vida dos problemas"
+msgstr ""
 
 #: ../../contributing/license.rst:2
 msgid "License"
@@ -45037,16 +45040,20 @@ msgid "flatxml_key_name"
 msgstr ""
 
 #: ../../snippets/file-format-parameters.rst:7
+#, fuzzy
+#| msgid "Category name"
 msgid "FlatXML key name"
-msgstr "Nome da chave FlatXML"
+msgstr "Nome da categoria"
 
 #: ../../snippets/file-format-parameters.rst:9
 msgid "flatxml_root_name"
 msgstr ""
 
 #: ../../snippets/file-format-parameters.rst:9
+#, fuzzy
+#| msgid "Flat XML file"
 msgid "FlatXML Root name"
-msgstr "Nome da raiz FlatXML"
+msgstr "Arquivo XML simples"
 
 #: ../../snippets/file-format-parameters.rst:11
 #, fuzzy
@@ -45055,8 +45062,10 @@ msgid "flatxml_value_name"
 msgstr "Arquivo XML simples"
 
 #: ../../snippets/file-format-parameters.rst:11
+#, fuzzy
+#| msgid "Flat XML file"
 msgid "FlatXML value name"
-msgstr "Nome do valor FlatXML"
+msgstr "Arquivo XML simples"
 
 #: ../../snippets/file-format-parameters.rst:13
 msgid "json_indent"
@@ -47612,7 +47621,7 @@ msgstr "Dependências"
 
 #: ../../security/dependencies.rst:7
 msgid "Software Bill of Material"
-msgstr "Lista de materiais de software"
+msgstr ""
 
 #: ../../security/dependencies.rst:9
 msgid ""
@@ -47693,7 +47702,7 @@ msgstr "Desabilitar o discovery"
 #: ../../security/disaster-recovery-plan.rst:5
 #: ../../security/incident-response-plan.rst:5
 msgid "Scope and objectives"
-msgstr "Escopo e objetivos"
+msgstr ""
 
 #: ../../security/disaster-recovery-plan.rst:7
 msgid ""
@@ -47945,7 +47954,7 @@ msgstr ""
 
 #: ../../security/incident-response-plan.rst:27
 msgid "Incident response lifecycle"
-msgstr "Ciclo de vida de resposta a incidentes"
+msgstr ""
 
 #: ../../security/incident-response-plan.rst:30
 #, fuzzy
@@ -48175,7 +48184,7 @@ msgstr ""
 
 #: ../../security/issues.rst:2
 msgid "Vulnerability and incident handling"
-msgstr "Vulnerabilidade e tratamento de incidentes"
+msgstr ""
 
 #: ../../security/issues.rst:7
 msgid "Reporting security issues"
@@ -48285,7 +48294,7 @@ msgstr "`Python Social Auth <https://github.com/python-social-auth>`_"
 
 #: ../../security/issues.rst:54
 msgid "Vulnerability disclosure policy"
-msgstr "Política de divulgação de vulnerabilidades"
+msgstr ""
 
 #: ../../security/issues.rst:56
 msgid ""
@@ -48491,7 +48500,7 @@ msgstr ""
 
 #: ../../security/privacy-compliance.rst:36
 msgid "User consent and transparency"
-msgstr "Consentimento e transparência do usuário"
+msgstr ""
 
 #: ../../security/privacy-compliance.rst:38
 msgid ""
@@ -48512,7 +48521,7 @@ msgstr ""
 
 #: ../../security/privacy-compliance.rst:43
 msgid "Data access and portability"
-msgstr "Acesso e portabilidade de dados"
+msgstr ""
 
 #: ../../security/privacy-compliance.rst:45
 msgid ""
@@ -48628,7 +48637,7 @@ msgstr "Suporte do Weblate"
 
 #: ../../security/privacy-compliance.rst:83
 msgid "GDPR (EU)"
-msgstr "RGPD (UE)"
+msgstr ""
 
 #: ../../security/privacy-compliance.rst:83
 msgid "Minimization, consent, erasure, auditability, locality"
@@ -48636,7 +48645,7 @@ msgstr ""
 
 #: ../../security/privacy-compliance.rst:85
 msgid "CCPA (California)"
-msgstr "CCPA (Califórnia)"
+msgstr ""
 
 #: ../../security/privacy-compliance.rst:85
 msgid "Access, deletion, no sale, user control"
@@ -48674,7 +48683,7 @@ msgstr ""
 
 #: ../../security/privacy-compliance.rst:93
 msgid "DPDPA (India)"
-msgstr "DPDPA (Índia)"
+msgstr ""
 
 #: ../../security/privacy-compliance.rst:93
 msgid "Lawful processing, consent, notice, user rights"
@@ -48682,7 +48691,7 @@ msgstr ""
 
 #: ../../security/privacy-compliance.rst:95
 msgid "PIPL (China)"
-msgstr "PIPL (China)"
+msgstr ""
 
 #: ../../security/privacy-compliance.rst:95
 msgid "Purpose limitation, data minimization, locality"
@@ -48788,7 +48797,7 @@ msgstr ""
 
 #: ../../security/threat-model.rst:41
 msgid "Trust boundaries"
-msgstr "Limites de confiança"
+msgstr ""
 
 #: ../../security/threat-model.rst:43
 msgid ""
@@ -48854,11 +48863,11 @@ msgstr "Descrição da etiqueta"
 
 #: ../../security/threat-model.rst:60
 msgid "Potential impact"
-msgstr "Impacto potencial"
+msgstr ""
 
 #: ../../security/threat-model.rst:61
 msgid "**Web server** (nginx/Apache)"
-msgstr "**Servidor web** (nginx/Apache)"
+msgstr ""
 
 #: ../../security/threat-model.rst:62 ../../security/threat-model.rst:98
 #: ../../security/threat-model.rst:118
@@ -48899,7 +48908,7 @@ msgstr ""
 #: ../../security/threat-model.rst:82 ../../security/threat-model.rst:110
 #: ../../security/threat-model.rst:122 ../../security/threat-model.rst:134
 msgid "**Tampering**"
-msgstr "**Adulteração**"
+msgstr ""
 
 #: ../../security/threat-model.rst:71
 msgid ""
@@ -49025,7 +49034,7 @@ msgstr ""
 
 #: ../../security/threat-model.rst:104
 msgid "Complete system compromise."
-msgstr "Comprometimento total do sistema."
+msgstr ""
 
 #: ../../security/threat-model.rst:107
 msgid ""
@@ -49061,7 +49070,7 @@ msgstr ""
 
 #: ../../security/threat-model.rst:116
 msgid "Major data breach."
-msgstr "Grande violação de dados."
+msgstr ""
 
 #: ../../security/threat-model.rst:119
 msgid ""
@@ -49117,7 +49126,7 @@ msgstr "Comprometimento com a conta."
 
 #: ../../security/threat-model.rst:133
 msgid "(Web UI)"
-msgstr "(Interface de usuário da Web)"
+msgstr ""
 
 #: ../../security/threat-model.rst:135
 msgid ""
@@ -49275,7 +49284,7 @@ msgstr ""
 
 #: ../../security/threat-model.rst:172
 msgid "**Logging and monitoring:**"
-msgstr "**Registro e monitoramento:**"
+msgstr ""
 
 #: ../../security/threat-model.rst:173
 msgid ""
@@ -49313,7 +49322,7 @@ msgstr ""
 
 #: ../../security/threat-model.rst:180
 msgid "**Error handling:**"
-msgstr "**Tratamento de erros:**"
+msgstr ""
 
 #: ../../security/threat-model.rst:181
 msgid ""
@@ -50092,7 +50101,7 @@ msgstr ""
 
 #: ../../user/checks.rst:477
 msgid "Automattic components formatting"
-msgstr "Formatação dos componentes da Automattic"
+msgstr "Formatação de componentes do Automattic"
 
 #: ../../user/checks.rst:480
 msgid "The Automattic components' placeholders do not match the source."

@@ -10,14 +10,13 @@
 # Michal Čihař <michal@weblate.org>, 2025.
 # Jesper Hertel <jh@users.noreply.hosted.weblate.org>, 2025.
 # cat <catsnote@proton.me>, 2025.
-# Øjvind Fritjof Arnfred <fritjofarnfred@protonmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Weblate 5.13.1\n"
 "Report-Msgid-Bugs-To: https://github.com/WeblateOrg/weblate/issues\n"
 "POT-Creation-Date: 2025-09-03 14:08+0200\n"
-"PO-Revision-Date: 2025-10-03 23:02+0000\n"
-"Last-Translator: cat <catsnote@proton.me>\n"
+"PO-Revision-Date: 2025-08-25 04:02+0000\n"
+"Last-Translator: Michal Čihař <michal@weblate.org>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/weblate/"
 "documentation/da/>\n"
 "Language: da\n"
@@ -25,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.13\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: ../../admin/access.rst:4 ../../admin/projects.rst:215
@@ -1406,8 +1405,10 @@ msgid "Announcements"
 msgstr "Meddelelser"
 
 #: ../../admin/access.rst:799
+#, fuzzy
+#| msgid "Post announcement"
 msgid "Post announcements"
-msgstr "Skrive meddelelser"
+msgstr "Indsend meddelse"
 
 #: ../../admin/access.rst:803
 msgid "Site wide privileges"
@@ -2885,8 +2886,10 @@ msgid "Appended variable text"
 msgstr "Efterstillet variabel tekst"
 
 #: ../../admin/addons.rst:663
+#, fuzzy
+#| msgid "Variable part multiplier"
 msgid "Variable text multiplier"
-msgstr "Variabel tekstmultiplikator"
+msgstr "Variabel delmultiplikator"
 
 #: ../../admin/addons.rst:663
 msgid ""
@@ -3421,8 +3424,10 @@ msgid ""
 msgstr ""
 
 #: ../../admin/addons.rst:1001
+#, fuzzy
+#| msgid "Webhook"
 msgid "Slack Webhooks"
-msgstr "Slack-webhooks"
+msgstr "Webhook"
 
 #: ../../admin/addons.rst:1007 ../../admin/addons.rst:1188
 msgid "Webhook URL"
@@ -3748,8 +3753,10 @@ msgid "Font removed"
 msgstr "Kommentar fjernet"
 
 #: ../../admin/addons.rst:1169
+#, fuzzy
+#| msgid "Sends notification to external service based on selected events."
 msgid "Sends notification to a Slack channel based on selected events."
-msgstr "Sender notifikation til en Slack-kanal baseret på valgte hændelser."
+msgstr "Sender notifikation til ekstern tjeneste baseret på valgte hændelser."
 
 #: ../../admin/addons.rst:1173
 msgid ""
@@ -3774,8 +3781,10 @@ msgid "Secret"
 msgstr "Hemmelighed"
 
 #: ../../admin/addons.rst:1190
+#, fuzzy
+#| msgid "Invalid base64 encoded string"
 msgid "A Base64 encoded string"
-msgstr "En Base64-kodet streng"
+msgstr "Ugyldig base64-kodet streng"
 
 #: ../../admin/addons.rst:1352
 #, fuzzy
@@ -43225,8 +43234,10 @@ msgid ""
 msgstr ""
 
 #: ../../user/checks.rst:477
+#, fuzzy
+#| msgid "Automatic assignments"
 msgid "Automattic components formatting"
-msgstr "Formatering af Automattic-komponenter"
+msgstr "Automatiske tildelinger"
 
 #: ../../user/checks.rst:480
 msgid "The Automattic components' placeholders do not match the source."
@@ -43806,12 +43817,17 @@ msgid ""
 msgstr ""
 
 #: ../../user/checks.rst:1068
+#, fuzzy
+#| msgid "Inconsistent reStructuredText references"
 msgid "Inconsistent reStructuredText"
-msgstr "Inkonsistent reStructuredText"
+msgstr "Inkonsistente reStructuredText-referencer"
 
 #: ../../user/checks.rst:1072
+#, fuzzy
+#| msgid ""
+#| "Inconsistent reStructuredText term references in the translated message."
 msgid "Inconsistent reStructuredText markup in the translated message."
-msgstr "Inkonsistent reStructuredText-markup i den oversatte besked."
+msgstr "Inkonsistente reStructuredText-termreferencer i den oversatte tekst."
 
 #: ../../user/checks.rst:1080
 #, fuzzy

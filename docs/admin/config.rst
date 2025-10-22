@@ -37,6 +37,15 @@ Configure this as a list of e-mail addresses:
    * :setting:`CONTACT_FORM`
    * :setting:`ADMINS`
 
+.. setting:: AKISMET_API_KEY
+
+AKISMET_API_KEY
+---------------
+
+Weblate can use Akismet to check incoming anonymous suggestions for spam.
+Visit `akismet.com <https://akismet.com/>`_ to purchase an API key
+and associate it with a site.
+
 .. setting:: ALTCHA_MAX_NUMBER
 
 ALTCHA_MAX_NUMBER
@@ -812,10 +821,6 @@ List for credentials for GitLab servers.
         },
     }
 
-.. note::
-
-   The personal access token needs the :guilabel:`api` scope to be able to use the API.
-
 .. include:: /snippets/vcs-credentials.rst
 
 .. seealso::
@@ -907,7 +912,7 @@ List for credentials for Bitbucket Cloud servers.
         "bitbucket.org": {
             "username": "your-username",
             "workspace": "your-workspace-slug",
-            "token": "your-api-token",
+            "token": "your-app-password",
         },
     }
 
@@ -922,15 +927,15 @@ The following configuration is available for each host:
 ``workspace``
     The user workspace slug.
 ``token``
-    The API token with `pullrequest:write` permission.
+    The App password with `pullrequest:write` permission.
 
 Additional settings not described here can be found at :ref:`settings-credentials`.
 
 .. seealso::
 
    * :ref:`vcs-bitbucket-cloud`
-   * `Create an API token <https://support.atlassian.com/bitbucket-cloud/docs/create-an-api-token/>`_
-   * `API token permissions <https://support.atlassian.com/bitbucket-cloud/docs/api-token-permissions/>`_
+   * `Create an App password <https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/>`_
+   * `App password permissions <https://support.atlassian.com/bitbucket-cloud/docs/app-password-permissions/>`_
 
 .. setting:: AZURE_DEVOPS_CREDENTIALS
 
@@ -1568,31 +1573,6 @@ Defines a regular expression to limit what can be entered as :ref:`project-web`.
    * :ref:`project-web`
    * :setting:`PROJECT_WEB_RESTRICT_HOST`
    * :setting:`PROJECT_WEB_RESTRICT_NUMERIC`
-
-.. setting:: RATELIMIT_NOTIFICATION_LIMITS
-
-RATELIMIT_NOTIFICATION_LIMITS
------------------------------
-
-.. versionadded:: 5.14
-
-Limits how many notifications for a single user will be sent out.
-
-The default setting is:
-
-.. code-block:: python
-
-    # Multi-level rate limiting for email notifications
-    # Each tuple contains (max_emails, time_window_seconds)
-    RATELIMIT_NOTIFICATION_LIMITS = [
-        # Prevent burst sends - 3 emails per 2 minutes
-        (3, 120),
-        # Equalize to avoid getting blocked for too long - 10 emails per hour
-        (10, 3600),
-        # Daily limit: 50 emails per day
-        (50, 86400),
-    ]
-
 
 .. setting:: RATELIMIT_ATTEMPTS
 

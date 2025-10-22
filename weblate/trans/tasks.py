@@ -17,14 +17,7 @@ from django.conf import settings
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.cache import cache
 from django.db import IntegrityError, transaction
-from django.db.models import (
-    Count,
-    DateTimeField,
-    ExpressionWrapper,
-    F,
-    Value,
-)
-from django.db.models.functions import Now
+from django.db.models import Count, F
 from django.http import Http404
 from django.http.request import HttpRequest
 from django.utils import timezone
@@ -38,7 +31,6 @@ from weblate.logger import LOGGER
 from weblate.trans.actions import ActionEvents
 from weblate.trans.autotranslate import AutoTranslate
 from weblate.trans.exceptions import FileParseError
-from weblate.trans.functions import MySQLTimestampAdd
 from weblate.trans.models import (
     Category,
     Change,
@@ -51,7 +43,6 @@ from weblate.trans.models import (
 )
 from weblate.utils.celery import app
 from weblate.utils.data import data_dir
-from weblate.utils.db import using_postgresql
 from weblate.utils.errors import report_error
 from weblate.utils.files import remove_tree
 from weblate.utils.lock import WeblateLockTimeoutError
@@ -61,10 +52,6 @@ from weblate.vcs.base import RepositoryError
 
 if TYPE_CHECKING:
     from collections.abc import Callable
-
-    from django.db.models import (
-        Expression,
-    )
 
 
 @app.task(
@@ -166,20 +153,22 @@ def commit_pending(
     else:
         components = Component.objects.filter(translation__pk__in=pks)
 
-    hours_expr = F("commit_pending_age") if hours is None else Value(hours)
-    age_cutoff: Expression
-    if using_postgresql():
-        age_cutoff = ExpressionWrapper(
-            Now() - hours_expr * timedelta(hours=1), output_field=DateTimeField()
-        )
-    else:
-        age_cutoff = MySQLTimestampAdd("HOUR", -hours_expr, Now())
-
+    # All components with pending units
     components = components.filter(
-        translation__unit__pending_changes__timestamp__lt=age_cutoff,
+        translation__unit__pending_changes__isnull=False
     ).distinct()
 
     for component in prefetch_stats(components.prefetch()):
+        age = timezone.now() - timedelta(
+            hours=component.commit_pending_age if hours is None else hours
+        )
+
+        units = component.pending_units.older_than(age)
+
+        # No pending units
+        if not units.exists():
+            continue
+
         if logger:
             logger(f"Committing {component}")
 
@@ -510,7 +499,6 @@ def auto_translate(
     engines: list[str],
     threshold: int,
     component_wide: bool = False,
-    unit_ids: list[int] | None = None,
 ):
     translation = Translation.objects.get(pk=translation_id)
     user = User.objects.get(pk=user_id) if user_id else None
@@ -521,7 +509,6 @@ def auto_translate(
             q=q,
             mode=mode,
             component_wide=component_wide,
-            unit_ids=unit_ids,
         )
         message = auto.perform(
             auto_source=auto_source,

@@ -116,13 +116,6 @@ Unit post-save
 
 Triggered just after the string is saved.
 
-.. _addon-event-unit-post-sync:
-
-Unit post-sync
---------------
-
-Triggered after the string is synchronized with the VCS.
-
 .. _addon-event-unit-pre-create:
 
 Unit pre-create
@@ -573,23 +566,6 @@ Flag new translations as "Needs editing"
 Whenever a new translatable string is imported from the VCS, it is flagged as
 needing editing in Weblate. This way you can easily filter and edit
 translations created by the developers.
-
-.. seealso::
-
-   :ref:`states`
-
-.. _addon-weblate.flags.target_repo_update:
-
-Flag updated translations from repository as "Needs editing"
-------------------------------------------------------------
-
-:Add-on ID: ``weblate.flags.target_repo_update``
-:Configuration: `This add-on has no configuration.`
-:Triggers: :ref:`addon-event-unit-post-sync`
-
-Whenever a string translation is changed from the VCS, it is flagged as needing
-editing in Weblate. Especially useful if translation files are often updated
-manually or by an external service.
 
 .. seealso::
 

@@ -27,7 +27,7 @@ from django import forms
 from django.conf import settings
 from django.core.exceptions import NON_FIELD_ERRORS, PermissionDenied, ValidationError
 from django.core.validators import FileExtensionValidator, validate_slug
-from django.db.models import Count, Q
+from django.db.models import Count, Model, Q, QuerySet
 from django.forms import model_to_dict
 from django.forms.utils import from_current_timezone
 from django.template.loader import render_to_string
@@ -40,7 +40,7 @@ from django.utils.text import normalize_newlines, slugify
 from django.utils.translation import gettext, gettext_lazy
 from translation_finder import DiscoveryResult, discover
 
-from weblate.auth.models import Group, User
+from weblate.auth.models import AuthenticatedHttpRequest, Group, User
 from weblate.checks.flags import Flags
 from weblate.checks.models import CHECKS
 from weblate.checks.utils import highlight_string
@@ -59,7 +59,6 @@ from weblate.trans.defines import (
 from weblate.trans.file_format_params import (
     FILE_FORMATS_PARAMS,
     get_params_for_file_format,
-    strip_unused_file_format_params,
 )
 from weblate.trans.filter import FILTERS
 from weblate.trans.models import (
@@ -70,6 +69,7 @@ from weblate.trans.models import (
     Component,
     Label,
     Project,
+    Translation,
     Unit,
     WorkflowSetting,
 )
@@ -89,7 +89,6 @@ from weblate.utils.forms import (
     SortedSelect,
     SortedSelectMultiple,
     UserField,
-    WeblateDateInput,
 )
 from weblate.utils.hash import checksum_to_hash, hash_to_checksum
 from weblate.utils.html import format_html_join_comma
@@ -107,14 +106,8 @@ from weblate.utils.views import get_sort_name
 from weblate.vcs.models import VCS_REGISTRY
 
 if TYPE_CHECKING:
-    from django.db.models import Model, QuerySet
-
     from weblate.accounts.models import Profile
-    from weblate.auth.models import AuthenticatedHttpRequest
     from weblate.trans.mixins import BaseURLMixin, URLMixin
-    from weblate.trans.models import (
-        Translation,
-    )
     from weblate.trans.models.translation import NewUnitParams
 
 BUTTON_TEMPLATE = """
@@ -147,6 +140,10 @@ class MarkdownTextarea(forms.Textarea):
             "data-mode": "markdown",
         }
         super().__init__(**kwargs)
+
+
+class WeblateDateInput(forms.DateInput):
+    input_type = "date"
 
 
 class DateRangeField(forms.CharField):
@@ -210,7 +207,7 @@ class ChecksumField(forms.CharField):
 
 
 class FlagField(forms.CharField):
-    default_validators = [validate_check_flags]  # noqa: RUF012
+    default_validators = [validate_check_flags]
 
 
 class PluralTextarea(forms.Textarea):
@@ -751,7 +748,7 @@ class SearchForm(forms.Form):
     sort_by = forms.CharField(required=False, widget=forms.HiddenInput)
     checksum = ChecksumField(required=False)
     offset = forms.IntegerField(min_value=-1, required=False, widget=forms.HiddenInput)
-    offset_kwargs: ClassVar[dict[str, str]] = {}
+    offset_kwargs = {}
 
     @staticmethod
     def get_initial(request: AuthenticatedHttpRequest):
@@ -858,9 +855,7 @@ class SearchForm(forms.Form):
 
 class PositionSearchForm(SearchForm):
     offset = forms.IntegerField(min_value=-1, required=False)
-    offset_kwargs: ClassVar[dict[str, str]] = {
-        "template": "snippets/position-field.html"
-    }
+    offset_kwargs = {"template": "snippets/position-field.html"}
 
 
 class MergeForm(UnitForm):
@@ -1273,12 +1268,12 @@ class ContextForm(FieldDocsMixin, forms.ModelForm):
     class Meta:
         model = Unit
         fields = ("explanation", "labels", "extra_flags")
-        widgets = {  # noqa: RUF012
+        widgets = {
             "labels": forms.CheckboxSelectMultiple(),
             "explanation": MarkdownTextarea,
         }
 
-    doc_links: ClassVar[dict[str, str]] = {
+    doc_links = {
         "explanation": ("admin/translating", "additional-explanation"),
         "labels": ("devel/translations", "labels"),
         "extra_flags": ("admin/translating", "additional-flags"),
@@ -1456,7 +1451,7 @@ class SettingsBaseForm(CleanRepoMixin, forms.ModelForm):
 
     class Meta:
         model = Component
-        fields = []  # noqa: RUF012
+        fields = []
 
     def __init__(self, request: AuthenticatedHttpRequest, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
@@ -1597,7 +1592,6 @@ class ComponentSettingsForm(
             "report_source_bugs",
             "license",
             "agreement",
-            "hide_glossary_matches",
             "allow_translation_propagation",
             "contribute_project_tm",
             "enable_suggestions",
@@ -1643,13 +1637,13 @@ class ComponentSettingsForm(
             "is_glossary",
             "glossary_color",
         )
-        widgets = {  # noqa: RUF012
+        widgets = {
             "enforced_checks": SelectChecksWidget,
             "source_language": SortedSelect,
             "secondary_language": SortedSelect,
             "language_code_style": SortedSelect,
         }
-        field_classes = {  # noqa: RUF012
+        field_classes = {
             "enforced_checks": SelectChecksField,
             "file_format_params": FormParamsField,
         }
@@ -1702,7 +1696,6 @@ class ComponentSettingsForm(
                     ),
                     Fieldset(
                         gettext("Translation settings"),
-                        "hide_glossary_matches",
                         "allow_translation_propagation",
                         "contribute_project_tm",
                         "manage_units",
@@ -1805,9 +1798,10 @@ class ComponentSettingsForm(
             data["restricted"] = self.instance.restricted
 
         if "file_format_params" in data:
-            data["file_format_params"] = strip_unused_file_format_params(
-                data["file_format"], data["file_format_params"]
-            )
+            selected_format = data["file_format"]
+            for param_format in FILE_FORMATS_PARAMS:
+                if selected_format not in param_format.file_formats:
+                    data["file_format_params"].pop(param_format.name, None)
 
 
 class ComponentCreateForm(SettingsBaseForm, ComponentDocsMixin, ComponentAntispamMixin):
@@ -1821,7 +1815,7 @@ class ComponentCreateForm(SettingsBaseForm, ComponentDocsMixin, ComponentAntispa
 
     class Meta:
         model = Component
-        fields = [  # noqa: RUF012
+        fields = [
             "project",
             "category",
             "name",
@@ -1847,11 +1841,11 @@ class ComponentCreateForm(SettingsBaseForm, ComponentDocsMixin, ComponentAntispa
             "source_language",
             "is_glossary",
         ]
-        widgets = {  # noqa: RUF012
+        widgets = {
             "source_language": SortedSelect,
             "language_code_style": SortedSelect,
         }
-        field_classes = {  # noqa: RUF012
+        field_classes = {
             "file_format_params": FormParamsField,
         }
 
@@ -1878,10 +1872,12 @@ class ComponentCreateForm(SettingsBaseForm, ComponentDocsMixin, ComponentAntispa
         super().clean()
         data = self.cleaned_data
 
+        # only applicable fields are saved to model
         if "file_format_params" in data:
-            data["file_format_params"] = strip_unused_file_format_params(
-                data["file_format"], data["file_format_params"]
-            )
+            selected_format = data["file_format"]
+            for param_format in FILE_FORMATS_PARAMS:
+                if selected_format not in param_format.file_formats:
+                    data["file_format_params"].pop(param_format.name, None)
 
 
 class ComponentNameForm(ComponentDocsMixin, ComponentAntispamMixin):
@@ -1926,12 +1922,12 @@ class ComponentSelectForm(ComponentNameForm):
 class ComponentBranchForm(ComponentSelectForm):
     branch = forms.ChoiceField(label=gettext_lazy("Repository branch"))
 
+    branch_data: dict[int, list[str]] = {}
     instance = None
 
     def __init__(self, *args, **kwargs) -> None:
         kwargs["auto_id"] = "id_branch_%s"
         super().__init__(*args, **kwargs)
-        self.branch_data: dict[int, list[str]] = {}
 
     def clean_component(self):
         component = self.cleaned_data["component"]
@@ -2032,12 +2028,7 @@ class ComponentZipCreateForm(ComponentProjectForm):
         widget=forms.FileInput(attrs={"accept": ".zip,application/zip"}),
     )
 
-    field_order = [  # noqa: RUF012
-        "zipfile",
-        "project",
-        "name",
-        "slug",
-    ]
+    field_order = ["zipfile", "project", "name", "slug"]
 
     def __init__(self, *args, **kwargs) -> None:
         kwargs["auto_id"] = "id_zipcreate_%s"
@@ -2057,12 +2048,7 @@ class ComponentDocCreateForm(ComponentProjectForm):
         queryset=Language.objects.all(),
         required=False,
     )
-    field_order = [  # noqa: RUF012
-        "docfile",
-        "project",
-        "name",
-        "slug",
-    ]
+    field_order = ["docfile", "project", "name", "slug"]
 
     def __init__(self, *args, **kwargs) -> None:
         kwargs["auto_id"] = "id_doccreate_%s"
@@ -2209,7 +2195,7 @@ class ComponentRenameForm(SettingsBaseForm, ComponentDocsMixin):
 
     class Meta:
         model = Component
-        fields = ["name", "slug", "project", "category"]  # noqa: RUF012
+        fields = ["name", "slug", "project", "category"]
 
     def __init__(self, request: AuthenticatedHttpRequest, *args, **kwargs) -> None:
         super().__init__(request, *args, **kwargs)
@@ -2222,7 +2208,7 @@ class CategoryRenameForm(SettingsBaseForm):
 
     class Meta:
         model = Category
-        fields = ["name", "slug", "project", "category"]  # noqa: RUF012
+        fields = ["name", "slug", "project", "category"]
 
     def __init__(self, request: AuthenticatedHttpRequest, *args, **kwargs) -> None:
         super().__init__(request, *args, **kwargs)
@@ -2235,7 +2221,7 @@ class CategoryRenameForm(SettingsBaseForm):
 class AddCategoryForm(SettingsBaseForm):
     class Meta:
         model = Category
-        fields = ["name", "slug"]  # noqa: RUF012
+        fields = ["name", "slug"]
 
     def __init__(
         self, request: AuthenticatedHttpRequest, parent, *args, **kwargs
@@ -2275,7 +2261,7 @@ class ProjectSettingsForm(SettingsBaseForm, ProjectDocsMixin, ProjectAntispamMix
             "commit_policy",
             "check_flags",
         )
-        widgets = {  # noqa: RUF012
+        widgets = {
             "access_control": forms.RadioSelect,
             "instructions": MarkdownTextarea,
             "language_aliases": forms.TextInput,
@@ -2306,7 +2292,10 @@ class ProjectSettingsForm(SettingsBaseForm, ProjectDocsMixin, ProjectAntispamMix
                     )
                 }
             )
-        if self.changed_access and self.instance.needs_license(access):
+        if self.changed_access and access in {
+            Project.ACCESS_PUBLIC,
+            Project.ACCESS_PROTECTED,
+        }:
             unlicensed = self.instance.component_set.filter(license="")
             if unlicensed:
                 raise ValidationError(
@@ -2462,7 +2451,7 @@ class ProjectRenameForm(SettingsBaseForm, ProjectDocsMixin):
 
     class Meta:
         model = Project
-        fields = ["name", "slug"]  # noqa: RUF012
+        fields = ["name", "slug"]
 
 
 class BillingMixin(forms.Form):
@@ -3031,8 +3020,8 @@ class AnnouncementForm(forms.ModelForm):
 
     class Meta:
         model = Announcement
-        fields = ["message", "severity", "expiry", "notify"]  # noqa: RUF012
-        widgets = {  # noqa: RUF012
+        fields = ["message", "severity", "expiry", "notify"]
+        widgets = {
             "expiry": WeblateDateInput(),
             "message": MarkdownTextarea,
         }
@@ -3089,7 +3078,7 @@ class LabelForm(forms.ModelForm):
     class Meta:
         model = Label
         fields = ("name", "description", "color", "project")
-        widgets = {  # noqa: RUF012
+        widgets = {
             "color": ColorWidget(),
             "project": forms.HiddenInput(),
         }
@@ -3109,8 +3098,8 @@ class LabelForm(forms.ModelForm):
 class ProjectTokenCreateForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ["full_name", "date_expires"]  # noqa: RUF012
-        widgets = {  # noqa: RUF012
+        fields = ["full_name", "date_expires"]
+        widgets = {
             "date_expires": WeblateDateInput(),
         }
 
@@ -3185,7 +3174,7 @@ class WorkflowSettingForm(FieldDocsMixin, forms.ModelForm):
 
     class Meta:
         model = WorkflowSetting
-        fields = [  # noqa: RUF012
+        fields = [
             "translation_review",
             "enable_suggestions",
             "suggestion_voting",

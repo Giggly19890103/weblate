@@ -113,7 +113,8 @@ def bulk_perform(  # noqa: C901
                         new_flags = flags.format()
                         if source_unit.extra_flags != new_flags:
                             source_unit.is_batch_update = True
-                            source_unit.update_extra_flags(new_flags, user)
+                            source_unit.extra_flags = new_flags
+                            source_unit.save(update_fields=["extra_flags"])
                             changed = True
 
                     if add_labels or remove_labels:

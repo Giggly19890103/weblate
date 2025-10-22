@@ -1,27 +1,24 @@
 # Copyright © Michal Čihař <michal@weblate.org>
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Altos <blackisnewyellow@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Weblate 5.13.1\n"
 "Report-Msgid-Bugs-To: https://github.com/WeblateOrg/weblate/issues\n"
 "POT-Creation-Date: 2025-09-03 12:07+0000\n"
-"PO-Revision-Date: 2025-10-02 15:28+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Tatar <https://hosted.weblate.org/projects/weblate/"
-"application/tt/>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
 "Language: tt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.14-dev\n"
 
 #: weblate/accounts/avatar.py:89
 msgctxt "No known user"
 msgid "None"
-msgstr "Исемсез"
+msgstr ""
 
 #: weblate/accounts/avatar.py:114 weblate/templates/accounts/profile.html:422
 #: weblate/templates/accounts/user.html:22 weblate/templates/base.html:324
@@ -2485,7 +2482,7 @@ msgstr ""
 #: weblate/auth/data.py:300
 msgctxt "Per-project access-control team name"
 msgid "Screenshots"
-msgstr "Скриншотлар"
+msgstr ""
 
 #: weblate/auth/data.py:303
 msgctxt "Per-project access-control team name"
@@ -4733,7 +4730,7 @@ msgstr ""
 #: weblate/lang/models.py:909
 msgctxt "Plural type"
 msgid "None"
-msgstr "Исемсез"
+msgstr ""
 
 #: weblate/lang/models.py:913
 msgctxt "Plural type"
@@ -4998,7 +4995,7 @@ msgstr ""
 #: weblate/legal/templates/legal/privacy.html:20 weblate/legal/views.py:21
 #: weblate/templates/accounts/snippets/login-info.html:13
 msgid "Privacy Policy"
-msgstr "Конфиденциальлек сәясәте"
+msgstr ""
 
 #: weblate/legal/templates/legal/cookies.html:38
 msgid "Cookies are used on this site for the following:"
@@ -7534,7 +7531,7 @@ msgstr ""
 #: weblate/templates/base.html:404 weblate/templates/base5.html:428
 #: weblate/templates/keyboard-shortcuts.html:18
 msgid "Keyboard shortcuts"
-msgstr "Тизтөймәләр"
+msgstr ""
 
 #: weblate/templates/base.html:407 weblate/templates/base5.html:431
 msgid "Weblate project"
@@ -8135,7 +8132,7 @@ msgstr ""
 #: weblate/templates/screenshots/screenshot_list.html:16
 #: weblate/templates/snippets/info.html:519 weblate/trans/forms.py:1768
 msgid "Screenshots"
-msgstr "Скриншотлар"
+msgstr ""
 
 #: weblate/templates/component.html:130
 msgid "Duplicate this component"
@@ -8938,7 +8935,7 @@ msgstr ""
 
 #: weblate/templates/list-comments.html:10
 msgid "Resolved comment"
-msgstr "Проблемасы чишелгән фикер"
+msgstr ""
 
 #: weblate/templates/list-comments.html:12
 msgid "Source string comment"
@@ -11237,7 +11234,7 @@ msgstr ""
 
 #: weblate/templates/snippets/suggestions.html:43
 msgid "Accept"
-msgstr "Кабул ит"
+msgstr ""
 
 #: weblate/templates/snippets/suggestions.html:49
 msgid "Accept and approve"

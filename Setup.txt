@@ -1,0 +1,92 @@
+1. apt install -y \
+   libxml2-dev libxslt-dev libfreetype6-dev libjpeg-dev libz-dev libyaml-dev \
+   libffi-dev libcairo-dev gir1.2-pango-1.0 gir1.2-rsvg-2.0 libgirepository-2.0-dev \
+   libacl1-dev liblz4-dev libzstd-dev libxxhash-dev libssl-dev libpq-dev libjpeg-dev build-essential \
+   python3-gdbm python3-dev git
+   
+2. apt install -y \
+   libldap2-dev libldap-common libsasl2-dev \
+   libxmlsec1-dev
+   
+3. apt install -y nginx uwsgi uwsgi-plugin-python3
+
+4. apt install -y redis-server
+
+5. apt install -y postgresql postgresql-contrib
+
+6. apt install -y exim4
+
+7. apt install -y gettext
+
+7.5. apt install curl
+
+8. curl -LsSf https://astral.sh/uv/install.sh | sh
+
+8.5 source $HOME/.local/bin/env
+
+9. uv venv ~/weblate-env
+
+10. . ~/weblate-env/bin/activate
+
+10.5 Copy the file ~/weblate-env/lib/python3.9/site-packages/weblate/settings_example.py to ~/weblate-env/lib/python3.9/site-packages/weblate/settings.py
+
+11. # Install Weblate with all optional dependencies
+uv pip install "weblate[all]"
+
+11.5. apt install postgresql
+
+12. sudo -u postgres psql postgres -c "\password postgres"
+
+13. sudo -u postgres createuser --superuser --pwprompt weblate
+
+14. sudo -u postgres createdb -E UTF8 -O weblate weblate
+
+14.1. DATA_DIR = "~/Documents/weblate-weblate-5.13.3/data"
+14.2. SITE_DOMAIN = "localhost:8000"
+
+15. weblate migrate
+
+16. weblate createadmin 
+    "$dnaEE^vcpk92"
+
+16.5. COMPRESS_ENABLED = True
+      COMPRESS_OFFLINE = False
+      COMPRESS_OFFLINE_CONTEXT = "weblate.utils.compress.offline_context"
+      COMPRESS_CSS_HASHING_METHOD = "content"
+
+17. 
+
+# Create the weblate directory
+mkdir -p /home/dsf2eqw3/Documents/weblate-weblate-5.13.3/weblate
+
+# Copy settings from the working installation
+cp /home/wefwe2ffw2/Documents/weblate/weblate/settings.py /home/dsf2eqw3/Documents/weblate-weblate-5.13.3/weblate/settings.py
+
+
+...
+# 1. Set environment variables
+export DJANGO_SETTINGS_MODULE=weblate.settings
+export PYTHONPATH=/home/dsf2eqw3/Documents/weblate-weblate-5.13.3
+
+# 2. Run migrations
+weblate migrate
+
+# 3. Start Celery using the examples
+cd /home/dsf2ehcb)^-psv!&j#42v@cq20ai+4ik6*h@t9tqz^9rt-m(iign=2$
+qw3/weblate-env/lib/python3.12/site-packages/weblate/examples/
+./celery start
+
+# 4. In another terminal, start the web server
+weblate runserver 0.0.0.0:8000
+
+
+# Activate youhcb)^-psv!&j#42v@cq20ai+4ik6*h@t9tqz^9rt-m(iign=2$
+r virtual environment first
+source weblate-env/bin/activate
+
+# Generate SECRET_KEY
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+
+
+install asciidoctor
+install pandoc
