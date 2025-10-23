@@ -19,13 +19,7 @@ class AsciiDocFormat(ConvertFormat):
     format_id = "asciidoc"
     check_flags = ("safe-html", "strict-same", "md-text")
     monolingual = True
-    html_path = None
     
-    def __init__(self, storefile=None, template_store=None, language_code=None, source_language=None, is_template=False, existing_units=None, file_format_params=None):
-        """Initialize the AsciiDoc format."""
-        super().__init__(storefile, template_store, language_code, source_language, is_template, existing_units, file_format_params)
-        self.html_path = None
-
     def _convert_adoc_to_html_path(self, adoc_path):
         """Convert AsciiDoc file path to HTML file path."""
         import os
@@ -58,8 +52,6 @@ class AsciiDocFormat(ConvertFormat):
         from translate.storage.html import htmlfile
         import os
 
-        print("Converting file to PO")
-
         # Handle both file objects and string paths
         if isinstance(storefile, str):
             # storefile is a file path
@@ -74,27 +66,26 @@ class AsciiDocFormat(ConvertFormat):
                 asciidoc_content = asciidoc_content.decode('utf-8')
         
         # Create HTML path using the conversion function
-        if self.html_path is None:
-            self.html_path = self._convert_adoc_to_html_path(adoc_path)
+        html_path = self._convert_adoc_to_html_path(adoc_path)
         
         # If HTML file doesn't exist, create it from the .adoc file
-        if not os.path.exists(self.html_path):
+        if not os.path.exists(html_path):
             # Convert AsciiDoc to HTML
             html_content = self._asciidoc_to_html(asciidoc_content)
             
             # Write HTML file
-            with open(self.html_path, 'w', encoding='utf-8') as f:
+            with open(html_path, 'w', encoding='utf-8') as f:
                 f.write(html_content)
         else:
             # Read existing HTML file
-            with open(self.html_path, 'r', encoding='utf-8') as f:
+            with open(html_path, 'r', encoding='utf-8') as f:
                 html_content = f.read()
                 
         # Create HTML parser with converted content
         html_bytes = html_content.encode('utf-8')
         htmlparser = htmlfile(inputfile=NamedBytesIO("", html_bytes))
 
-        return self.convert_to_po(htmlparser, None, use_location=False)
+        return self.convert_to_po(htmlparser, template_store)
 
     def save_content(self, handle) -> None:
         """Store content to file using HTML as intermediate format."""
@@ -104,18 +95,16 @@ class AsciiDocFormat(ConvertFormat):
         import tempfile
         import os
 
-        print("Saving content")
         # Parse the .adoc file and create corresponding .html file
-        adoc_path = self.storefile
+        adoc_path = self.template_store.storefile
         if hasattr(adoc_path, "name"):
             adoc_path = adoc_path.name
         
         # Create HTML path using the conversion function
-        if self.html_path is None:
-            self.html_path = self._convert_adoc_to_html_path(adoc_path)
+        html_path = self._convert_adoc_to_html_path(adoc_path)
         
         # If HTML file doesn't exist, create it from the .adoc file
-        if not os.path.exists(self.html_path):
+        if not os.path.exists(html_path):
             with open(adoc_path, 'r', encoding='utf-8') as f:
                 asciidoc_content = f.read()
             
@@ -123,17 +112,25 @@ class AsciiDocFormat(ConvertFormat):
             html_content = self._asciidoc_to_html(asciidoc_content)
             
             # Write HTML file
-            with open(self.html_path, 'w', encoding='utf-8') as f:
+            with open(html_path, 'w', encoding='utf-8') as f:
                 f.write(html_content)
                 
         # Use po2html with the HTML template
         converter = po2html()
-        with open(self.html_path, "rb") as templatefile:
+        with open(html_path, "rb") as templatefile:
             outputstring = converter.mergestore(
                 self.store, templatefile, includefuzzy=True
             )
         
-        with open(self.html_path, 'w', encoding='utf-8') as f:
+
+        adoc_path = self.storefile
+        if hasattr(adoc_path, "name"):
+            adoc_path = adoc_path.name
+        
+        # Create HTML path using the conversion function
+        html_path = self._convert_adoc_to_html_path(adoc_path)
+
+        with open(html_path, 'w', encoding='utf-8') as f:
             f.write(outputstring)
             
         # Convert HTML back to AsciiDoc
