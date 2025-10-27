@@ -42,3 +42,4 @@ weblate-*.tar.*
 /memray*
 /mypy.log
 *.log
+__pycache__

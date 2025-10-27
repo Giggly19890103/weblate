@@ -16,11 +16,11 @@ echo -e "${BLUE}========================================${NC}"
 echo ""
 
 # Navigate to Weblate directory (IMPORTANT: Must be here before starting Celery)
-cd ~/Documents/weblate-weblate-5.13.3
+cd $HOME/Documents/weblate-weblate-5.13.3
 
 # Activate virtual environment
 echo -e "${YELLOW}Activating virtual environment...${NC}"
-source ~/weblate-env/bin/activate
+source $HOME/weblate-env/bin/activate
 
 # Set Django settings module (required for Celery to work properly)
 export DJANGO_SETTINGS_MODULE=weblate.settings
@@ -32,8 +32,8 @@ else
     echo -e "${GREEN}Starting Celery workers...${NC}"
     # Start Celery with proper configuration (from Weblate directory)
     nohup celery -A weblate.utils worker \
-        --pidfile=~/weblate-celery.pid \
-        --logfile=~/weblate-celery%I.log \
+        --pidfile=$HOME/weblate-celery.pid \
+        --logfile=$HOME/weblate-celery%I.log \
         --loglevel=DEBUG \
         --queues=celery,notify,memory,translate,backup \
         --beat \
@@ -60,8 +60,8 @@ echo ""
 echo -e "  Access Weblate at: ${BLUE}http://localhost:8000${NC}"
 echo ""
 echo -e "  Logs:"
-echo -e "    - Server:  ${YELLOW}tail -f ~/Documents/weblate-weblate-5.13.3/server.log${NC}"
-echo -e "    - Celery:  ${YELLOW}tail -f ~/weblate-celery.log${NC}"
+echo -e "    - Server:  ${YELLOW}tail -f $HOME/Documents/weblate-weblate-5.13.3/server.log${NC}"
+echo -e "    - Celery:  ${YELLOW}tail -f $HOME/weblate-celery.log${NC}"
 echo ""
 echo -e "  To stop Weblate, run: ${YELLOW}./stop-weblate.sh${NC}"
 echo -e "${BLUE}========================================${NC}"
