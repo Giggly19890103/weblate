@@ -15,9 +15,9 @@ echo -e "${RED}========================================${NC}"
 echo ""
 
 # Stop Django server
-if pgrep -f "manage.py runserver" > /dev/null; then
+if pgrep -f "weblate runserver" > /dev/null; then
     echo -e "${YELLOW}Stopping Django server...${NC}"
-    pkill -f "manage.py runserver"
+    pkill -f "weblate runserver"
     sleep 1
     echo -e "${GREEN}✓ Django server stopped${NC}"
 else

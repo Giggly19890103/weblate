@@ -25,9 +25,10 @@
     "enable_suggestions": true,
     "suggestion_voting": false,
     "suggestion_autoaccept": 0,
-    "check_flags": ""
+    "check_flags": "",
+    "hide_glossary_matches": false
   },
-  "languages": ["zh_Hans"],
+  "languages": ["zh-Hans"],
   "wait_for_ready": true,
   "trigger_update": true
 }
