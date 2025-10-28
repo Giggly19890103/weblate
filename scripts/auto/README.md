@@ -4,9 +4,10 @@ Automate Weblate project setup and translation management using the REST API.
 
 ## 📦 Scripts Included
 
-1. **`setup_component.py`** - Complete workflow: create component + add translations (recommended)
-2. **`create_component.py`** - Create projects and components
-3. **`add_translation.py`** - Add language translations to components
+1. **`batch_component_setup.py`** - Auto-generate and create multiple components from repository scan (bulk operations)
+2. **`setup_component.py`** - Complete workflow: create component + add translations (single component)
+3. **`create_component.py`** - Create projects and components
+4. **`add_translation.py`** - Add language translations to components
 
 ## 🚀 Quick Start
 
@@ -85,7 +86,418 @@ python3 scripts/auto/add_translation.py \
 
 ---
 
-## 📖 Script 0: `setup_component.py` (All-in-One)
+## 📖 Script 0: `batch_component_setup.py` (Batch Operations)
+
+**The most powerful automation tool** - Scan a repository and automatically generate/create dozens of Weblate components in one command.
+
+### Overview
+
+`batch_component_setup.py` is designed for **bulk component creation**. Instead of manually creating each component, this script:
+
+1. **Clones your repository** (or uses a local copy)
+2. **Scans for translatable files** (e.g., `.adoc`, `.md`, `.po`, `.json`)
+3. **Auto-generates component configs** for each file
+4. **Optionally creates all components** in Weblate with proper synchronization
+
+### Key Features
+
+- ✅ **Automatic file discovery** - finds all translatable files in your repo
+- ✅ **Smart naming** - generates component names/slugs from filenames
+- ✅ **Path-aware** - handles subdirectories and complex structures
+- ✅ **Sequential creation** - creates components one-by-one with delays to prevent conflicts
+- ✅ **Configurable delays** - adjustable wait time between components (default: 5s)
+- ✅ **Progress tracking** - detailed logs and status for each component
+- ✅ **Dry-run mode** - preview what would be generated
+- ✅ **Resume capability** - failed components are logged; you can retry individually
+- ✅ **Single config file** - define project defaults once, apply to all components
+
+### Quick Example
+
+```bash
+# Generate and create all components in one command
+python3 batch_component_setup.py \
+    --config project_config.json \
+    --create-components
+```
+
+This could create **50+ components in minutes** with a single command!
+
+### Usage Modes
+
+#### 1. Generate Setup Files Only (Review First)
+
+```bash
+python3 batch_component_setup.py --config project_config.json
+```
+
+This creates `setup/*.json` files without touching Weblate. Review them first, then manually create components.
+
+#### 2. Generate AND Create (Fully Automated)
+
+```bash
+python3 batch_component_setup.py \
+    --config project_config.json \
+    --create-components
+```
+
+Creates all components automatically with proper synchronization (5s delay between components).
+
+#### 3. Custom Delay Between Components
+
+```bash
+python3 batch_component_setup.py \
+    --config project_config.json \
+    --create-components \
+    --delay 10
+```
+
+Increases delay to 10 seconds (useful for slower servers or large repositories).
+
+#### 4. Dry Run (Preview)
+
+```bash
+python3 batch_component_setup.py \
+    --config project_config.json \
+    --dry-run
+```
+
+Shows what would be generated without creating any files.
+
+#### 5. Use Local Repository (Skip Cloning)
+
+```bash
+python3 batch_component_setup.py \
+    --config project_config.json \
+    --local-repo /path/to/repo
+```
+
+Scans a local repository instead of cloning (faster for development).
+
+#### 6. Custom Output Directory
+
+```bash
+python3 batch_component_setup.py \
+    --config project_config.json \
+    --output ./my-components
+```
+
+Saves generated configs to a custom directory (default: `./setup`).
+
+#### 7. Background Execution
+
+```bash
+nohup python3 batch_component_setup.py \
+    --config project_config.json \
+    --create-components \
+    > batch_creation.log 2>&1 &
+
+# Monitor progress
+tail -f batch_creation.log
+```
+
+### Configuration File Format
+
+Create a `project_config.json` file with your project settings:
+
+```json
+{
+  "project": {
+    "name": "Boost Unordered Documentation",
+    "slug": "boost-unordered-documentation",
+    "web": "https://www.boost.org/doc/libs/master/libs/unordered/",
+    "instructions": "Please translate the Boost.Unordered documentation. Maintain technical accuracy and follow AsciiDoc formatting conventions.",
+    "access_control": 0
+  },
+  "component_defaults": {
+    "vcs": "github",
+    "repo": "git@github.com:user/unordered.git",
+    "push": "git@github.com:user/unordered.git",
+    "branch": "develop",
+    "push_branch": "boost-unordered-zh-translation",
+    "edit_template": false,
+    "source_language": "en",
+    "license": "BSL-1.0",
+    "allow_translation_propagation": true,
+    "enable_suggestions": true,
+    "suggestion_voting": false,
+    "suggestion_autoaccept": 0,
+    "check_flags": "",
+    "hide_glossary_matches": false
+  },
+  "languages": ["zh_Hans"],
+  "wait_for_ready": true,
+  "trigger_update": true,
+  "scan": {
+    "github_path": "doc/modules/ROOT",
+    "extensions": [".adoc"],
+    "exclude_patterns": ["test", "examples", "build", ".git"]
+  }
+}
+```
+
+### Configuration Options
+
+#### Project Section
+
+Defines the Weblate project (created once, shared by all components):
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `name` | Yes | Project display name |
+| `slug` | Yes | URL-friendly identifier |
+| `web` | Yes | Project website URL |
+| `instructions` | No | Instructions for translators |
+| `access_control` | No | 0=Public, 1=Protected, 100=Private |
+
+#### Component Defaults Section
+
+Default settings applied to **all** generated components:
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `vcs` | Yes | VCS type (`git`, `github`, `gitlab`) |
+| `repo` | Yes | Repository URL (SSH or HTTPS) |
+| `push` | Yes | Push URL (typically same as `repo`) |
+| `branch` | Yes | Branch to translate from |
+| `push_branch` | No | **Single branch for all components** (e.g., `weblate-translations`) or omit to auto-generate per-component branches |
+| `edit_template` | No | Allow template editing (default: `false`) |
+| `source_language` | No | Source language code (default: `en`) |
+| `license` | No | Translation license |
+| `allow_translation_propagation` | No | Propagate translations between components |
+| `enable_suggestions` | No | Enable translation suggestions |
+| `suggestion_voting` | No | Enable voting on suggestions |
+| `suggestion_autoaccept` | No | Auto-accept threshold (0 = disabled) |
+| `check_flags` | No | Quality check flags |
+| `hide_glossary_matches` | No | Hide glossary suggestions (default: `false`) |
+
+#### Top-Level Settings
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `languages` | Yes | Array of language codes to add (e.g., `["zh_Hans", "ja", "fr"]`) |
+| `wait_for_ready` | No | Wait for component initialization (default: `true`) |
+| `trigger_update` | No | Trigger VCS update after creation (default: `true`) |
+
+#### Scan Section
+
+Defines how the repository is scanned for files:
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `github_path` | No | Relative path within repo to scan (e.g., `"doc/modules/ROOT"`) - omit to scan entire repo |
+| `extensions` | Yes | File extensions to find (e.g., `[".adoc", ".md", ".po"]`) |
+| `exclude_patterns` | No | Directories/patterns to skip (e.g., `["test", "examples", ".git"]`) |
+
+### How Components Are Generated
+
+For each file found, the script automatically generates:
+
+| Generated Field | How It's Generated | Example File | Example Output |
+|----------------|-------------------|--------------|----------------|
+| **Component Name** | Title case from filename | `intro.adoc` | `Intro` |
+| | | `unordered-map.adoc` | `Unordered Map` |
+| **Component Slug** | Lowercase, hyphenated | `intro.adoc` | `intro` |
+| | | `unordered_map.adoc` | `unordered-map` |
+| **Filemask** | Adds `_*` before extension | `intro.adoc` | `doc/.../intro_*.adoc` |
+| | | `nav.adoc` | `doc/.../nav_*.adoc` |
+| **Template** | Original file path | `doc/.../intro.adoc` | `doc/.../intro.adoc` |
+| **New Base** | Same as template | `doc/.../intro.adoc` | `doc/.../intro.adoc` |
+| **Push Branch** | From config OR auto-generated | Config: `weblate-translations` | `weblate-translations` |
+| | | Auto: `intro.adoc` | `weblate-intro` |
+| **File Format** | Detected from extension | `.adoc` | `asciidoc` |
+| | | `.po` | `po` |
+| | | `.json` | `json` |
+| | | `.md` | `markdown` |
+
+### Synchronization & Safety
+
+When using `--create-components`, the script ensures **safe sequential creation**:
+
+1. **One-by-one processing** - Components created sequentially, never in parallel
+2. **Configurable delays** - Default 5-second wait between components (use `--delay` to adjust)
+3. **Error isolation** - One failure doesn't stop the entire batch
+4. **Progress tracking** - Shows `[1/50]`, `[2/50]`, etc. with timing
+5. **Final summary** - Lists success/failure counts and failed components
+6. **Timeout protection** - 5-minute timeout per component
+
+**Why sequential?** Parallel creation causes:
+- Database locking issues
+- VCS conflicts
+- Component initialization race conditions
+
+**Delays prevent:**
+- Server overload
+- Database constraint violations
+- Incomplete component initialization
+
+### Output Example
+
+```
+[INFO] Loading configuration from: project_config.json
+[INFO] Cloning repository: git@github.com:user/unordered.git
+[INFO] Branch: develop
+[SUCCESS] Repository cloned to: /tmp/weblate_scan_xyz123
+[INFO] Scanning subdirectory: doc/modules/ROOT
+[INFO] Scanning for files with extensions: .adoc
+
+[SUCCESS] Found 52 file(s)
+
+[INFO] Processing: doc/modules/ROOT/pages/intro.adoc
+[SUCCESS] Created: ./setup/setup_intro.json
+
+[INFO] Processing: doc/modules/ROOT/pages/benchmarks.adoc
+[SUCCESS] Created: ./setup/setup_benchmarks.json
+
+... (50 more files) ...
+
+============================================================
+[SUCCESS] Generated 52 setup file(s) in: ./setup
+============================================================
+
+[INFO] Creating components in Weblate...
+
+============================================================
+Creating Components in Weblate (Sequential)
+============================================================
+[INFO] Total components to create: 52
+[INFO] Delay between components: 5s
+[INFO] This ensures proper synchronization and avoids conflicts
+
+============================================================
+[1/52] Component: intro
+============================================================
+[INFO] Config: ./setup/setup_intro.json
+[INFO] Starting component creation...
+[SUCCESS] Component created in 3.2s
+[INFO] Waiting 5s before next component...
+
+============================================================
+[2/52] Component: benchmarks
+============================================================
+[INFO] Config: ./setup/setup_benchmarks.json
+[INFO] Starting component creation...
+[SUCCESS] Component created in 2.8s
+[INFO] Waiting 5s before next component...
+
+... (50 more components) ...
+
+============================================================
+Component Creation Summary
+============================================================
+  Total:   52
+  Success: 51
+  Failed:  1
+
+Failed components:
+  - unordered-map (will retry individually)
+
+============================================================
+```
+
+### Workflow Recommendations
+
+#### For Production (Recommended)
+
+1. **Generate first, review, then create:**
+
+```bash
+# Step 1: Generate configs
+python3 batch_component_setup.py --config project_config.json --output ./review
+
+# Step 2: Review generated files
+ls -l ./review/
+cat ./review/setup_intro.json
+
+# Step 3: Create all components
+python3 batch_component_setup.py \
+    --config project_config.json \
+    --output ./review \
+    --create-components
+```
+
+#### For Development (Fast Iteration)
+
+```bash
+# Use local repo to skip cloning
+python3 batch_component_setup.py \
+    --config project_config.json \
+    --local-repo ~/projects/my-repo \
+    --create-components
+```
+
+#### For CI/CD
+
+```bash
+# Run in background, monitor logs
+nohup python3 batch_component_setup.py \
+    --config project_config.json \
+    --create-components \
+    --delay 3 \
+    > batch_$(date +%Y%m%d_%H%M%S).log 2>&1 &
+```
+
+### Handling Failures
+
+If some components fail to create, the summary shows which ones:
+
+```
+Failed components:
+  - unordered-map
+  - concurrent-set
+```
+
+**To retry failed components manually:**
+
+```bash
+# Find the generated config
+cd setup/
+
+# Retry individual component
+python3 ../setup_component.py --config setup_unordered-map.json
+python3 ../setup_component.py --config setup_concurrent-set.json
+```
+
+### Advanced: Custom Setup Script Location
+
+If `setup_component.py` is in a different location:
+
+```bash
+python3 batch_component_setup.py \
+    --config project_config.json \
+    --create-components \
+    --setup-script /path/to/setup_component.py
+```
+
+### Real-World Example: Boost Documentation
+
+**Scenario**: Translate 52 AsciiDoc files in `doc/modules/ROOT/pages/`
+
+**Single command:**
+```bash
+python3 batch_component_setup.py \
+    --config project_config.json \
+    --create-components \
+    --delay 5
+```
+
+**Result**: 52 components created in ~5 minutes (52 components × 5s delay + creation time)
+
+Without this script: **2+ hours of manual work** (create each component individually via UI or API)
+
+### Comparison: Batch vs. Manual
+
+| Task | Manual (UI/Script) | batch_component_setup.py |
+|------|-------------------|-------------------------|
+| 1 component | ~2 minutes | ~5 seconds |
+| 10 components | ~20 minutes | ~1 minute |
+| 50 components | ~2 hours | ~5 minutes |
+| 100 components | ~4 hours | ~10 minutes |
+
+**Time savings increase exponentially with component count.**
+
+---
+
+## 📖 Script 1: `setup_component.py` (All-in-One)
 
 Complete workflow that creates a component and adds translations in one command.
 

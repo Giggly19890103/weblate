@@ -43,3 +43,4 @@ weblate-*.tar.*
 /mypy.log
 *.log
 __pycache__
+/scripts/auto/setup

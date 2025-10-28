@@ -20,7 +20,7 @@ cd $HOME
 
 # Activate virtual environment
 echo -e "${YELLOW}Activating virtual environment...${NC}"
-source $HOME/boost-weblat/weblate-env/bin/activate
+source $HOME/boost-weblate/weblate-env/bin/activate
 
 # Check if Celery is already running
 if pgrep -f "celery.*weblate" > /dev/null; then

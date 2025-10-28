@@ -323,18 +323,12 @@ def validate_inputs(
     
     print(f"[SUCCESS] Component '{project_slug}/{component_slug}' exists", flush=True)
     
-    # Check all language codes
-    invalid_languages = []
-    for lang_code in language_codes:
-        if not creator.language_exists(lang_code):
-            invalid_languages.append(lang_code)
+    # Note: We skip language validation because the API only returns
+    # languages that already have translations. New languages won't be
+    # visible via API until they're used, so we'll let Weblate validate
+    # the language codes when creating the translation.
+    print(f"[INFO] Will attempt to add {len(language_codes)} language(s)", flush=True)
     
-    if invalid_languages:
-        print(f"[ERROR] Invalid language codes: {', '.join(invalid_languages)}", flush=True)
-        print("[INFO] Use --list-languages to see available language codes", flush=True)
-        return False
-    
-    print(f"[SUCCESS] All language codes are valid", flush=True)
     return True
 
 
