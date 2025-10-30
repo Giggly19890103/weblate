@@ -400,10 +400,6 @@ class ProjectBackup:
         if component.is_repo_link:
             return
 
-        # Check if VCS directory exists before attempting backup
-        if not os.path.exists(component.full_path):
-            return
-
         # Compact the repository
         with component.repository.lock:
             component.repository.compact()

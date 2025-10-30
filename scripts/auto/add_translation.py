@@ -274,7 +274,7 @@ class WeblateTranslationCreator:
         if 'total' in translation:
             total = translation.get('total', 0)
             translated = translation.get('translated', 0)
-            print(f"  Progress: {translated}/{total} strings translated", flush=True)
+            # print(f"  Progress: {translated}/{total} strings translated", flush=True)
 
     def list_available_languages(self) -> List[Dict[str, Any]]:
         """List all available languages in Weblate."""

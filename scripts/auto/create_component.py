@@ -647,7 +647,7 @@ def _print_translation_info(
     if stats:
         total = stats.get('total', 0)
         translated = stats.get('translated', 0)
-        print(f"\n[INFO] Statistics: {translated}/{total} strings translated", flush=True)
+        # print(f"\n[INFO] Statistics: {translated}/{total} strings translated", flush=True)
 
 
 def print_success_summary(
