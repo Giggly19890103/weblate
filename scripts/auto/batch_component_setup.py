@@ -216,6 +216,14 @@ def generate_component_config(
         "suggestion_autoaccept": component_defaults.get("suggestion_autoaccept", 0),
         "check_flags": component_defaults.get("check_flags", ""),
         "hide_glossary_matches": component_defaults.get("hide_glossary_matches", False),
+        # Restrict language_regex to only match valid language codes (BCP47 format)
+        # This prevents matching non-translation files like *_fwd.adoc
+        # Pattern: 2-3 lowercase letters (language), optional script (_Script), optional region (_REGION)
+        # Explicitly allows Chinese: zh, zh_Hans, zh_Hant, zh_CN, zh_TW, zh_Hans_CN, etc.
+        "language_regex": component_defaults.get(
+            "language_regex",
+            r"^[a-z]{2,3}(_[A-Z][a-z]{3})?(_[A-Z]{2})?$"
+        ),
     }
     
     # Build full setup configuration
@@ -318,11 +326,34 @@ def create_components_from_setup_files(
                         print(f"  {line}")
                     if len(error_lines) > 5:
                         print(f"  ... ({len(error_lines) - 5} more lines)")
-                results[setup_file] = False
-                failed_count += 1
-                failed_components.append(component_name)
+
+                # Retry once after a short backoff (transient lock/timing issues)
+                print(f"[INFO] Retrying once after {delay_between_components}s...")
+                time.sleep(delay_between_components)
+                retry = subprocess.run(
+                    cmd,
+                    capture_output=True,
+                    text=True,
+                    timeout=300,
+                )
+                if retry.returncode == 0:
+                    elapsed2 = time.time() - start_time
+                    print(f"[SUCCESS] Component created on retry in {elapsed2:.1f}s")
+                    results[setup_file] = True
+                    success_count += 1
+                else:
+                    print(f"[ERROR] Retry failed (exit code: {retry.returncode})")
+                    if retry.stderr:
+                        retry_err_lines = retry.stderr.strip().split('\n')
+                        for line in retry_err_lines[:5]:
+                            print(f"  {line}")
+                        if len(retry_err_lines) > 5:
+                            print(f"  ... ({len(retry_err_lines) - 5} more lines)")
+                    results[setup_file] = False
+                    failed_count += 1
+                    failed_components.append(component_name)
                 
-                # Still add delay to let things settle
+                # Add delay before next component (except for last one)
                 if idx < total:
                     print(f"[INFO] Waiting {delay_between_components}s before continuing...")
                     time.sleep(delay_between_components)
