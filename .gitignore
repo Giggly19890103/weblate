@@ -44,3 +44,5 @@ weblate-*.tar.*
 *.log
 __pycache__
 /scripts/auto/setup
+notes/
+.cursorignore

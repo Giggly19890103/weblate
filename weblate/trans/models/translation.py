@@ -439,11 +439,11 @@ class Translation(
             details["reason"] = self.reason
 
             self.component.check_template_valid()
-            
+
             # Schedule auto-translation to run AFTER transaction commits (like "await")
             # This ensures all units are fully saved and visible before translation
-            # if self.reason == "new file" and not self.is_source:
-                # transaction.on_commit(lambda: self.auto_translate_via_openrouter())
+            if self.reason == "new file" and not self.is_source:
+                transaction.on_commit(lambda: self.auto_translate_via_openrouter())
 
             # List of updated units (used for cleanup and duplicates detection)
             updated: dict[int, Unit] = {}
@@ -2079,231 +2079,214 @@ class Translation(
             .order()
         )
     def auto_translate_via_openrouter(self):
-        """Auto translation via openrouter"""
-        from weblate.utils.openrouter_translator import OpenRouterTranslator
+        """Auto translation via OpenRouter (modularized)."""
+        # 1) Resolve configuration
+        api_key, model, config_source = self._resolve_openrouter_config()
+        if not api_key or not model:
+            return self
+
+        try:
+            # 2) Collect units and build request
+            units_qs, units_data, unit_map, json_request, expected_keys = (
+                self._prepare_batch_request()
+            )
+            if not units_qs:
+                return self
+
+            # 3) Call translator with validation/retries
+            translated_data = self._translate_with_retries(
+                json_request,
+                expected_keys,
+                api_key,
+                model,
+            )
+            if translated_data is None:
+                return self
+
+            # 4) Apply results
+            self._apply_batch_translations(translated_data, unit_map, len(units_data))
+            return self
+        except Exception as e:
+            self.log_error("Auto-translation failed: %s", e)
+            return self
+
+    def _resolve_openrouter_config(self):
         from weblate.configuration.models import Setting, SettingCategory
         import os
-        
-        # DEBUG: Log that auto-translation was triggered
+
         self.log_info("AUTO-TRANSLATION TRIGGERED for %s", self.full_slug)
-        
+
         api_key = None
         model = None
         config_source = None
-        
-        # Step 1: Try to get settings from Weblate configuration_setting table
+
         try:
             settings = Setting.objects.get_settings_dict(SettingCategory.MT)
             openai_config = settings.get('openai', {})
-            
             if openai_config:
                 api_key = openai_config.get('key')
                 model = openai_config.get('custom_model')
-                
                 if api_key and model:
                     config_source = "Weblate configuration_setting"
                     self.log_info("Using OpenRouter settings from Weblate configuration")
         except Exception as e:
             self.log_debug("Failed to read Weblate configuration: %s", e)
-        
-        # Step 2: If Weblate config not found, try environment variables
+
         if not (api_key and model):
             api_key = os.getenv('OPENROUTER_API_KEY')
             model = os.getenv('OPENROUTER_MODEL', 'deepseek/deepseek-chat')
-            
             if api_key and model:
                 config_source = "environment variables"
                 self.log_info("Using OpenRouter settings from environment variables")
-        
-        # Step 3: If both checks fail, log warning and return
+
         if not api_key:
             self.log_warning(
-                "OpenRouter API key not found. "
-                "Please configure in Weblate settings (configuration_setting table) "
-                "or set OPENROUTER_API_KEY environment variable. "
-                "Skipping auto-translation."
+                "OpenRouter API key not found. Please configure in Weblate settings or env vars. Skipping auto-translation."
             )
-            return
-        
+            return None, None, None
         if not model:
             self.log_warning(
-                "OpenRouter model not specified. "
-                "Please configure in Weblate settings or set OPENROUTER_MODEL environment variable. "
-                "Skipping auto-translation."
+                "OpenRouter model not specified. Please configure in Weblate settings or env vars. Skipping auto-translation."
             )
-            return
-        
-        # Step 4: Proceed with translation
-        try:
-            # Initialize translator
-            self.log_info("Initializing OpenRouter translator (source: %s, model: %s)", config_source, model)
-            translator = OpenRouterTranslator(api_key=api_key, model=model)
-            
-            # Get all untranslated units for this translation
-            untranslated_units = self.unit_set.filter(state__lt=20).order_by('position')  # STATE_TRANSLATED = 20
-            
-            if not untranslated_units.exists():
-                self.log_info("No untranslated units found for %s", self.language.code)
-                return
-            
-            self.log_info(
-                "Preparing batch translation for %d units in %s using %s",
-                untranslated_units.count(),
-                self.language.code,
-                model
-            )
-            
-            # Step 1: Encode all source strings into JSON format
-            import json
-            units_data = {}  # Dictionary with id as key, string as value
-            unit_map = {}  # Map ID to unit object for later update
-            
-            for unit in untranslated_units:
-                units_data[str(unit.id)] = unit.source
-                unit_map[unit.id] = unit
-            
-            # Convert to JSON string
-            json_request = json.dumps(units_data, ensure_ascii=False, indent=2)
-            
-            # Get expected keys for validation
-            expected_keys = set(units_data.keys())
-            
-            self.log_info("Sending batch translation request with %d units", len(units_data))
-            # self.log_debug("Request JSON preview: %s...", json_request[:200])
-            
-            # Step 2: Send to OpenRouter translator with retry logic for format validation
-            max_format_retries = 3
-            translated_data = None
-            
-            for format_attempt in range(max_format_retries):
-                try:
-                    self.log_info("Translation attempt %d/%d", format_attempt + 1, max_format_retries)
-                    
-                    # Get source and target language names
-                    source_language = self.component.source_language.name  # e.g., "English"
-                    target_language = self.language.name  # e.g., "Chinese (Simplified)"
-                    
-                    # Send translation request with language parameters
-                    translated_json = translator.translate_batch_json(
-                        json_request,
-                        source_lang=source_language,
-                        target_lang=target_language
-                    )
-                    
-                    # Step 3: Parse response JSON
-                    try:
-                        translated_data = json.loads(translated_json)
-                    except json.JSONDecodeError as e:
-                        self.log_warning(
-                            "Format validation failed (attempt %d/%d): Invalid JSON - %s",
-                            format_attempt + 1,
-                            max_format_retries,
-                            e
-                        )
-                        self.log_debug("Response preview: %s", translated_json[:500])
-                        translated_data = None
-                        continue
-                    
-                    # Validate JSON format
-                    if not isinstance(translated_data, dict):
-                        self.log_warning(
-                            "Format validation failed (attempt %d/%d): Response is not a JSON object",
-                            format_attempt + 1,
-                            max_format_retries
-                        )
-                        translated_data = None
-                        continue
-                    
-                    # Check if keys match exactly
-                    translated_keys = set(translated_data.keys())
-                    if translated_keys != expected_keys:
-                        missing_keys = expected_keys - translated_keys
-                        extra_keys = translated_keys - expected_keys
-                        self.log_warning(
-                            "Format validation failed (attempt %d/%d): Key mismatch - Expected %d keys, got %d keys",
-                            format_attempt + 1,
-                            max_format_retries,
-                            len(expected_keys),
-                            len(translated_keys)
-                        )
-                        if missing_keys:
-                            self.log_debug("Missing keys: %s", list(missing_keys)[:10])
-                        if extra_keys:
-                            self.log_debug("Extra keys: %s", list(extra_keys)[:10])
-                        translated_data = None
-                        continue
-                    
-                    # Validation passed!
-                    self.log_info("JSON format validation successful on attempt %d", format_attempt + 1)
-                    break
-                    
-                except Exception as e:
-                    self.log_warning(
-                        "Translation attempt %d/%d failed: %s",
-                        format_attempt + 1,
-                        max_format_retries,
-                        e
-                    )
-                    translated_data = None
-                    if format_attempt < max_format_retries - 1:
-                        continue
-                    else:
-                        raise
-            
-            # If all retries failed, return without changes
-            if translated_data is None:
-                self.log_error(
-                    "All %d format validation attempts failed. Returning translation without changes.",
-                    max_format_retries
+            return None, None, None
+
+        return api_key, model, config_source
+
+    def _prepare_batch_request(self):
+        from weblate.utils.openrouter_translator import OpenRouterTranslator  # noqa: F401 (import side-effect for types)
+        import json
+
+        # Collect untranslated units
+        units_qs = self.unit_set.all().order_by('position')
+        if not units_qs.exists():
+            self.log_info("No untranslated units found for %s", self.language.code)
+            return None, None, None, None, None
+
+        self.log_info(
+            "Preparing batch translation for %d units in %s",
+            units_qs.count(),
+            self.language.code,
+        )
+
+        units_data = {}
+        unit_map = {}
+        for unit in units_qs:
+            units_data[str(unit.id)] = unit.source
+            unit_map[unit.id] = unit
+
+        json_request = json.dumps(units_data, ensure_ascii=False, indent=2)
+        expected_keys = set(units_data.keys())
+        self.log_info("Sending batch translation request with %d units", len(units_data))
+
+        return units_qs, units_data, unit_map, json_request, expected_keys
+
+    def _translate_with_retries(self, json_request, expected_keys, api_key, model_name):
+        from weblate.utils.openrouter_translator import OpenRouterTranslator
+        import json
+
+        self.log_info("Initializing OpenRouter translator (model: %s)", model_name)
+        translator = OpenRouterTranslator(api_key=api_key, model=model_name)
+
+        max_format_retries = 3
+        translated_data = None
+
+        for attempt in range(max_format_retries):
+            try:
+                self.log_info("Translation attempt %d/%d", attempt + 1, max_format_retries)
+
+                source_language = self.component.source_language.name
+                target_language = self.language.name
+
+                translated_json = translator.translate_batch_json(
+                    json_request,
+                    source_lang=source_language,
+                    target_lang=target_language,
                 )
-                return
-            
-            # Step 4: Update target strings for each unit
-            translated_count = 0
-            failed_count = 0
-            
-            # translated_data is a dictionary: {"123": "translated text", "124": "translated text", ...}
-            for unit_id_str, target in translated_data.items():
-                try:
-                    unit_id = int(unit_id_str)
-                except ValueError:
-                    self.log_warning("Invalid unit ID in response: %s", unit_id_str)
-                    failed_count += 1
-                    continue
-                
-                if not target:
-                    self.log_warning("Empty translation for unit ID %s", unit_id)
-                    failed_count += 1
-                    continue
-                
-                unit = unit_map.get(unit_id)
-                if not unit:
-                    self.log_warning("Unit ID %s not found in map", unit_id)
-                    failed_count += 1
-                    continue
-                
-                try:
-                    # Update the unit with translated text and mark as translated
-                    unit.target = target
-                    unit.state = 10  # Needs editing
-                    unit.save(update_fields=['target', 'state'])
-                    
-                    translated_count += 1
-                    self.log_debug("Translated unit %d: %s -> %s", unit.id, unit.source[:30], target[:30])
-                    
-                except Exception as e:
-                    self.log_warning("Failed to save translation for unit %d: %s", unit_id, e)
-                    failed_count += 1
-            
-            self.log_info(
-                "Batch auto-translation completed: %d/%d units translated, %d failed",
-                translated_count,
-                len(units_data),
-                failed_count
-            )
-            
+
+                ok, translated_data = self._validate_and_parse_response(
+                    translated_json, expected_keys
+                )
+                if ok:
+                    self.log_info("JSON format validation successful on attempt %d", attempt + 1)
+                    return translated_data
+            except Exception as e:
+                self.log_warning(
+                    "Translation attempt %d/%d failed: %s", attempt + 1, max_format_retries, e
+                )
+
+        self.log_error(
+            "All %d format validation attempts failed. Returning translation without changes.",
+            max_format_retries,
+        )
+        return None
+
+    def _validate_and_parse_response(self, translated_json, expected_keys):
+        import json
+        try:
+            data = json.loads(translated_json)
         except Exception as e:
-            self.log_error("Auto-translation failed: %s", e)
+            self.log_warning("Invalid JSON: %s", e)
+            self.log_debug("Response preview: %s", translated_json[:500])
+            return False, None
+
+        if not isinstance(data, dict):
+            self.log_warning("Response is not a JSON object")
+            return False, None
+
+        translated_keys = set(data.keys())
+        if translated_keys != expected_keys:
+            missing_keys = expected_keys - translated_keys
+            extra_keys = translated_keys - expected_keys
+            self.log_warning(
+                "Key mismatch - Expected %d keys, got %d keys", len(expected_keys), len(translated_keys)
+            )
+            if missing_keys:
+                self.log_debug("Missing keys: %s", list(missing_keys)[:10])
+            if extra_keys:
+                self.log_debug("Extra keys: %s", list(extra_keys)[:10])
+            return False, None
+
+        return True, data
+
+    def _apply_batch_translations(self, translated_data, unit_map, total_units):
+        translated_count = 0
+        failed_count = 0
+
+        for unit_id_str, target in translated_data.items():
+            try:
+                unit_id = int(unit_id_str)
+            except ValueError:
+                self.log_warning("Invalid unit ID in response: %s", unit_id_str)
+                failed_count += 1
+                continue
+
+            if not target:
+                self.log_warning("Empty translation for unit ID %s", unit_id)
+                failed_count += 1
+                continue
+
+            unit = unit_map.get(unit_id)
+            if not unit:
+                self.log_warning("Unit ID %s not found in map", unit_id)
+                failed_count += 1
+                continue
+
+            try:
+                unit.target = target
+                unit.state = 10  # fuzzy/needs editing per user request
+                unit.save(update_fields=['target', 'state'])
+                translated_count += 1
+                self.log_debug("Translated unit %d: %s -> %s", unit.id, unit.source[:30], target[:30])
+            except Exception as e:
+                self.log_warning("Failed to save translation for unit %d: %s", unit_id, e)
+                failed_count += 1
+
+        self.log_info(
+            "Batch auto-translation completed: %d/%d units translated, %d failed",
+            translated_count,
+            total_units,
+            failed_count,
+        )
 
 class GhostTranslation:
     """Ghost translation object used to show missing translations."""
