@@ -223,6 +223,7 @@ weblate createadmin
 
 > **Tip**: If you lose the admin password, regenerate it with `weblate createadmin --update`
 
+ot82@8QI4cypb
 ---
 
 ## 20. Configure Additional Settings
@@ -340,7 +341,7 @@ For AsciiDoc format support, install these tools:
 
 ```bash
 install asciidoctor  # AsciiDoc to HTML converter
-install pandoc       # Universal document converter
+install pypandoc       # Universal document converter
 ```
 
 OpenRouter
@@ -377,3 +378,6 @@ tail -f ~/weblate-celery.log
 ```
 
 ---
+
+
+$ PGPASSWORD=weblate pg_dump -h 127.0.0.1 -U weblate -d weblate -F c -f /home/boost-weblate/weblate_backup_$(date +%Y%m%d_%H%M%S).dump 2>&1 && echo "Database dump created successfully" || echo "Dump failed"

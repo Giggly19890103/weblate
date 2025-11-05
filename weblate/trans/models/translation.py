@@ -2087,7 +2087,7 @@ class Translation(
 
         try:
             # 2) Collect units and build request
-            units_qs, units_data, unit_map, json_request, expected_keys = (
+            units_qs, units_data, unit_map, expected_keys = (
                 self._prepare_batch_request()
             )
             if not units_qs:
@@ -2095,7 +2095,7 @@ class Translation(
 
             # 3) Call translator with validation/retries
             translated_data = self._translate_with_retries(
-                json_request,
+                units_data,
                 expected_keys,
                 api_key,
                 model,
@@ -2174,51 +2174,178 @@ class Translation(
             units_data[str(unit.id)] = unit.source
             unit_map[unit.id] = unit
 
-        json_request = json.dumps(units_data, ensure_ascii=False, indent=2)
         expected_keys = set(units_data.keys())
         self.log_info("Sending batch translation request with %d units", len(units_data))
 
-        return units_qs, units_data, unit_map, json_request, expected_keys
+        return units_qs, units_data, unit_map, expected_keys
 
-    def _translate_with_retries(self, json_request, expected_keys, api_key, model_name):
+    def _create_chunks(self, units_data, chunk_size=50):
+        """Split units data into chunks for batch processing."""
+        units_list = list(units_data.items())
+        chunks = []
+        
+        for i in range(0, len(units_data), chunk_size):
+            chunk_dict = dict(units_list[i:i + chunk_size])
+            chunks.append(chunk_dict)
+        
+        return chunks
+
+    def _build_system_prompt(self, source_language, target_language):
+        """Build the system prompt for translation."""
+        return f"""You are a professional technical documentation translator specialized in translating from {source_language} to {target_language}.
+
+        CRITICAL REQUIREMENTS:
+        1. INPUT: You will receive a JSON object where keys are unit IDs and values are {source_language} source strings
+        2. OUTPUT: You MUST return a VALID JSON OBJECT with the EXACT same keys - this is MANDATORY
+        3. BATCH CONTEXT: This is a BATCH translation where all strings are related and from the same document. Ensure terminology consistency and contextual coherence across ALL translations in the batch.
+        4. CHUNKED PROCESSING: IMPORTANT - This request may be part of a larger document split into chunks. Even though you only see this chunk, you MUST maintain consistency with potential other chunks from the same document. Use standard technical terminology that would be consistent across the entire document.
+        
+        TRANSLATION GUIDELINES:
+        - Maintain CONSISTENT terminology and style across all translations in the batch AND across all chunks of the same document
+        - Use the SAME {target_language} translation for recurring technical terms across all strings, even when processing different chunks
+        - Maintain technical accuracy and formatting across all strings
+        - Preserve code blocks, links, and markdown syntax in all strings
+        - Use standard {target_language} technical terminology for C++ and Boost libraries CONSISTENTLY
+        - When translating terms, use the standard, widely-accepted translation that would be consistent across the entire document, not just this chunk
+
+        JSON FORMAT (NON-NEGOTIABLE):
+        INPUT:  {{"1": "{source_language} text 1", "2": "{source_language} text 2", "3": "{source_language} text 3"}}
+        OUTPUT: {{"1": "{target_language} translation 1", "2": "{target_language} translation 2", "3": "{target_language} translation 3"}}
+
+        CRITICAL: Return ONLY the raw JSON object. NO markdown code fences, NO explanations, NO extra formatting.
+        The response MUST be parseable as valid JSON or the entire batch will fail."""
+
+    def _build_user_prompt(self, chunk_json, source_language, target_language):
+        """Build the user prompt for a specific chunk."""
+        return f"""Translate the following strings from {source_language} to {target_language}. This is a chunk from a larger document - maintain consistency with standard technical terminology that would be used across the entire document.
+
+        Return ONLY a valid JSON object with the same keys but translated values:
+        {chunk_json}"""
+
+    def _translate_chunk_with_retries(
+        self, translator, chunk_json, chunk_keys, chunk_idx, total_chunks, 
+        system_prompt, user_prompt, max_retries=3
+    ):
+        """Translate a single chunk with retry logic."""
+        self.log_info(
+            "Processing chunk %d/%d (%d units)",
+            chunk_idx,
+            total_chunks,
+            len(chunk_keys),
+        )
+        
+        for attempt in range(max_retries):
+            try:
+                translated_json = translator.translate_batch_json(
+                    chunk_json,
+                    system_prompt,
+                    user_prompt,
+                )
+                
+                ok, chunk_translated = self._validate_and_parse_response(
+                    translated_json, chunk_keys
+                )
+                
+                if ok:
+                    self.log_info(
+                        "Chunk %d/%d translation successful on attempt %d",
+                        chunk_idx,
+                        total_chunks,
+                        attempt + 1,
+                    )
+                    return chunk_translated
+                    
+            except Exception as e:
+                self.log_warning(
+                    "Chunk %d/%d translation attempt %d/%d failed: %s",
+                    chunk_idx,
+                    total_chunks,
+                    attempt + 1,
+                    max_retries,
+                    e,
+                )
+        
+        self.log_error(
+            "Chunk %d/%d translation failed after %d attempts. Skipping chunk.",
+            chunk_idx,
+            total_chunks,
+            max_retries,
+        )
+        return None
+
+    def _validate_translation_completeness(self, all_translated_data, expected_keys):
+        """Validate that all expected keys were translated."""
+        translated_keys = set(all_translated_data.keys())
+        
+        if translated_keys == expected_keys:
+            self.log_info(
+                "All chunks translated successfully. Total: %d units",
+                len(all_translated_data),
+            )
+            return True
+        
+        missing_keys = expected_keys - translated_keys
+        self.log_error(
+            "Translation incomplete. Missing %d units out of %d total",
+            len(missing_keys),
+            len(expected_keys),
+        )
+        return False
+
+    def _translate_with_retries(self, units_data, expected_keys, api_key, model_name):
+        """Translate units with chunking and retry logic."""
         from weblate.utils.openrouter_translator import OpenRouterTranslator
         import json
 
+        # Initialize translator
         self.log_info("Initializing OpenRouter translator (model: %s)", model_name)
-        translator = OpenRouterTranslator(api_key=api_key, model=model_name)
+        translator = OpenRouterTranslator(api_key=api_key, model=model_name, logger=self)
 
-        max_format_retries = 3
-        translated_data = None
-
-        for attempt in range(max_format_retries):
-            try:
-                self.log_info("Translation attempt %d/%d", attempt + 1, max_format_retries)
-
-                source_language = self.component.source_language.name
-                target_language = self.language.name
-
-                translated_json = translator.translate_batch_json(
-                    json_request,
-                    source_lang=source_language,
-                    target_lang=target_language,
-                )
-
-                ok, translated_data = self._validate_and_parse_response(
-                    translated_json, expected_keys
-                )
-                if ok:
-                    self.log_info("JSON format validation successful on attempt %d", attempt + 1)
-                    return translated_data
-            except Exception as e:
-                self.log_warning(
-                    "Translation attempt %d/%d failed: %s", attempt + 1, max_format_retries, e
-                )
-
-        self.log_error(
-            "All %d format validation attempts failed. Returning translation without changes.",
-            max_format_retries,
+        # Create chunks
+        chunks = self._create_chunks(units_data, chunk_size=100)
+        self.log_info(
+            "Splitting %d units into %d chunks (chunk size: %d)",
+            len(units_data),
+            len(chunks),
+            100,
         )
-        return None
+
+        # Get language names
+        source_language = self.component.source_language.name
+        target_language = self.language.name
+        
+        # Build system prompt (same for all chunks)
+        system_prompt = self._build_system_prompt(source_language, target_language)
+        
+        # Translate each chunk and combine results
+        all_translated_data = {}
+        
+        for chunk_idx, chunk_data in enumerate(chunks, 1):
+            chunk_json = json.dumps(chunk_data, ensure_ascii=False, indent=2)
+            chunk_keys = set(chunk_data.keys())
+            user_prompt = self._build_user_prompt(
+                chunk_json, source_language, target_language
+            )
+            
+            chunk_translated = self._translate_chunk_with_retries(
+                translator=translator,
+                chunk_json=chunk_json,
+                chunk_keys=chunk_keys,
+                chunk_idx=chunk_idx,
+                total_chunks=len(chunks),
+                system_prompt=system_prompt,
+                user_prompt=user_prompt,
+                max_retries=3,
+            )
+            
+            if chunk_translated:
+                all_translated_data.update(chunk_translated)
+
+        # Validate completeness
+        if self._validate_translation_completeness(all_translated_data, expected_keys):
+            return all_translated_data
+        
+        return all_translated_data if all_translated_data else None
 
     def _validate_and_parse_response(self, translated_json, expected_keys):
         import json
